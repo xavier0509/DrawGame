@@ -1,0 +1,313 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<meta http-equiv="Access-Control-Allow-Origin" content="text/html">
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta http-equiv="expires" content="0">
+		<meta http-equiv="pragma" content="no-cache">
+		<meta http-equiv="cache-control" content="no-cache">
+		<link rel="stylesheet" href="css/DrawSystem.css" />
+		<script type="text/javascript" src="js/jquery-1.6.2.min.js"></script>
+		<script type="text/javascript" src="js/DrawSystem.js"></script>
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<script type="text/javascript" src="js/awardRotate.js"></script>
+		<script src="js/scroolingList-2.js" type="text/javascript"></script>
+		<script src="js/scroolingList.js" type="text/javascript"></script>
+		<script src="js/framework.js" type="text/javascript"></script>
+		<script type="text/javascript">
+			myFocus.set({
+				id: 'text_info-2',
+				pattern: 'mF_sd_tqq',
+				time: 2
+			});
+		</script>
+		<title>抽奖系统</title>
+	</head>
+
+	<body id="homepage" scroll="no">
+		<div id="deviceready" class="blink">
+			<div id="indexhtml">
+				<img id="bg_Operation-img" src="images/drawbgimg.jpg" />
+				<div class="rotate">
+					<img id="rotate" src="images/turntable2.png" />
+				</div>
+				<!--开始抽奖-->
+				<div id="startdDraw-1">
+					<img id="bg_Operation-img-2-1" src="images/notstartdraw.png" />
+				</div>
+				<button id="startdDraw" class="pointer" onclick="startDraw()">
+					<img id="bg_Operation-img-2" src="images/startdraw.png" />
+					<img id="bg_Operation-img-2-border" src="images/borderstartdraw.png" />
+				</button>
+				<img id="bg_Operation-img-3" src="images/title.png" />
+				<!--登录-->
+				<div id="bg_Operation-img-5">
+					<button id="button-logo">
+						<img id="button-logo-1" src="images/buttonlogo1.png" />
+						<img id="button-logo-1-border" src="images/bordercancle.png" />
+					</button>
+					<button id="button-been-logo">
+						<img id="button-logo-2" src="images/buttonuserpicture.png" />
+						<img id="button-logo-2-border" src="images/bordercancle.png" />
+					</button>
+					<div id="button-logo-3"></div>
+				</div>
+				<!--开通会员-->
+				<button id="gotovipcenter_speciallyeffect">
+					<img id="bg_Operation-img-4" src="images/buttonopenVIPicon.png" />
+					<img id="bg_Operation-img-4-border" src="images/borderopenVIP.png" />
+				</button>
+				<!--更多详情-->
+				<button id="moreinfo_speciallyeffect" onclick="showChild_009()">
+					<img id="bg_Operation-img-6" src="images/buttonmoreinfoicon.png" />
+					<img id="bg_Operation-img-6-border" src="images/bordermoreinfo.png" />
+				</button>
+				<!--我的奖品-->
+				<button id="myaward_speciallyeffect" onclick="showChild_010()">
+					<img id="bg_Operation-img-7" src="images/buttonmyawardicon.png" />
+					<img id="bg_Operation-img-7-border" src="images/bordermyaward.png" />
+				</button>
+				<img id="bg_Operation-img-8" src="images/winnertitle.png" />
+				<!--活动简介-->
+				<div id="text_info-0" readonly="readonly"></div>
+				<div id="text_info-1" readonly="readonly"></div>
+				<!--中奖名单 上下滚动效果-->
+				<div id="text_info-2" class="mF_sd_tqq">
+					<ul class="msgs" id="scrollinglist"></ul>
+				</div>
+
+				<!--用于测试各种toast效果的button-->
+				<div id="just_for_a_try" style="display:block;">
+					<button class="button1" onclick="showChild_016()">1</button>
+				<!--	<button class="button1" onclick="showChild_006()">2</button>
+					<button class="button1" onclick="getProductPackage()">4</button>
+					<button class="button1" onclick="showChild_004()">6</button>
+					<button class="button1" onclick="showChild_005()">7</button>
+					<button class="btn" onclick="func()">btn</button>-->
+				</div>
+
+			</div>
+			<div id="text_info-2-1">活动马上开始哦！</div>
+			<div id="text_info-2-2">活动已经结束。</div>
+			<div id="text_info-3" readonly="readonly"></div>
+			<div id="text_info-4" readonly="readonly">您还有 次抽奖机会</div>
+			<div id="text_info-40" readonly="readonly">0</div>
+			<div id="text_info-41" readonly="readonly"></div>
+			<!--Toast-活动还未开始-->
+			<div id="div-toast-img-0" class="toast">
+				<img id="toast-img-0" src="images/toastactivityend.png">
+				<div id="text_info-5">
+					<div id="text_info-5-1" readonly="readonly"></div>
+				</div>
+				<button id="button-ensure-1" onclick="cancelToast(this.id)">
+					<img id="ensure-lose-1" src="images/buttonensure.png" />
+					<img id="ensure-lose-1-border" src="images/bordergetchance.png" />
+				</button>
+			</div>
+			<!--Toast-活动马上开始-->
+			<div id="div-toast-img-1" class="toast">
+				<img id="toast-img-1" src="images/toastactivitynotstart.png">
+				<div id="text_info-6">
+					<div id="text_info-6-1" readonly="readonly"></div>
+					<div id="text_info-6-2" readonly="readonly"></div>
+				</div>
+				<button id="button-ensure-2" onclick="cancelToast(this.id)">
+					<img id="ensure-lose-2" src="images/buttonensure.png" />
+					<img id="ensure-lose-2-border" src="images/bordergetchance.png" />
+				</button>
+			</div>
+			<!--Toast-获得影视中心会员-->
+			<div id="div-toast-img-2" class="toast">
+				<img id="toast-img-2" src="images/toastgetaward.png">
+				<div id="toast-img-2-1">
+					<img id="toast-img-2-2" class="AwardImagesUrl" />
+				</div>
+				<div id="text_info-8">
+					<div id="text_info-8-1" readonly="readonly"></div>
+					<div id="text_info-8-2">请在
+						<button id="startmemcenter">【影视-会员中心】</button>查看
+					</div>
+				</div>
+
+			</div>
+			<!--获取机会-->
+			<div id="div-toast-img-3" class="toast">
+				<img id="toast-img-3" src="images/toastgetchance.png" />
+				<div id="text_info-9" readonly="readonly">您还没有抽奖机会,
+					<br/>开通/续费影视<span id="text_info-9-div">【】</span>会员获取抽奖机会！</div>
+				<button id="button-img-3-1">
+					<img id="toast-img-3-1" src="images/buttongetchance.png" />
+					<img id="toast-img-3-1-border" src="images/bordergetchance.png" />
+				</button>
+				<button id="button-img-3-2" onclick="cancelToast(this.id)">
+					<img id="toast-img-3-2" src="images/buttoncancle.png" />
+					<img id="toast-img-3-2-border" src="images/bordercancle.png" />
+				</button>
+			</div>
+			<!--未抽中-->
+			<div id="div-toast-img-4" class="toast">
+				<img id="toast-img-4" src="images/toastnotaward.png">
+				<div id="text_info-10" readonly="readonly">您没有中奖哦，
+					<br/>去影视中心看看吧！</div>
+				<button id="button-img-4-1">
+					<img id="toast-img-4-1" src="images/buttonensure.png" />
+					<img id="toast-img-4-1-border" src="images/borderensure.png" />
+				</button>
+				<button id="button-img-4-2" onclick="cancelToast(this.id)">
+					<img id="toast-img-4-2" src="images/buttoncancle.png" />
+					<img id="toast-img-4-2-border" src="images/bordercancle.png" />
+				</button>
+			</div>
+
+			<!--未使用手机号登录-->
+			<div id="div-toast-img-5" class="toast">
+				<img id="toast-img-5" src="images/toastgetaward.png">
+				<div id="text_info-11">
+					<div id="text_info-11-0" readonly="readonly "></div>
+					<div id="text_info-11-1" readonly="readonly "></div>
+				</div>
+				<button id="button-img-5-1" onclick="showChild_007()">
+					<img id="toast-img-5-1" src="images/buttonwriteinfo.png">
+					<img id="toast-img-5-1-border" src="images/borderensure.png" />
+				</button>
+			</div>
+
+			<!--抽中奖品弹toast -->
+			<div id="toost-back-warm" class="toast">
+				<img id="toost-back-3" src="images/toastgetaward.png" />
+
+				<div id="foom-back-2"></div>
+				<div id="foom-back-3">您当前手机号为</div>
+				<div id="foom-back-4">确定以该手机号领取奖品吗？</div>
+
+				<button id="buttoon-back-3-1" onclick="ensuretoaward(this.id)">
+					<img id="toost-back-3-1" src="images/buttonensure.png"/>
+					<img id="toost-back-3-1-border" src="images/borderensure.png"/>
+				</button>
+				<button id="buttoon-back-3-2" onclick="showChild_007()">
+					<img id="toost-back-3-2" src="images/buttonchangecellphonenumber.png" />
+					<img id="toost-back-3-2-border" src="images/bordercancle.png" />
+				</button>
+			</div>
+
+			<div id="userOpenid" style="display: none;">
+				<!--islogin--><span id="islogin"></span>
+				<!--中奖ID--><span id="unseediv"></span>
+				<!--user open_id--><span id="userOpenId"></span>
+				<!--user phone--><span id="temp_userphonenumber"></span>
+				<!--leftnumber--><span id="drawleftnum"></span>
+				<!--macadress--><span id="macaddressnum"></span>
+				<!--activity ID--><span id="activityid"></span>
+				<!--AccessToken--><span id="accesstoken"></span>
+				<!--fivePhone--><span id="fivePhone"></span>
+				<!--code--><span id="codeflag"></span>
+			</div>
+		</div>
+
+		<!--弹出表单页-->
+		<div id="div-toast-text-7" class="toast";>
+			<!--<img id="toast-text-7" src="images/bgform.png">-->
+			<div id="form-info-7-0" readonly="readonly" disabled="disabled" tabindex="-1">领取奖品</div>
+			<div id="form-info-7-1"></div>
+			<div id="div-info-7-2">
+				<div id="form-info-7-2" readonly="readonly" disabled="disabled" tabindex="-1">请填写手机号和验证码</div>
+			</div>
+			<div id="div-info-7-3">
+				<input type="text" value="  请准确填写手机号" id="form-info-7-3" onfocus="OnfocusFun(this,'  请准确填写手机号')" onblur="OnBlurFun(this,'  请准确填写手机号')" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" maxlength="11"
+					size="14" name="form-info-7-3" type="text" />
+			</div>
+			<form id="div-info-7-4">
+				<input id="form-info-7-4" type="text" value="  验证码" class="c_code_msg" onfocus="OnfocusFun(this,'  验证码')" onblur="OnBlurFun(this,'  验证码')" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" maxlength="6"
+					size="14" name="form-info-7-4" type="text"></input>
+				<input id="form-info-7-5" type="button" class="captcha" name="获取验证码" value="获取验证码"></input>
+			</form>
+			<button id="button-text-7" onclick="showChild_008()">
+				<img id="toast-text-7-1" src="images/buttonformensure.png">
+				<img id="toast-text-7-1-border" src="images/borderphoneinfoensure.png">
+			</button>
+
+			<div id="numberBigFive">
+				<!--短信验证码超过5次弹toast-->
+				<div id="div-toast-number-8">
+					<input id="form-info-76" value="短信发送次数已超过限制，请下次再来。" readonly="readonly"></input>
+				</div>
+			</div>
+			<div id="codeIsWrong">
+				<!--验证码不匹配-->
+				<div id="div-toast-code-8">
+					<input id="form-info-761" value="验证码错误，请重新填写。" readonly="readonly"></input>
+				</div>
+			</div>
+
+			<div id="toastsuccess">
+				<!--信息填写成功弹toast-->
+				<div id="div-toast-text-8">
+					<div id="form-icon-0">
+						<img id="toast-text-7-2" src="images/toastformright.png">
+					</div>
+					<input id="form-info-7-6" value="填写成功，我们会尽快与您联系。" readonly="readonly"></input>
+				</div>
+			</div>
+
+			<div id="toastfalse">
+				<!--信息填写失败弹toast-->
+				<div id="div-toast-text-8-1">
+					<div id="form-icon-1">
+						<img id="toast-text-7-2-1" src="images/toastformwrong.png">
+					</div>
+					<input id="form-info-7-6-1" value="填写失败，请重新填写。" readonly="readonly"></input>
+				</div>
+			</div>
+
+		</div>
+		<!--详情页-->
+		<div id="div-toast-text-9" class="toast"><!--onscroll="true"-->
+			<input id="form-info-9-0" disabled="disabled" value="活动规则"></input>
+			<input id="form-info-9-1" disabled="disabled"></input>
+			<span id="form-info-9-2" ><!--onscroll="FocusChange(this.id)"--></span>
+			<input id="form-info-9-3" disabled="disabled" value="活动奖品"></input>
+			<span id="form-info-9-4" ></span><!--onscroll="FocusChange(this.id)"-->
+		</div>
+		<!--我的奖品-->
+		<div id="div-toast-text-10" class="toast">
+			<img id="toast-text-10" src="images/bgform.png">
+			<div id="form-info-10-0">我的奖品</div>
+			<div id="form-info-10-1"></div>
+		</div>
+		<!--按返回键的提示框  -->
+		<div id="toast-back-warm" class="toast">
+			<img id="toast-back-3" src="images/toastnotaward.png" />
+			<div id="form-back-4" readonly="readonly">您确定要放弃这次抽奖机会吗？</div>
+			<button id="button-back-3-1" onclick="gotohomepage()">
+				<img id="toast-back-3-1" src="images/buttonensure.png" />
+				<img id="toast-back-3-1-border" src="images/borderensure.png"/>
+			</button>
+			<button id="button-back-3-2" onclick="cancelToastback(this.id)">
+				<img id="toast-back-3-2" src="images/buttoncancle.png" />
+				<img id="toast-back-3-2-border" src="images/bordercancle.png" />
+			</button>
+		</div>
+		<div id="div-toast-img-12" class="toast" style="display: none;"></div>
+
+		<div id="toast-nologin-warm" class="toast">
+			<img id="toast-nologin-3" src="images/toastnotaward.png" />
+			<div id="form-nologin-4" readonly="readonly">您还没有登录，请先登录。</div>
+			<button id="button-nologin-3-1"><!--onclick="gotohomepage()"-->
+				<img id="toast-nologin-3-1" src="images/buttonensure.png" />
+				<img id="toast-nologin-3-1-border" src="images/borderensure.png"/>
+			</button>
+			<button id="button-nologin-3-2" onclick="cancelToastback(this.id)">
+				<img id="toast-nologin-3-2" src="images/buttoncancle.png" />
+				<img id="toast-nologin-3-2-border" src="images/bordercancle.png" />
+			</button>
+		</div>
+
+		<!--cordova通用框架-->
+		<script type="text/javascript" src="cordova.js"></script>
+		<script type="text/javascript" src="js/framework.js"></script>
+		<script type="text/javascript" src="donothashme.js"></script>
+		<!--<audio id="music" src="sounds/bgmusic.mp3" loop="loop"></audio>-->
+	</body>
+
+</html>
