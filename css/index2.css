@@ -117,7 +117,7 @@ div {
 	top: 36.3926%;
 	width: 19.5896%;
 	height: 6.9407%;
-	margin: 0 atuo;
+	margin: 0 auto;
 	font-size: 19px;
 	background-color: rgba(0, 0, 0, 0);
 	border: 1px solid red;
@@ -128,7 +128,7 @@ div {
 	top: 44.6666%;
 	width: 18.4896%;
 	height: 11.0296%;
-	margin: 0 atuo;
+	margin: 0 auto;
 	font-size: 18px;
 	word-spacing: 30px;
 	background-color: rgba(0, 0, 0, 0);
@@ -141,7 +141,7 @@ div {
 	top: 70.3518%;
 	width: 14.2708%;
 	height: 9.3518%;
-	margin: 0 atuo;
+	margin: 0 auto;
 	font-size: 18px;
 	word-spacing: 30px;
 	overflow: hidden;
@@ -154,12 +154,28 @@ div {
 	top: 37.5%;
 	width: 21.7292%;
 	height: 25.6111%;
-	margin: 0 atuo;
+	margin: 0 auto;
 	font-size: 16px;
 	word-spacing: 30px;
 	overflow: hidden;	
 	background-color: rgba(0, 0, 0, 0);
 	border: 1px solid red;
+}
+#awardList ul{
+	margin:0; padding:0
+} 
+#awardList li{
+	height:25px; 
+	line-height:25px; 
+	font-size:12px;  
+	list-style-type:none;
+} 
+.testspan{
+	padding-left:10px ;
+	display:inline-block;
+	width: 60px;
+	overflow: hidden;
+	white-space:nowrap;
 }
 #luckyDraw{
 	position: absolute;
@@ -167,7 +183,7 @@ div {
 	top: 72.1518%;
 	width: 18.2708%;
 	height: 9.3518%;
-	margin: 0 atuo;
+	margin: 0 auto;
 	font-size: 18px;
 	word-spacing: 30px;
 	background-color: rgba(0, 0, 0, 0);
