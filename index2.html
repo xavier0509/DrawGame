@@ -21,14 +21,14 @@
 		<div id="deviceready" class="blink">
 			<!--首页-->
 			<div id="indexhtml">
-				<button id="button_logo" class="fontSize">登录</button>
-				<button id="button_VIP" class="fontSize">开通会员</button>
-				<button id="button_moreInfo" class="fontSize">更多详情</button>
-				<button id="button_myAward" class="fontSize">我的奖品</button>
-				<div id="activityInfo_one"></div>
-				<div id="activityInfo_two"></div>
-				<div id="activityAward"></div>
-				<div id="awardList" disabled>
+				<button id="button_logo" class="fontSize"></button>
+				<button id="button_VIP" class="fontSize"></button>
+				<button id="button_moreInfo" class="fontSize"></button>
+				<button id="button_myAward" class="fontSize"></button>
+				<div id="activityInfo_one">活动时间：2017年3月31日-2017年4月7日</div>
+				<div id="activityInfo_two">参与方式：活动期间每位用户免费拥有一次抽奖机会，购买影视会员可额外增加抽奖机会</div>
+				<div id="activityAward">酷开40K2电视、IPADmini、影视会员年卡、北通游戏手柄、电影票、自拍杆、QQ公仔、影视会员月卡、影视会员7天卡</div>
+				<div id="awardList">
 					<ul> 
 						<li ><span class="testspan">第1行</span><span class="testspan">11111111</span><span class="testspan">111111111111111111111</span></li> 
 						<li ><span class="testspan">第2行</span><span class="testspan">222</span><span class="testspan">22222222222222222222222222222222</span></li> 
@@ -44,17 +44,30 @@
 						<li ><span class="testspan">第12行</span><span class="testspan">1231</span><span class="testspan">13516846</span></li> 
 					</ul> 
 				</div>
-				<div id="luckyDraw"></div>
+				<div id="luckyDraw">您还有<br/><span>3</span>次抽奖机会哦！</div>
+				<div id="turntable"></div>
+				<button id="turntable_1"></button>
 			</div>
 			<!--弹出表单页-->
 			<div id="formInfo" class="webpage">
 			</div>
 			<!--详情页-->
 			<div id="detailInfo" class="webpage">
-				<!--onscroll="true"-->
+				<input id="detailInfo_0" disabled="disabled" value="活动规则">活动规则</input>
+				<span id="detailInfo_1" >
+					1、文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案。<br/>
+					2、文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案。<br/>
+					3、文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案。<br/>
+					4、文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案。<br/>
+					5、文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案。
+				</span>
+				<input id="detailInfo_2" disabled="disabled" value="活动奖品">活动奖品:</input>
+				<div id="detailInfo_3" ></div>
 			</div>
 			<!--我的奖品-->
 			<div id="myAwardInfo" class="webpage">
+				<div id="myAwardInfo_0">我的奖品</div>
+				<div id="myAwardInfo_1"></div>
 			</div>
 			<!--按返回键的提示框  -->
 			<div id="backWarn" class="webpage">
