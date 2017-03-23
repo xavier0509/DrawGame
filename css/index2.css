@@ -25,6 +25,9 @@ button{
 	outline: none;
 	border: 0;
 }
+input{
+	border: 0;
+}
 
 #homepage,#deviceready{
 	position: absolute;
@@ -49,7 +52,7 @@ button{
 	outline: 0;
 	display: none;
 	background: url(../images/bgform.jpg);
-	zoom:0.66;
+	zoom: 0.66;
 }
 #backWarn{
 	position: absolute;
@@ -796,12 +799,80 @@ button{
 	background-color: rgba(0, 0, 0, 0);
 }
 
-
-
-
-
-
-
+#formInfoTips{
+	position: absolute;
+	left: 27.2917%;
+	top: 23.9259%;
+	width: 44.9479%;
+	height: 6.2963%;
+	font-size: 32px;
+	line-height: normal;
+	background-color: rgba(0, 0, 0, 0);
+}
+#formInfoTel{
+	position: absolute;
+	left: 27.2917%;
+	top: 33.4259%;
+	width: 45.5729%;
+	height: 8.9815%;
+	font-size: 32px;
+	line-height: normal;
+	background-color: #999999;
+}
+#formInfoPIN{
+	position: absolute;
+	left: 27.2917%;
+	top: 46.4815%;
+	width: 45.625%;
+	height: 8.9815%;
+	font-size: 32px;
+	background-color: rgba(0, 0, 0, 0);
+	opacity: 0.8;
+}
+#formInfoPINText{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 67%;
+	height: 100%;
+	font-size: 32px;
+	line-height: normal;
+	background-color: #999999;
+	opacity: 0.8;
+	ime-mode: disabled;
+}
+#formInfoPINButton{
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 32%;
+	height: 100%;
+	font-size: 32px;
+	line-height: normal;
+	background-color: #999999;
+	opacity: 0.8;
+	ime-mode: disabled;
+}
+#formInfoButton{
+	position: absolute;
+	left: 26.1458%;
+	top: 58.1481%;
+	width: 47.8646%;
+	height: 12.5%;
+	background-color: rgba(0, 0, 0, 0);
+	background-image: url(../images/buttonformensure.png);
+	background-repeat: no-repeat;
+	background-size: 100%;
+}
+#formInfoButtonBorder{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 97%;
+	display: none;
+	background-color: rgba(0, 0, 0, 0);
+}
 
 
 

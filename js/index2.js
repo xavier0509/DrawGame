@@ -7,7 +7,9 @@ var nowTime = new Date().getTime();
 var lotterynumber = null;
 
 $(function() {
+	buttonInit();//index页面两个按钮事件
 	focuseffection();
+	dialogShow();
 });
 //index页面按钮点击切换效果
 function buttonInit(){
@@ -422,13 +424,13 @@ function focuseffection() {
 //	$('#button-img-6-2').blur(function() {
 //		loseFocus(this.id);
 //	});
-//	//短信验证页确定
-//	$('#button-text-7').focus(function() {
-//		gotFocus(this.id);
-//	});
-//	$('#button-text-7').blur(function() {
-//		loseFocus(this.id);
-//	});
+	//短信验证页确定
+	$('#formInfoButton').focus(function() {
+		gotFocus(this.id);
+	});
+	$('#formInfoButton').blur(function() {
+		loseFocus(this.id);
+	});
 //	//短信验证页验证码
 //	$('#form-info-7-5').focus(function() {
 //		$('#form-info-7-5').css("background-color", "red");
