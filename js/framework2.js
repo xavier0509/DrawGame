@@ -32,13 +32,17 @@ var app = {
     },
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
-        document.addEventListener("backbutton", this.handleBackButton, false);
+        // document.addEventListener("backbutton", this.handleBackButton, false);
     },
     handleBackButton: function() {
     },
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
         app.triggleButton();
+
+        buttonInit();//index页面两个按钮事件
+        startmarquee(25,60,1,1); //滚动获奖名单
+        pageInit();//页面初始化
 
         coocaaosapi.getDeviceInfo(function(message) {
             deviceInfo = message;
@@ -72,6 +76,7 @@ var app = {
                     coocaaosapi.getUserAccessToken(function(message) {
                         console.log("usertoken " + message.accesstoken);
                         accesstoken = message.accesstoken;
+                        showDrawTimes();//显示抽奖次数
                     }, function(error) {
                         console.log(error);
                     });
@@ -107,7 +112,7 @@ var app = {
             });
         }, false);
         //登录
-        document.getElementById("button-logo").addEventListener("click", function() {
+        document.getElementById("button_logo").addEventListener("click", function() {
             coocaaosapi.startUserSetting(function(message) {
                 console.log(message);
             }, function(error) {
@@ -136,33 +141,33 @@ var app = {
         }, false);
 
         //已登录
-        document.getElementById("button-been-logo").addEventListener("click", function() {
-            coocaaosapi.startUserSetting(function(message) {
-                console.log(message);
-            }, function(error) {
-                console.log(error);
-            });
-            coocaaosapi.addUserChanggedListener(function(message){
-                console.log(message);
-                loginstatus = "true";
-                coocaaosapi.getUserInfo(function(message) {
-                    userInfo = message;
-                    mobile = message.mobile;
-                    console.log("external_info " + message.external_info);
-                    console.log("open_id " + message.open_id);
-                    console.log("mobile "+message.mobile);
-                    console.log("nick_name "+message.nick_name);
-                    coocaaosapi.getUserAccessToken(function(message) {
-                        console.log("usertoken " + message.accesstoken);
-                        accesstoken = message.accesstoken;
-                    }, function(error) {
-                        console.log(error);
-                    });
-                }, function(error) {
-                    console.log(error);
-                });
-            });
-        }, false);
+        // document.getElementById("button-been-logo").addEventListener("click", function() {
+        //     coocaaosapi.startUserSetting(function(message) {
+        //         console.log(message);
+        //     }, function(error) {
+        //         console.log(error);
+        //     });
+        //     coocaaosapi.addUserChanggedListener(function(message){
+        //         console.log(message);
+        //         loginstatus = "true";
+        //         coocaaosapi.getUserInfo(function(message) {
+        //             userInfo = message;
+        //             mobile = message.mobile;
+        //             console.log("external_info " + message.external_info);
+        //             console.log("open_id " + message.open_id);
+        //             console.log("mobile "+message.mobile);
+        //             console.log("nick_name "+message.nick_name);
+        //             coocaaosapi.getUserAccessToken(function(message) {
+        //                 console.log("usertoken " + message.accesstoken);
+        //                 accesstoken = message.accesstoken;
+        //             }, function(error) {
+        //                 console.log(error);
+        //             });
+        //         }, function(error) {
+        //             console.log(error);
+        //         });
+        //     });
+        // }, false);
         
     }
 };

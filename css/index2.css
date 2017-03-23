@@ -128,6 +128,7 @@ button{
 	margin: 0 auto;
 	font-size: 19px;
 	background-color: rgba(0, 0, 0, 0);
+	border: 1px solid red;
 }
 #activityInfo_two{
 	position: absolute;
@@ -140,6 +141,7 @@ button{
 	word-spacing: 30px;
 	background-color: rgba(0, 0, 0, 0);
 	overflow: hidden;
+	border: 1px solid red;
 }
 #activityAward{
 	position: fixed;
@@ -152,6 +154,7 @@ button{
 	line-height: 105%;
 	overflow: hidden;
 	background-color: rgba(0, 0, 0, 0);
+	border: 1px solid red;
 }
 #awardList{
 	position: absolute;
@@ -164,6 +167,7 @@ button{
 	word-spacing: 30px;
 	overflow: hidden;	
 	background-color: rgba(0, 0, 0, 0);
+	border: 1px solid red;
 }
 #luckyDraw{
 	position: absolute;
