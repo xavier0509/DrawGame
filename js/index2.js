@@ -12,6 +12,7 @@ function buttonInit(){
 		console.log("button_moreInfo");
 		document.getElementById("detailInfo").style.display = "block";
 		document.getElementById("indexhtml").style.display = "none";
+		showMoreInfo();
 	}
 	document.getElementById("button_myAward").onclick = function(){
 		console.log("button_myAward");
@@ -74,6 +75,7 @@ function pageInit(){
 				document.getElementById("turntable_1").setAttribute("disabled","");
 				document.getElementById("turntable_1").style.backgroundImage = "url("+app.rel_html_imgpath(__uri("../images/activityEnd.png"))+")";
 			}else{
+				showAwardList();
 				setInterval(showAwardList, 30000);
 			}
 		},
@@ -85,12 +87,12 @@ function pageInit(){
 
 //展示抽奖次数
 function showDrawTimes(){
-	// console.log("activid : " + activid);
+	console.log("展示抽奖次数: " );
 	console.log("access_token : " + accesstoken);
 	$.ajax({
 		type: "get",
 		async: true,
-		url: "https://beta.restful.lottery.coocaatv.com/v1/lottery/indepqy/leftNumber/18" + accesstoken,
+		url: "https://beta.restful.lottery.coocaatv.com/v1/lottery/indepqy/leftNumber/18/" + accesstoken,
 		dataType: "jsonp",
 		jsonp: "callback",
 		success: function(data) {
@@ -114,6 +116,25 @@ function showAwardList(){
 		jsonp: "callback",
 		success: function(data) {
 			console.log("seccess...");
+			console.log("data.data.length" + data.data.length);
+			var _UserNickName = new Array();
+			var _AwardName = new Array();
+			var _AwardTime = new Array();
+			var _AwardTimeTime = new Array();
+			for (var i = 0; i < data.data.length; i++) {
+				_UserNickName[i] = data.data[i].userNickName;
+				_AwardName[i] = data.data[i].awardName;
+				_AwardTime[i] = data.data[i].awardTime;
+				_AwardTimeTime[i] = _AwardTime[i].substr(0, 11);
+			}
+			for (var i = 0; i < 13; i++) {
+				if (_AwardName[i] == '谢谢参与') {
+
+				} else {
+					var list = '<li>' + '<span class="testspan">' + 1234 +'</span><span class="testspan">' + 'sss' + '</span><span class="testspan">' + 'acc' + '</span></li>';
+					$("#awardul").append(list);
+				}
+			}
 
 		},
 		error: function() {
@@ -135,7 +156,7 @@ function startDraw(){
 		}
 	}
 }
-
+//转动转盘
 function rotateStart(){
 	console.log("开始抽奖！！！！！！！");
 	var rotateTimeOut = function() {
@@ -194,4 +215,22 @@ function rotateStart(){
 	// 		console.log("fail...");
 	// 	}
 	// });
+}
+
+function showMoreInfo(){
+	$.ajax({
+		type: "get",
+		async: true,
+		url: "https://beta.restful.lottery.coocaatv.com/v1/lottery/video/detail/18",
+		dataType: "jsonp",
+		jsonp: "callback",
+		//jsonpCallback: "receive",
+		success: function(data) {
+			var MoreInfo_all = data.activeDetail;
+			$("#detailInfo_1").append(MoreInfo_all);
+		},
+		error: function() {
+			console.log('fail');
+		}
+	});
 }

@@ -120,15 +120,16 @@ button{
 	background-size: 100%;
 }
 #activityInfo_one{
-	position: fixed;
+	position: absolute;
 	left: 7.5%;
 	top: 36.8519%;
 	width: 19.0104%;
 	height: 6.9407%;
 	margin: 0 auto;
-	font-size: 19px;
+	font-size: 13px;
+	line-height:100%;
 	background-color: rgba(0, 0, 0, 0);
-	border: 1px solid red;
+	/*border: 1px solid red;*/
 }
 #activityInfo_two{
 	position: absolute;
@@ -136,25 +137,23 @@ button{
 	top: 44.6666%;
 	width: 19.0104%;
 	height: 9.4296%;
-	margin: 0 auto;
-	font-size: 18px;
-	word-spacing: 30px;
+	font-size: 13px;
+	line-height:100%;
 	background-color: rgba(0, 0, 0, 0);
 	overflow: hidden;
-	border: 1px solid red;
+	/*border: 1px solid red;*/
 }
 #activityAward{
-	position: fixed;
+	position: absolute;
 	left: 8.2292%;
 	top: 74.1667%;
 	width: 19.0104%;
 	height: 11.1111%;
 	margin: 0 auto;
-	font-size: 18px;
-	line-height: 105%;
+	font-size: 13px;
+	line-height: 100%;
 	overflow: hidden;
 	background-color: rgba(0, 0, 0, 0);
-	border: 1px solid red;
 }
 #awardList{
 	position: absolute;
@@ -167,7 +166,6 @@ button{
 	word-spacing: 30px;
 	overflow: hidden;	
 	background-color: rgba(0, 0, 0, 0);
-	border: 1px solid red;
 }
 #luckyDraw{
 	position: absolute;
@@ -176,7 +174,7 @@ button{
 	width: 19.0104%;
 	height: 13.5185%;
 	margin: 0 auto;
-	font-size: 24px;
+	font-size: 18px;
 	letter-spacing: 2px;
 	line-height: 150%;
 	text-align: center;
@@ -291,20 +289,23 @@ button{
 }
 
 #awardList ul{
-	margin:0; padding:0
+	margin:0; 
+	padding:0;
+	width: 100%;
 } 
 #awardList li{
 	height:25px; 
 	line-height:25px; 
 	font-size:12px;  
 	list-style-type:none;
+	width: 100%;
 } 
 .testspan{
-	padding-left:10px ;
-	display:inline-block;
-	width: 60px;
-	overflow: hidden;
-	white-space:nowrap;
+	padding-left: 3%;
+    display: inline-block;
+    width: 30%;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 
