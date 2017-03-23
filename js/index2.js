@@ -5,6 +5,10 @@ var trueBegin = null;
 var trueEnd = null;
 var nowTime = new Date().getTime();
 var lotterynumber = null;
+
+$(function() {
+	focuseffection();
+});
 //index页面按钮点击切换效果
 function buttonInit(){
 	console.log("hello");
@@ -18,6 +22,18 @@ function buttonInit(){
 		console.log("button_myAward");
 		document.getElementById("myAwardInfo").style.display = "block";
 		document.getElementById("indexhtml").style.display = "none";
+	}
+	document.getElementById("notStartButton").onclick = function(){
+		console.log("notStartButton");
+		document.getElementById("notStartMasking").style.display = "none";
+	}
+	document.getElementById("alEndButton").onclick = function(){
+		console.log("alEndButton");
+		document.getElementById("alEndMasking").style.display = "none";
+	}
+	document.getElementById("goodLuckButton_2").onclick = function(){
+		console.log("goodLuckButton_2");
+		document.getElementById("formInfo").style.display = "block";
 	}
 }
 
@@ -233,4 +249,216 @@ function showMoreInfo(){
 			console.log('fail');
 		}
 	});
+}
+function dialogShow(){
+	var oClassButton = new Array();
+	var oDialogObj = ["notStartMasking","alEndMasking","VIPMasking","moreChanceMasking","badLuckMasking","noTelMasking","goodLuckMasking","8","9"];
+	oClassButton = document.getElementsByClassName("buttonstyle");
+	for(var i = 0; i < oClassButton.length; i++) {
+		oClassButton[i].index = i;
+		oClassButton[i].onclick = function() {
+			console.log(this.index);
+			var thisIndex = this.index;
+			console.log(oDialogObj[thisIndex]);
+			document.getElementById(oDialogObj[thisIndex]).style.display = "block";
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//页面特效功能
+function focuseffection() {
+	//开通会员
+//	$('#gotovipcenter_speciallyeffect').focus(function() {
+//		gotFocus(this.id);
+//	});
+//	$('#gotovipcenter_speciallyeffect').blur(function() {
+//		loseFocus(this.id);
+//	});
+	//登录,如果用户没登录显示登录button
+//	$('#button-logo').focus(function() {
+//		gotFocus(this.id);
+//	});
+//	$('#button-logo').blur(function() {
+//		loseFocus(this.id);
+//	});
+	//登录,如果用户已登录
+//	$('#button-been-logo').focus(function() {
+//		gotFocus(this.id);
+//	});
+//	$('#button-been-logo').blur(function() {
+//		loseFocus(this.id);
+//	});
+	//开始抽奖
+//	$('#startdDraw').focus(function() {
+//		document.getElementById("bg_Operation-img-2").style.display= "none";
+//		document.getElementById("bg_Operation-img-2-border").style.display= "block";
+//	});
+//	$('#startdDraw').blur(function() {
+//		document.getElementById("bg_Operation-img-2").style.display= "block";
+//		document.getElementById("bg_Operation-img-2-border").style.display= "none";
+//	});
+	//更多详情
+//	$('#moreinfo_speciallyeffect').focus(function() {
+//		gotFocus(this.id);
+//	});
+//	$('#moreinfo_speciallyeffect').blur(function() {
+//		loseFocus(this.id);
+//	});
+	//我的奖品
+//	$('#myaward_speciallyeffect').focus(function() {
+//		gotFocus(this.id);
+//	});
+//	$('#myaward_speciallyeffect').blur(function() {
+//		loseFocus(this.id);
+//	});
+
+	$('#alEndButton').focus(function() {
+		gotFocus(this.id);
+	});
+	$('#alEndButton').blur(function() {
+		loseFocus(this.id);
+	});
+	$('#notStartButton').focus(function() {
+		console.log(this.id);
+		gotFocus(this.id);
+	});
+	$('#notStartButton').blur(function() {
+		console.log(this.id);
+		loseFocus(this.id);
+	});
+	$('#moreChanceButton_1').focus(function() {
+		gotFocus(this.id);
+	});
+	$('#moreChanceButton_1').blur(function() {
+		loseFocus(this.id);
+	});
+
+	$('#moreChanceButton_2').focus(function() {
+		gotFocus(this.id);
+	});
+	$('#moreChanceButton_2').blur(function() {
+		loseFocus(this.id);
+	});
+
+//	$('#button-back-3-1').focus(function() {
+//		gotFocus(this.id);
+//	});
+//	$('#button-back-3-1').blur(function() {
+//		loseFocus(this.id);
+//	});
+//
+//	$('#button-back-3-2').focus(function() {
+//		gotFocus(this.id);
+//	});
+//	$('#button-back-3-2').blur(function() {
+//		loseFocus(this.id);
+//	});
+	$('#goodLuckButton_1').focus(function() {
+		gotFocus(this.id);
+	});
+	$('#goodLuckButton_1').blur(function() {
+		loseFocus(this.id);
+	});
+
+	$('#goodLuckButton_2').focus(function() {
+		gotFocus(this.id);
+	});
+	$('#goodLuckButton_2').blur(function() {
+		loseFocus(this.id);
+	});
+
+	$('#badLuckButton_1').focus(function() {
+		gotFocus(this.id);
+	});
+	$('#badLuckButton_1').blur(function() {
+		loseFocus(this.id);
+	});
+
+	$('#badLuckButton_2').focus(function() {
+		gotFocus(this.id);
+	});
+	$('#badLuckButton_2').blur(function() {
+		loseFocus(this.id);
+	});
+
+	$('#noTelButton').focus(function() {
+		gotFocus(this.id);
+	});
+	$('#noTelButton').blur(function() {
+		loseFocus(this.id);
+	});
+
+//	$('#button-img-6-1').focus(function() {
+//		gotFocus(this.id);
+//	});
+//	$('#button-img-6-1').blur(function() {
+//		loseFocus(this.id);
+//	});
+//
+//	$('#button-img-6-2').focus(function() {
+//		gotFocus(this.id);
+//	});
+//	$('#button-img-6-2').blur(function() {
+//		loseFocus(this.id);
+//	});
+//	//短信验证页确定
+//	$('#button-text-7').focus(function() {
+//		gotFocus(this.id);
+//	});
+//	$('#button-text-7').blur(function() {
+//		loseFocus(this.id);
+//	});
+//	//短信验证页验证码
+//	$('#form-info-7-5').focus(function() {
+//		$('#form-info-7-5').css("background-color", "red");
+//	});
+//	$('#form-info-7-5').blur(function() {
+//		$('#form-info-7-5').css("background-color", "blue");
+//	});
+//	$('#button-nologin-3-1').focus(function() {
+//		gotFocus(this.id);
+//	});
+//	$('#button-nologin-3-1').blur(function() {
+//		loseFocus(this.id);
+//	});
+//	$('#button-nologin-3-2').focus(function() {
+//		gotFocus(this.id);
+//	});
+//	$('#button-nologin-3-2').blur(function() {
+//		loseFocus(this.id);
+//	});
+}
+
+function gotFocus(id) {
+	var thisid;
+	thisid = document.getElementById(id).children[0].id;
+	console.log(thisid);
+	document.getElementById(thisid).style.display = "block";
+}
+
+function loseFocus(id) {
+	var thisid;
+	thisid = document.getElementById(id).children[0].id;
+	document.getElementById(thisid).style.display = "none";
 }

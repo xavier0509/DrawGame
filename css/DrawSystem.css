@@ -709,7 +709,7 @@ button{
 	height: 100%;
 	margin: 0 atuo;
 	border: 0;
-	display: none;
+	display: block;
 	background-color: rgba(0, 0, 0, 0.3);
 }
 #toast-img-0 {
@@ -1138,13 +1138,13 @@ button{
 
 /*表单项*/
 #div-toast-text-7 {
-	position: fixed;
+	position: relative;
 	top: 0;
 	left: 0;
 	width: 100%;
 	height: 100%;
 	outline: 0;
-	display: none;
+	display: block;
 	background: url(../images/bgform.png);
 }
 #toast-text-7 {
