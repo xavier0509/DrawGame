@@ -67,7 +67,7 @@ function pageInit(){
 	$.ajax({
 		type: "get",
 		async: true,
-		url: "https://beta.restful.lottery.coocaatv.com/v1/lottery/indepqy/active/18",
+		url: "https://beta.restful.lottery.coocaatv.com/v1/lottery/indepqy/active/20",
 		dataType: "jsonp",
 		jsonp: "callback",
 		success: function(data) {
@@ -108,7 +108,7 @@ function showDrawTimes(){
 	$.ajax({
 		type: "get",
 		async: true,
-		url: "https://beta.restful.lottery.coocaatv.com/v1/lottery/indepqy/leftNumber/18/" + accesstoken,
+		url: "https://beta.restful.lottery.coocaatv.com/v1/lottery/indepqy/leftNumber/20/" + accesstoken,
 		dataType: "jsonp",
 		jsonp: "callback",
 		success: function(data) {
@@ -127,7 +127,7 @@ function showAwardList(){
 	$.ajax({
 		type: "get",
 		async: true,
-		url: "https://beta.restful.lottery.coocaatv.com/v1/lottery/indepqy/awardList/18",
+		url: "https://beta.restful.lottery.coocaatv.com/v1/lottery/indepqy/awardList/20",
 		dataType: "jsonp",
 		jsonp: "callback",
 		success: function(data) {
@@ -143,11 +143,11 @@ function showAwardList(){
 				_AwardTime[i] = data.data[i].awardTime;
 				_AwardTimeTime[i] = _AwardTime[i].substr(0, 11);
 			}
-			for (var i = 0; i < 13; i++) {
+			for (var i = 0; i < data.data.length; i++) {
 				if (_AwardName[i] == '谢谢参与') {
 
 				} else {
-					var list = '<li>' + '<span class="testspan">' + 1234 +'</span><span class="testspan">' + 'sss' + '</span><span class="testspan">' + 'acc' + '</span></li>';
+					var list = '<li>' + '<span class="testspan">' + _UserNickName[i] +'</span><span class="testspan">' + _AwardName[i] + '</span><span class="testspan">' + _AwardTimeTime[i] + '</span></li>';
 					$("#awardul").append(list);
 				}
 			}
@@ -192,7 +192,7 @@ function rotateStart(){
 		$('#rotate').stopRotate();
 		$('#rotate').rotate({
 			angle: 0,
-			animateTo: angles + 1800,
+			animateTo: angles + 2000,
 			duration: 3000,
 			callback: function() {
 				console.log("转了！！！！");
@@ -220,7 +220,7 @@ function rotateStart(){
 	// $.ajax({
 	// 	type: "get",
 	// 	async: true,
-	// 	url: "https://beta.restful.lottery.coocaatv.com/v1/lottery/indepqy/lottery/18/" + mac + "/" + accesstoken,
+	// 	url: "https://beta.restful.lottery.coocaatv.com/v1/lottery/indepqy/lottery/20/" + mac + "/" + accesstoken,
 	// 	dataType: "jsonp",
 	// 	jsonp: "callback",
 	// 	success: function(data) {
@@ -237,7 +237,7 @@ function showMoreInfo(){
 	$.ajax({
 		type: "get",
 		async: true,
-		url: "https://beta.restful.lottery.coocaatv.com/v1/lottery/video/detail/18",
+		url: "https://beta.restful.lottery.coocaatv.com/v1/lottery/video/detail/20",
 		dataType: "jsonp",
 		jsonp: "callback",
 		//jsonpCallback: "receive",

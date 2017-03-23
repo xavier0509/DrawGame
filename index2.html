@@ -12,7 +12,8 @@
 		<script type="text/javascript" src="js/jquery-1.6.2.min.js"></script>
 		<script type="text/javascript" src="js/jquery.min.js"></script>
 		<script type="text/javascript" src="js/awardRotate.js"></script>
-	
+		<!--<script src="js/scroolingList-2.js" type="text/javascript"></script>
+		<script src="js/scroolingList.js" type="text/javascript"></script>-->
 		<title>抽奖系统</title>
 	</head>
 
@@ -35,149 +36,10 @@
 				<div id="turntable" class="rotate">
 					<img id="rotate" src="images/turntable.png" />
 				</div>
-					<button id="turntable_1"></button>
-				
-				
-				
-				
-				<!--Toast-活动还未开始-->
-				<div id="notStartMasking">
-					<div id="notStartDialog">
-						<div id="notStartInfo" readonly="readonly">
-							<div id="notStartInfo_1" readonly="readonly">活动马上开始</div>
-							<div id="notStartInfo_2" readonly="readonly">活动时间：2017年3月31日-20174月1日</div>
-						</div>
-						<button id="notStartButton">
-							<img id="notStartButton_border" src="images/bordergetchance.png" />
-						</button>
-					</div>
-				</div>
-				<!--Toast-活动已经结束-->
-				<div id="alEndMasking">
-					<div id="alEndDialog">
-						<div id="alEndInfo" readonly="readonly">活动已经结束!</div>
-						<button id="alEndButton">
-							<img id="alEndButton_border" src="images/bordergetchance.png" />
-						</button>
-					</div>
-				</div>
-				<!--Toast-获得影视中心会员-->
-				<div id="VIPMasking">
-					<div id="VIPGetDialog">
-						<div id="VIPImgDiv">
-							<img id="toast-img-2-2" class="AwardImagesUrl" />
-						</div>
-						<div id="VIPGetInfo">
-							<div id="VIPGetInfo_1" readonly="readonly">影视VIP会员</div>
-							<div id="VIPGetInfo_2">请在
-								<button id="startVIPCenter">【影视-会员中心】</button>查看
-							</div>
-						</div>
-					</div>
-				</div>
-				<!--获取机会-->
-				<div id="moreChanceMasking">
-					<div id="moreChanceDialog">
-						<div id="moreChanceInfo" readonly="readonly">您还没有抽奖机会,
-							<br/>开通/续费影视【<span id="VIPPackages ">XXX</span>】会员获取抽奖机会！
-						</div>
-						<button id="moreChanceButton_1">
-							<img id="moreChance_border1" src="images/bordergetchance.png" />
-						</button>
-						<button id="moreChanceButton_2">
-							<img id="moreChance_border2" src="images/bordercancle.png" />
-						</button>
-					</div>
-				</div>
-				<!--未抽中-->
-				<div id="badLuckMasking">
-					<div id="badLuckDialog">
-					<div id="badLuckInfo" readonly="readonly">您没有中奖哦，
-						去影视中心看看吧！</div>
-					<button id="badLuckButton_1">
-						<img id="badLuckButton_border1" src="images/borderensure.png" />
-					</button>
-					<button id="badLuckButton_2">
-						<img id="badLuckButton_border2" src="images/bordercancle.png" />
-					</button>
-					</div>
-				</div>
-				<!--抽中但没有手机号-->
-				<div id="noTelMasking">
-					<div id="noTelDialog">
-						<div id="noTelInfo">
-							<div id="text_info-11-0" readonly="readonly">【XX虚拟卡】</div>
-							<div id="text_info-11-1" readonly="readonly">请填写您的手机号码领取奖品</div>
-						</div>
-						<button id="noTelButton">
-							<img id="noTelButtonborder" src="images/borderensure.png" />						
-						</button>
-					</div>
-				</div>
-				<!--抽中奖品 -->
-				<div id="goodLuckMasking" class="toast">
-					<div id="goodLuckDialog">
-						<div id="goodLuckInfo">
-							您当前手机号为<span id="userTel">13728728225</span>
-							确定以该手机号领取奖品吗？
-						</div>
-					<button id="goodLuckButton_1">
-						<img id="goodLuckButtonBorder_1" src="images/borderensure.png"/>
-					</button>
-					<button id="goodLuckButton_2">
-						<img id="goodLuckButtonBorder_2" src="images/bordercancle.png" />
-					</button>
-					</div>
-				</div>
+				<button id="turntable_1"></button>
 			</div>
 			<!--弹出表单页-->
 			<div id="formInfo" class="webpage">
-				<div id="formInfoTitle" readonly="readonly" disabled="disabled" tabindex="-1">领取奖品</div>
-				<!--<div id="div-info-7-2">
-					<div id="form-info-7-2" readonly="readonly" disabled="disabled" tabindex="-1">请填写手机号和验证码</div>
-				</div>
-				<div id="div-info-7-3">
-					<input type="text" value="  请准确填写手机号" id="form-info-7-3" onfocus="OnfocusFun(this,'  请准确填写手机号')" onblur="OnBlurFun(this,'  请准确填写手机号')" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" maxlength="11"
-						size="14" name="form-info-7-3" type="text" />
-				</div>
-				<form id="div-info-7-4">
-					<input id="form-info-7-4" type="text" value="  验证码" class="c_code_msg" onfocus="OnfocusFun(this,'  验证码')" onblur="OnBlurFun(this,'  验证码')" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" maxlength="6"
-						size="14" name="form-info-7-4" type="text"></input>
-					<input id="form-info-7-5" type="button" class="captcha" name="获取验证码" value="获取验证码"></input>
-				</form>
-				<button id="button-text-7" onclick="showChild_008()">
-					<img id="toast-text-7-1" src="images/buttonformensure.png">
-					<img id="toast-text-7-1-border" src="images/borderphoneinfoensure.png">
-				</button>
-	
-				<div id="numberBigFive">
-					<div id="div-toast-number-8">
-						<input id="form-info-76" value="短信发送次数已超过限制，请下次再来。" readonly="readonly"></input>
-					</div>
-				</div>
-				<div id="codeIsWrong">
-					<div id="div-toast-code-8">
-						<input id="form-info-761" value="验证码错误，请重新填写。" readonly="readonly"></input>
-					</div>
-				</div>
-	
-				<div id="toastsuccess">
-					<div id="div-toast-text-8">
-						<div id="form-icon-0">
-							<img id="toast-text-7-2" src="images/toastformright.png">
-						</div>
-						<input id="form-info-7-6" value="填写成功，我们会尽快与您联系。" readonly="readonly"></input>
-					</div>
-				</div>
-	
-				<div id="toastfalse">
-					<div id="div-toast-text-8-1">
-						<div id="form-icon-1">
-							<img id="toast-text-7-2-1" src="images/toastformwrong.png">
-						</div>
-						<input id="form-info-7-6-1" value="填写失败，请重新填写。" readonly="readonly"></input>
-					</div>
-				</div>-->
 			</div>
 			<!--详情页-->
 			<div id="detailInfo" class="webpage">
@@ -199,20 +61,6 @@
 					
 				</div>
 			</div>
-		
-			<!--各种提示框的弹出  -->
-			<div>
-				<button id="button1" class="buttonstyle">一</button>
-				<button id="button2" class="buttonstyle">二</button>
-				<button id="button3" class="buttonstyle">三</button>
-				<button id="button4" class="buttonstyle">四</button>
-				<button id="button5" class="buttonstyle">五</button>
-				<button id="button6" class="buttonstyle">六</button>
-				<button id="button7" class="buttonstyle">七</button>
-				<button id="button8" class="buttonstyle">八</button>
-				<button id="button9" class="buttonstyle">九</button>
-			</div>
-		
 		</div>
 		<!--cordova通用框架-->
 		<script type="text/javascript" src="js/index2.js"></script>

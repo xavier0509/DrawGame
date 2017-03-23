@@ -49,6 +49,7 @@ button{
 	outline: 0;
 	display: none;
 	background: url(../images/bgform.jpg);
+	zoom:0.66;
 }
 #backWarn{
 	position: absolute;
@@ -126,8 +127,9 @@ button{
 	width: 19.0104%;
 	height: 6.9407%;
 	margin: 0 auto;
-	font-size: 13px;
+	font-size: 18px;
 	line-height:100%;
+	zoom:0.66;
 	background-color: rgba(0, 0, 0, 0);
 	/*border: 1px solid red;*/
 }
@@ -137,10 +139,11 @@ button{
 	top: 44.6666%;
 	width: 19.0104%;
 	height: 9.4296%;
-	font-size: 13px;
+	font-size: 18px;
 	line-height:100%;
 	background-color: rgba(0, 0, 0, 0);
 	overflow: hidden;
+	zoom:0.66;
 	/*border: 1px solid red;*/
 }
 #activityAward{
@@ -150,10 +153,11 @@ button{
 	width: 19.0104%;
 	height: 11.1111%;
 	margin: 0 auto;
-	font-size: 13px;
+	font-size: 18px;
 	line-height: 100%;
 	overflow: hidden;
 	background-color: rgba(0, 0, 0, 0);
+	zoom:0.66;
 }
 #awardList{
 	position: absolute;
@@ -162,9 +166,10 @@ button{
 	width: 20.6771%;
 	height: 28.9815%;
 	margin: 0 auto;
-	font-size: 16px;
+	font-size: 18px;
 	word-spacing: 30px;
 	overflow: hidden;	
+	zoom:0.66;
 	background-color: rgba(0, 0, 0, 0);
 }
 #luckyDraw{
@@ -174,10 +179,11 @@ button{
 	width: 19.0104%;
 	height: 13.5185%;
 	margin: 0 auto;
-	font-size: 18px;
+	font-size: 24px;
 	letter-spacing: 2px;
 	line-height: 150%;
 	text-align: center;
+	zoom:0.66;
 	background-color: rgba(0, 0, 0, 0);
 }
 #turntable{
@@ -273,6 +279,7 @@ button{
 	font-size: 48px;
 	background-color: rgba(0, 0, 0, 0);
 	border: 1px solid red;
+	zoom:0.66;
 }
 #myAwardInfo_1{
 	position: absolute;
@@ -286,6 +293,7 @@ button{
 	background-color: rgba(0, 0, 0, 0);
 	border: 1px solid red;
 	line-height: initial;
+	zoom:0.66;
 }
 
 #awardList ul{
