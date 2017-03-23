@@ -4,6 +4,7 @@ var endtime = null;  //活动结束时间（后台）
 var trueBegin = null;
 var trueEnd = null;
 var nowTime = new Date().getTime();
+var lotterynumber = null;
 //index页面按钮点击切换效果
 function buttonInit(){
 	console.log("hello");
@@ -65,11 +66,15 @@ function pageInit(){
 			console.log("活动结束时间：" + trueEnd);
 			if (nowTime < trueBegin ) {
 				$("#awardList").text("活动尚未开始，请耐心等待");
+				document.getElementById("turntable_1").style.backgroundImage = "url("+app.rel_html_imgpath(__uri("../images/notstartdraw.png"))+")";
+				document.getElementById("turntable_1").setAttribute("disabled","");
 			}
-			else if (nowTime > trueBegin) {
+			else if (nowTime > trueEnd) {
 				$("#awardList").text("活动已经结束，请期待下次活动");
+				document.getElementById("turntable_1").setAttribute("disabled","");
+				document.getElementById("turntable_1").style.backgroundImage = "url("+app.rel_html_imgpath(__uri("../images/activityEnd.png"))+")";
 			}else{
-				showAwardList();   //获奖名单
+				setInterval(showAwardList, 30000);
 			}
 		},
 		error: function() {
@@ -90,7 +95,7 @@ function showDrawTimes(){
 		jsonp: "callback",
 		success: function(data) {
 			console.log("抽奖次数获取成功：" + data.number);
-			var lotterynumber = data.number;
+			lotterynumber = data.number;
 			$("#drawTimes").text(lotterynumber);
 		},
 		error: function() {
@@ -109,12 +114,84 @@ function showAwardList(){
 		jsonp: "callback",
 		success: function(data) {
 			console.log("seccess...");
-			var lotterynumber = data.number;
-			$("#text_info-40").text(lotterynumber);
-			$("#drawleftnum").text(lotterynumber);
+
 		},
 		error: function() {
 			console.log("fail...");
 		}
 	});
+}
+
+//开始抽奖
+function startDraw(){
+	if (loginstatus == "false") {
+		console.log("请先登录！！");
+	}else{
+		if (lotterynumber > 0) {
+			rotateStart();
+		}
+		else{
+			console.log("请先获取抽奖机会")
+		}
+	}
+}
+
+function rotateStart(){
+	console.log("开始抽奖！！！！！！！");
+	var rotateTimeOut = function() {
+		$('#rotate').rotate({
+			angle: 0,
+			animateTo: 2160,
+			duration: 8000,
+			callback: function() {
+				alert('网络超时，请检查您的网络设置！');
+			}
+		});
+	};
+	var bRotate = false;
+	var rotateFn = function(awards, angles, txt, typeid, lotteryAwardMemberId, imageurl) { //awards:奖项，angle:奖项对应的角度
+		bRotate = !bRotate;
+		console.log("进来了！！！！"+awards+"@@@@@"+bRotate);
+		$('#rotate').stopRotate();
+		$('#rotate').rotate({
+			angle: 0,
+			animateTo: angles + 1800,
+			duration: 3000,
+			callback: function() {
+				console.log("转了！！！！");
+				// $("#unseediv").text(lotteryAwardMemberId);
+				//这里需要传递几个用得到的参数过去：奖品名称 图片url地址
+				// console.log("got the winner award" + txt + angles + awards + "---" + typeid + "---" + lotteryAwardMemberId + "--------" + imageurl);
+				//区分实体奖、虚体奖、谢谢参与
+				if (txt == '影视会员VIP') {
+					console.log("imageurl is " + imageurl);
+					// showChild_002(txt, awards, typeid, lotteryAwardMemberId, imageurl); //抽中影视会员VIP
+				} else if (txt != '影视会员VIP' && txt != '谢谢参与') {
+					console.log("no VIP and thanks for in");
+					// phonewriteornot(txt, awards, typeid, lotteryAwardMemberId); //抽中其他
+					//$("#text_info-12-0").text(txt);
+				} else {
+					// showChild_004(); //谢谢参与--未抽中
+				}
+				bRotate = !bRotate;
+			}
+		})
+	};
+
+	rotateFn("1", "60", "Draw_awardName", "1234", "111", "1521515");
+
+	// $.ajax({
+	// 	type: "get",
+	// 	async: true,
+	// 	url: "https://beta.restful.lottery.coocaatv.com/v1/lottery/indepqy/lottery/18/" + mac + "/" + accesstoken,
+	// 	dataType: "jsonp",
+	// 	jsonp: "callback",
+	// 	success: function(data) {
+	// 		console.log("seccess...");
+			
+	// 	},
+	// 	error: function() {
+	// 		console.log("fail...");
+	// 	}
+	// });
 }

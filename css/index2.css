@@ -189,10 +189,19 @@ button{
 	width: 33.125%;
 	height: 58.8889%;
 	margin: 0 auto;
-	background-image: url(../images/turntable.png);
+	/*background-image: url(../images/turntable.png);
 	background-repeat: no-repeat;
-	background-size: 100%;
+	background-size: 100%;*/
 }
+#rotate{
+	position: absolute;
+	left: 0%;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	margin: 0 auto;
+}
+
 #turntable_1{
 	position: absolute;
 	left: 44.9479%;

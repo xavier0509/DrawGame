@@ -4,6 +4,7 @@ var accesstoken = null;  //accesstoken信息
 var mobile = null;
 var mac = null;
 var androidsdk = null;   //安卓4.3为18，则小于18的均不支持此活动
+var loginstatus = false;
 var app = {
     canonical_uri: function(src, base_path) {
         var root_page = /^[^?#]*\//.exec(location.href)[0],
@@ -59,12 +60,12 @@ var app = {
 
         coocaaosapi.hasCoocaaUserLogin(function(message) {
             console.log("haslogin " + message.haslogin);
+            loginstatus = message.haslogin;
             if (message.haslogin == "true") {
                 console.log("haslogin two:" + message.haslogin);
                 var loginButton = document.getElementById("button_logo");
-                // var vipButton = document.getElementById("button_VIP");
                 loginButton.style.display = "none";                
-                // vipButton.style.display = "block";
+
                 
                 coocaaosapi.getUserInfo(function(message) {
                     userInfo = message;
@@ -168,6 +169,10 @@ var app = {
         //         });
         //     });
         // }, false);
+
+        document.getElementById("turntable_1").addEventListener("click", function() {
+            rotateStart();
+        }, false);
         
     }
 };
