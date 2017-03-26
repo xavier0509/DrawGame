@@ -262,11 +262,12 @@ function rotateStart(){
 					if (mobile == null || mobile == "") {
 						dialogShow1("noTelMasking");
 						document.getElementById("text_info-11-0").innerHTML = "【"+txt+"】";
-						document.getElementById("goodLuckButton_1").onclick = function(){ makesurePhone(lotteryAwardMemberId);}
+						
 					}else{
 						dialogShow1("goodLuckMasking");
 						document.getElementById("userTel").innerHTML = mobile;
 						document.getElementById("goodLuckName").innerHTML = "【"+txt+"】";
+						document.getElementById("goodLuckButton_1").onclick = function(){ makesurePhone(lotteryAwardMemberId);}
 
 					}
 					
@@ -318,10 +319,14 @@ function vipActive(listId,awardId){
 		success: function(data) {
 			console.log("影视激活..."+data.success+"msg:"+data.msg);
 			if(data.success == true){
+				dialogHide("VIPMasking");
 				dialogShow1("activateSuccessMasking");
+				
 			}
 			else{
+				dialogHide("VIPMasking");
 				dialogShow1("activateFailureMasking");
+
 			}
 			
 		},
@@ -346,7 +351,7 @@ function vipActiveTwo(listId,awardId){
 				dialogShow1("activateSuccessMasking");
 			}
 			else{
-				dialogShow1("activateFailureMasking");
+				dialogShow1("activateFailureMasking2");
 			}
 			
 		},
@@ -528,6 +533,9 @@ function dialogShow(){
 
 function dialogShow1(txt){
 	document.getElementById(txt).style.display = "block";
+}
+function dialogHide(txt){
+	document.getElementById(txt).style.display = "none";
 }
 
 
