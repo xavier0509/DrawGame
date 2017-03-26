@@ -52,8 +52,11 @@ input{
 	outline: 0;
 	display: none;
 	background: url(../images/bgform.jpg);
+	background-repeat: no-repeat;
+	background-size: 100%;
 	zoom: 0.66;
 }
+/*#myAwardInfo{display: block;}*/
 #backWarn{
 	position: absolute;
 	left: 0;
@@ -872,6 +875,14 @@ input{
 	height: 97%;
 	display: none;
 	background-color: rgba(0, 0, 0, 0);
+}
+
+.awardName{
+	position: absolute;
+    left: 0;
+    top: 32%;
+    line-height: 100%;
+    font-size: 61px;
 }
 
 

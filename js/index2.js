@@ -138,6 +138,7 @@ function showAwardList(){
 		type: "get",
 		async: true,
 		url: "https://beta.restful.lottery.coocaatv.com/v1/lottery/indepqy/awardList/"+activeId,
+		data: {"size":"20"},
 		dataType: "jsonp",
 		jsonp: "callback",
 		success: function(data) {
@@ -367,25 +368,21 @@ function showMyAward(){
 				_AwardName[i] = data.myAwardsBean[i].awardName;
 				_AwardTypeId[i] = data.myAwardsBean[i].awardTypeId;
 				_Number = i;
-				var spanImg = document.createElement("span");
-				spanImg.setAttribute("style","width:45%;height:65%;margin-right: 5%;margin-top:1%;display:inline-block")
-				myAwardInfo.appendChild(spanImg);
-				var spanDiv = document.createElement("div");
-				spanDiv.setAttribute("style","width:100%;height:70%;background-color:white;");
-				spanImg.appendChild(spanDiv);
-				var awardImg = document.createElement("img");
-				awardImg.setAttribute("src",app.rel_html_imgpath(__uri("../images/scroll_1.png")));
-				spanDiv.appendChild(awardImg);
-				var spanDiv2 = document.createElement("div");
-				spanDiv2.setAttribute("style","width:100%;height:25%;background-color:blue;");
-				spanImg.appendChild(spanDiv2);
-				spanDiv2.innerHTML = _AwardName[i];
-				var awardButton = document.createElement("button");
+				var awardImg = app.rel_html_imgpath(__uri('../images/scroll_1.png'));
+
 				if (_AwardExchangeFlag[i] == 0) {
-					awardButton.style.backgroundImage="url("+app.rel_html_imgpath(__uri("../images/rightnow.png"))+")"
-					// awardButton.setAttribute("style","background-image:url("+app.rel_html_imgpath(__uri("../images/rightnow.png"))+")")
+					var imgurl = app.rel_html_imgpath(__uri('../images/rightnow.png'));
+				}else{
+					var imgurl = app.rel_html_imgpath(__uri('../images/successnow.png'));
 				}
-				spanDiv2.appendChild(awardButton);
+				
+				// var awardButton = '<button  style="width: 65%; height: 100%; float: left;' + 'background-image: url(' + imgurl + ');background-size:100%;"></button>';
+				// // awardButton.appendChild(buttonImg);
+				// spanDiv2.innerHTML=awardButton;
+
+				var _div = '<div title="images" class="wrap"  style="float:left;border:0px solid; width: 45%; height: 65%; padding-right: 5%; margin-top: 0.5%; overflow: hidden; text-overflow: ellipsis;  opacity: 1; float: left; "><div title ="AwardImage" class ="AwardImageUrl" style="background-repeat: no-repeat;background-size: 100%;border:0px solid blue; width: 95%; height: 80%; padding-left: 0%; padding-top: 0%;  margin-top: 0.5%; margin-left: 0.5%; background-color: white; overflow: hidden;  text-overflow: ellipsis; border: 1px solid black; opacity: 0.5; background-image: url('+awardImg+');background-size:100%;"></div><div title="Detail" tabindex="-1" style="position:relative;border:1px solid; width: 95%; height: 17%;  margin-left: 0.5%; text-align: center; border: 1px solid black; opacity: 1;"><span class="awardName">'+_AwardName[i]+'</span><button style="background-color: rgba(0, 0, 0, 0);position:absolute;width:28%;height:70%;top:15%;right:2%;float:right;background-image:url('+imgurl+');background-repeat: no-repeat;background-size: 100%;"></button></div></div>'
+
+				$("#myAwardInfo_1").append(_div);
 			}
 		},
 		error: function() {
