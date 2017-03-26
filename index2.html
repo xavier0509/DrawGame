@@ -19,7 +19,7 @@
 	<body id="homepage" scroll="no">
 		<div id="deviceready" class="blink">
 			<!--首页-->
-			<div id="indexhtml" >
+			<div id="indexhtml">
 				<button id="button_logo" class="fontSize"></button>
 				<button id="button_VIP" class="fontSize"></button>
 				<button id="button_moreInfo" class="fontSize"></button>
@@ -48,6 +48,12 @@
 						</button>
 					</div>
 				</div>
+				<!--Toast-机器版本不兼容-->
+				<div id="inCompatibleMasking">
+					<div id="inCompatibleDialog">
+						<div id="inCompatibleInfo" readonly="readonly">由于你的电视不兼容转盘游戏，无法参与该活动。</div>
+					</div>
+				</div>
 				<!--Toast-活动已经结束-->
 				<div id="alEndMasking">
 					<div id="alEndDialog">
@@ -61,13 +67,13 @@
 				<div id="VIPMasking">
 					<div id="VIPGetDialog">
 						<div id="VIPImgDiv">
-							<img id="toast-img-2-2" class="AwardImagesUrl" />
+							<img id="toast-img-2-2" src="images/scroll_1.png"/>
 						</div>
 						<div id="VIPGetInfo">
 							<div id="VIPGetInfo_1" readonly="readonly">影视VIP会员</div>
-							<div id="VIPGetInfo_2">请在
-								<button id="startVIPCenter">【影视-会员中心】</button>查看
-							</div>
+							<button id="activateNow">
+								<img id="activateNowBorder" src="images/activatenowborder.png" />
+							</button>
 						</div>
 					</div>
 				</div>
@@ -147,7 +153,7 @@
 					<img id="formInfoButtonBorder" src="images/borderphoneinfoensure.png">
 				</button>
 	
-				<!--<div id="numberBigFive">
+				<div id="numberBigFive">
 					<div id="div-toast-number-8">
 						<input id="form-info-76" value="短信发送次数已超过限制，请下次再来。" readonly="readonly"></input>
 					</div>
@@ -174,7 +180,7 @@
 						</div>
 						<input id="form-info-7-6-1" value="填写失败，请重新填写。" readonly="readonly"></input>
 					</div>
-				</div>-->
+				</div>
 			</div>
 			<!--详情页-->
 			<div id="detailInfo" class="webpage">
@@ -194,7 +200,13 @@
 			<!--按返回键的提示框  -->
 			<div id="backWarn" class="webpage">
 				<div id="backWarnInfo">
-					
+					<div id="form-back-4" readonly="readonly">您确定要放弃这次抽奖机会吗？</div>
+					<button id="button-back-3-1" onclick="gotohomepage()">
+						<img id="toast-back-3-1-border" src="images/borderensure.png"/>
+					</button>
+					<button id="button-back-3-2" onclick="cancelToastback(this.id)">
+						<img id="toast-back-3-2-border" src="images/bordercancle.png" />
+					</button>
 				</div>
 			</div>
 		
