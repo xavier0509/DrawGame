@@ -1107,7 +1107,7 @@ input{
     font-size: 24px;
     text-align: center;
 }
-#activateSuccessMasking{
+#activateSuccessMasking,#activateSuccessMasking2{
 	position: absolute;
 	left: 0;
 	top: 0;
@@ -1116,7 +1116,7 @@ input{
 	display: none;
 	background-color: rgba(0, 0, 0, 0.3);
 }
-#activateSuccessDialog{
+#activateSuccessDialog,#activateSuccessDialog2{
 	position: absolute;
 	left: 26.5104%;
 	top: 24.8148%;
@@ -1127,7 +1127,7 @@ input{
 	background-repeat: no-repeat;
 	background-size: 100%;
 }
-#activateSuccessInfo{
+#activateSuccessInfo,#activateSuccessInfo{
 	position: absolute;
     left: 14%;
     top: 37%;
@@ -1138,7 +1138,7 @@ input{
     line-height: initial;
     text-align: center;
 }
-#activateFailureMasking{
+#activateFailureMasking,activateFailureMasking2{
 	position: absolute;
 	left: 0;
 	top: 0;
@@ -1146,7 +1146,7 @@ input{
 	height: 100%;
 	display: none;
 }
-#activateFailureDialog{
+#activateFailureDialog,#activateFailureDialog2{
 	position: absolute;
 	left: 26.5104%;
 	top: 24.8148%;
@@ -1157,7 +1157,7 @@ input{
 	background-repeat: no-repeat;
 	background-size: 100%;
 }
-#activateFailureInfo{
+#activateFailureInfo,#activateFailureInfo2{
 	position: absolute;
     left: 14%;
     top: 41%;

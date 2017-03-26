@@ -33,9 +33,75 @@ var app = {
     },
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
-        // document.addEventListener("backbutton", this.handleBackButton, false);
+        document.addEventListener("backbutton", this.handleBackButton, false);
     },
     handleBackButton: function() {
+    	console.log("Back Button Pressed!");
+    	var indexflagNumber,myAwardInfoflagNumber = 0;
+    	var flagNumber000 = document.getElementById("inCompatibleMasking").style.display;//兼容性弹框的显隐
+    	var flagNumber001 = document.getElementById("formInfo").style.display;//填写手机号页的显隐
+    	var flagNumber002 = document.getElementById("myAwardInfo").style.display;//我的奖品页的显隐
+    	var flagNumber003 = document.getElementById("detailInfo").style.display;//详情页的显隐
+    	var indexClassObj = document.getElementsByClassName("indexhtmlDialog");
+    	var myAwardClassObj = document.getElementsByClassName("myAwardInfoDialog");
+    	console.log("length:"+indexClassObj.length+"----"+myAwardClassObj.length);
+    	for (var i=0; i<indexClassObj.length;i++) {
+    		if (indexClassObj[i].style.display == "block") {
+    			indexflagNumber++;
+    		}
+    	}
+    	for (var i=0; i<myAwardClassObj.length;i++) {
+    		if (myAwardClassObj[i].style.display == "block") {
+    			myAwardInfoflagNumber++;
+    		}
+    	}
+//  		if(弹框提示不兼容){退出};
+//  		if(formInfo/myAwardInfo/detailInfo隐藏并且没有子弹框){退出};
+//  		if(formInfo/myAwardInfo/detailInfo隐藏但有首页子弹框){返回到首页};
+//  		if(formInfo/myAwardInfo/detailInfo显示并且没有子弹框){返回到首页};
+//  		if(formInfo/myAwardInfo/detailInfo显示但有子弹框){返回到formInfo/myAwardInfo/detailInfo页};
+    	if (flagNumber000 == "block") {
+    		navigator.app.exitApp();
+    	} else{
+    		if (flagNumber001=="none"||flagNumber002=="none"||flagNumber003=="none") {
+    			if (indexflagNumber!=0) {
+    				//隐藏所有首页子弹框，保留首页
+    				for (var i=0; i<indexClassObj.length;i++) {
+			    		indexClassObj[i].style.display = "none";
+			    	}
+    			} else{
+    				//退出
+    				navigator.app.exitApp();
+    			}
+    		} else{
+    			if(myAwardInfoflagNumber!=0){
+    				//回到首页
+    				document.getElementById("formInfo").style.display = "none";
+			  		document.getElementById("myAwardInfo").style.display = "none";
+			  		document.getElementById("detailInfo").style.display = "none";
+			  		document.getElementById("indexhtml").style.display = "block";
+    			} else{
+    				//隐藏子弹框，保留我的奖品页	
+    				for (var i=0; i<myAwardClassObj.length;i++) {
+			    		myAwardClassObj[i].style.display = "none";
+			    	}
+    			}
+    		}
+    	}
+    	
+    	
+    	if(flagNumber001=="block"||flagNumber002=="block"||flagNumber003=="block"){
+    		console.log("hello");
+
+//  		if () {} else{
+//  			document.getElementById("formInfo").style.display = "none";
+//		  		document.getElementById("myAwardInfo").style.display = "none";
+//		  		document.getElementById("detailInfo").style.display = "none";
+//		  		document.getElementById("indexhtml").style.display = "block";
+//  		}
+    	}else{
+    		navigator.app.exitApp();
+    	}
     },
     onDeviceReady: function() {
         app.receivedEvent('deviceready');

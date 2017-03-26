@@ -37,7 +37,7 @@
 				</div>
 				<button id="turntable_1"></button>
 				<!--Toast-活动还未开始-->
-				<div id="notStartMasking">
+				<div id="notStartMasking" class="indexhtmlDialog">
 					<div id="notStartDialog">
 						<div id="notStartInfo" readonly="readonly">
 							<div id="notStartInfo_1" readonly="readonly">宝宝别急，大奖在</div>
@@ -48,26 +48,20 @@
 						</button>
 					</div>
 				</div>
-				<!--Toast-机器版本不兼容-->
-				<div id="inCompatibleMasking">
-					<div id="inCompatibleDialog">
-						<div id="inCompatibleInfo" readonly="readonly">由于你的电视不兼容转盘游戏，无法参与该活动。</div>
-					</div>
-				</div>
 				<!--Toast-激活成功-->
-				<div id="activateSuccessMasking">
+				<div id="activateSuccessMasking" class="indexhtmlDialog">
 					<div id="activateSuccessDialog">
 						<div id="activateSuccessInfo" readonly="readonly">激活成功</div>
 					</div>
 				</div>
-				<!--Toast-激活成功-->
-				<div id="activateFailureMasking">
+				<!--Toast-激活失败-->
+				<div id="activateFailureMasking" class="indexhtmlDialog">
 					<div id="activateFailureDialog">
 						<div id="activateFailureInfo" readonly="readonly">oh no~ 激活失败<br/>请在我的奖品你重新激活哦！</div>
 					</div>
 				</div>
 				<!--Toast-活动已经结束-->
-				<div id="alEndMasking">
+				<div id="alEndMasking" class="indexhtmlDialog">
 					<div id="alEndDialog">
 						<div id="alEndInfo" readonly="readonly">好遗憾，活动已经结束了!</div>
 						<button id="alEndButton">
@@ -76,7 +70,7 @@
 					</div>
 				</div>
 				<!--Toast-获得影视中心会员-->
-				<div id="VIPMasking">
+				<div id="VIPMasking" class="indexhtmlDialog">
 					<div id="VIPGetDialog">
 						<div id="VIPImgDiv">
 							<img id="toast-img-2-2" src="images/scroll_1.png"/>
@@ -90,7 +84,7 @@
 					</div>
 				</div>
 				<!--获取机会-->
-				<div id="moreChanceMasking">
+				<div id="moreChanceMasking" class="indexhtmlDialog">
 					<div id="moreChanceDialog">
 						<div id="moreChanceInfo" readonly="readonly">嘤嘤嘤,抽奖机会已用完
 							<br/>购买影视会员获取更多抽奖机会！
@@ -104,7 +98,7 @@
 					</div>
 				</div>
 				<!--未抽中-->
-				<div id="badLuckMasking">
+				<div id="badLuckMasking" class="indexhtmlDialog">
 					<div id="badLuckDialog">
 					<div id="badLuckInfo" readonly="readonly">这次运气不佳哦~换个姿势再来！</div>
 					<button id="badLuckButton_1">
@@ -116,7 +110,7 @@
 					</div>
 				</div>
 				<!--抽中但没有手机号-->
-				<div id="noTelMasking">
+				<div id="noTelMasking" class="indexhtmlDialog">
 					<div id="noTelDialog">
 						<div id="noTelInfo">
 							<div id="text_info-11-0" >xxxxxx</div>
@@ -131,7 +125,7 @@
 					</div>
 				</div>
 				<!--抽中奖品 -->
-				<div id="goodLuckMasking" class="toast">
+				<div id="goodLuckMasking" class="indexhtmlDialog">
 					<div id="goodLuckDialog">						
 						<div id="goodLuckInfo">
 							<div id="goodLuckName">sdsada</div>
@@ -208,7 +202,26 @@
 				<div id="myAwardInfo_0">我的奖品</div>
 				<div id="myAwardInfo_1">
 				</div>
+				<!--Toast-激活成功-->
+				<div id="activateSuccessMasking" class="myAwardInfoDialog" style="display: none;">
+					<div id="activateSuccessDialog">
+						<div id="activateSuccessInfo" readonly="readonly">激活成功</div>
+					</div>
+				</div>
+				<!--Toast-激活失败-->
+				<div id="activateFailureMasking2" class="myAwardInfoDialog" style="display: none;">
+					<div id="activateFailureDialog2">
+						<div id="activateFailureInfo2" readonly="readonly">oh no~ 激活失败<br/>请在我的奖品你重新激活哦！</div>
+					</div>
+				</div>
 			</div>
+			<!--Toast-机器版本不兼容-->
+			<div id="inCompatibleMasking">
+				<div id="inCompatibleDialog">
+					<div id="inCompatibleInfo" readonly="readonly">由于你的电视不兼容转盘游戏，无法参与该活动。</div>
+				</div>
+			</div>
+				
 			<!--按返回键的提示框  -->
 			<div id="backWarn" class="webpage">
 				<div id="backWarnInfo">
