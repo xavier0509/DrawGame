@@ -1107,6 +1107,65 @@ input{
     font-size: 24px;
     text-align: center;
 }
+#activateSuccessMasking{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	display: none;
+	background-color: rgba(0, 0, 0, 0.3);
+}
+#activateSuccessDialog{
+	position: absolute;
+	left: 26.5104%;
+	top: 24.8148%;
+	width: 45.9896%;
+	height: 54.8148%;
+	background-color: rgba(0, 0, 0, 0);
+	background-image: url(../images/lucky.png);
+	background-repeat: no-repeat;
+	background-size: 100%;
+}
+#activateSuccessInfo{
+	position: absolute;
+    left: 14%;
+    top: 37%;
+    width: 70%;
+    height: 16%;
+    font-size: 24px;
+    padding-top: 5%;
+    line-height: initial;
+    text-align: center;
+}
+#activateFailureMasking{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	display: none;
+}
+#activateFailureDialog{
+	position: absolute;
+	left: 26.5104%;
+	top: 24.8148%;
+	width: 45.9896%;
+	height: 54.8148%;
+	background-color: rgba(0, 0, 0, 0);
+	background-image: url(../images/activatefailure.png);
+	background-repeat: no-repeat;
+	background-size: 100%;
+}
+#activateFailureInfo{
+	position: absolute;
+    left: 14%;
+    top: 41%;
+    width: 70%;
+    height: 17%;
+    font-size: 24px;
+    text-align: center;
+}
 
 
 

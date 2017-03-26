@@ -32,12 +32,30 @@ function buttonInit(){
 		console.log("notStartButton");
 		document.getElementById("notStartMasking").style.display = "none";
 	}
+	document.getElementById("moreChanceButton_2").onclick = function(){
+		console.log("moreChanceButton_2");
+		document.getElementById("moreChanceMasking").style.display = "none";
+	}
+	document.getElementById("badLuckButton_1").onclick = function(){
+		console.log("badLuckButton_1");
+		document.getElementById("badLuckMasking").style.display = "none";
+	}
+	document.getElementById("badLuckButton_2").onclick = function(){
+		console.log("badLuckButton_2");
+		document.getElementById("badLuckMasking").style.display = "none";
+	}
 	document.getElementById("alEndButton").onclick = function(){
 		console.log("alEndButton");
 		document.getElementById("alEndMasking").style.display = "none";
 	}
 	document.getElementById("goodLuckButton_2").onclick = function(){
 		console.log("goodLuckButton_2");
+		document.getElementById("formInfo").style.display = "block";
+		document.getElementById("formInfoPINButton").onclick = sendMessage();
+		document.getElementById("formInfoButton").onclick = changePhone();	
+	}
+	document.getElementById("noTelButton").onclick = function(){
+		console.log("noTelButton");
 		document.getElementById("formInfo").style.display = "block";
 		document.getElementById("formInfoPINButton").onclick = sendMessage();
 		document.getElementById("formInfoButton").onclick = changePhone();	
@@ -432,7 +450,7 @@ function showMoreInfo(){
 
 function dialogShow(){
 	var oClassButton = new Array();
-	var oDialogObj = ["notStartMasking","alEndMasking","VIPMasking","moreChanceMasking","badLuckMasking","noTelMasking","goodLuckMasking","backWarn","inCompatibleMasking"];
+	var oDialogObj = ["notStartMasking","alEndMasking","VIPMasking","moreChanceMasking","badLuckMasking","noTelMasking","goodLuckMasking","backWarn","inCompatibleMasking","activateSuccessMasking","activateFailureMasking","12"];
 	oClassButton = document.getElementsByClassName("buttonstyle");
 	for(var i = 0; i < oClassButton.length; i++) {
 		oClassButton[i].index = i;
