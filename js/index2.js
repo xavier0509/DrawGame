@@ -306,7 +306,7 @@ function rotateStart(){
 	});
 }
 
-//激活vip
+//激活vip--index
 function vipActive(listId,awardId){
 	console.log("开始激活影视会员");
 	$.ajax({
@@ -317,6 +317,37 @@ function vipActive(listId,awardId){
 		jsonp: "callback",
 		success: function(data) {
 			console.log("影视激活..."+data.success+"msg:"+data.msg);
+			if(data.success == true){
+				dialogShow1("activateSuccessMasking");
+			}
+			else{
+				dialogShow1("activateFailureMasking");
+			}
+			
+		},
+		error: function() {
+			console.log("fail...");
+		}
+	});
+}
+
+//激活vip--myaward
+function vipActiveTwo(listId,awardId){
+	console.log("开始激活影视会员");
+	$.ajax({
+		type: "get",
+		async: true,
+		url: "https://beta.restful.lottery.coocaatv.com/v1/lottery/indepqy/"+listId+"/" +awardId+"/"+activeId+"/"+ mac + "/" + accesstoken,
+		dataType: "jsonp",
+		jsonp: "callback",
+		success: function(data) {
+			console.log("影视激活..."+data.success+"msg:"+data.msg);
+			if(data.success == true){
+				dialogShow1("activateSuccessMasking");
+			}
+			else{
+				dialogShow1("activateFailureMasking");
+			}
 			
 		},
 		error: function() {
@@ -415,6 +446,8 @@ function showMyAward(){
 	var _AwardTypeId = new Array();
 	var _AwardName = new Array();
 	var _AwardExchangeFlag = new Array();
+	var _AwardId = new Array();
+	var _AwardMemberId = new Array();
 	$.ajax({
 		type: "get",
 		async: true,
@@ -430,6 +463,8 @@ function showMyAward(){
 				console.log("_AwardExchangeFlag=" + _AwardExchangeFlag[i]);
 				_AwardName[i] = data.myAwardsBean[i].awardName;
 				_AwardTypeId[i] = data.myAwardsBean[i].awardTypeId;
+				_AwardId[i] = data.myAwardsBean[i].awardId;
+				_AwardMemberId[i] = data.myAwardsBean[i].lotteryAwardMemberId;
 				_Number = i;
 				var awardImg = app.rel_html_imgpath(__uri('../images/scroll_1.png'));
 
@@ -442,9 +477,12 @@ function showMyAward(){
 				// var awardButton = '<button  style="width: 65%; height: 100%; float: left;' + 'background-image: url(' + imgurl + ');background-size:100%;"></button>';
 				// // awardButton.appendChild(buttonImg);
 				// spanDiv2.innerHTML=awardButton;
-
-				var _div = '<div title="images" class="wrap"  style="float:left;border:0px solid; width: 45%; height: 65%; padding-right: 5%; margin-top: 0.5%; overflow: hidden; text-overflow: ellipsis;  opacity: 1; float: left; "><div title ="AwardImage" class ="AwardImageUrl" style="background-repeat: no-repeat;background-size: 100%;border:0px solid blue; width: 95%; height: 80%; padding-left: 0%; padding-top: 0%;  margin-top: 0.5%; margin-left: 0.5%; background-color: white; overflow: hidden;  text-overflow: ellipsis; border: 1px solid black; opacity: 0.5; background-image: url('+awardImg+');background-size:100%;"></div><div title="Detail" tabindex="-1" style="position:relative;border:1px solid; width: 95%; height: 17%;  margin-left: 0.5%; text-align: center; border: 1px solid black; opacity: 1;"><span class="awardName">'+_AwardName[i]+'</span><button style="background-color: rgba(0, 0, 0, 0);position:absolute;width:28%;height:70%;top:15%;right:2%;float:right;background-image:url('+imgurl+');background-repeat: no-repeat;background-size: 100%;"></button></div></div>'
-
+				if (_AwardTypeId[i] == "2") {
+				var _div = '<div title="images" class="wrap"  style="float:left;border:0px solid; width: 45%; height: 65%; padding-right: 5%; margin-top: 0.5%; overflow: hidden; text-overflow: ellipsis;  opacity: 1; float: left; "><div title ="AwardImage" class ="AwardImageUrl" style="background-repeat: no-repeat;background-size: 100%;border:0px solid blue; width: 95%; height: 80%; padding-left: 0%; padding-top: 0%;  margin-top: 0.5%; margin-left: 0.5%; background-color: white; overflow: hidden;  text-overflow: ellipsis; border: 1px solid black; opacity: 0.5; background-image: url('+awardImg+');background-size:100%;"></div><div title="Detail" tabindex="-1" style="position:relative;border:1px solid; width: 95%; height: 17%;  margin-left: 0.5%; text-align: center; border: 1px solid black; opacity: 1;"><span class="awardName">'+_AwardName[i]+'</span><button onclick="vipActive()" style="background-color: rgba(0, 0, 0, 0);position:absolute;width:28%;height:70%;top:15%;right:2%;float:right;background-image:url('+imgurl+');background-repeat: no-repeat;background-size: 100%;"></button></div></div>'					
+				}
+				else if (_AwardTypeId[i] == "4") {
+				var _div = '<div title="images" class="wrap"  style="float:left;border:0px solid; width: 45%; height: 65%; padding-right: 5%; margin-top: 0.5%; overflow: hidden; text-overflow: ellipsis;  opacity: 1; float: left; "><div title ="AwardImage" class ="AwardImageUrl" style="background-repeat: no-repeat;background-size: 100%;border:0px solid blue; width: 95%; height: 80%; padding-left: 0%; padding-top: 0%;  margin-top: 0.5%; margin-left: 0.5%; background-color: white; overflow: hidden;  text-overflow: ellipsis; border: 1px solid black; opacity: 0.5; background-image: url('+awardImg+');background-size:100%;"></div><div title="Detail" tabindex="-1" style="position:relative;border:1px solid; width: 95%; height: 17%;  margin-left: 0.5%; text-align: center; border: 1px solid black; opacity: 1;"><span class="awardName">'+_AwardName[i]+'</span><button onclick="vipActiveTwo('+_AwardMemberId[i]+','+_AwardId[i]+')" style="background-color: rgba(0, 0, 0, 0);position:absolute;width:28%;height:70%;top:15%;right:2%;float:right;background-image:url('+imgurl+');background-repeat: no-repeat;background-size: 100%;"></button></div></div>'					
+				}
 				$("#myAwardInfo_1").append(_div);
 			}
 		},
