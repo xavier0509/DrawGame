@@ -64,6 +64,7 @@ var app = {
     		navigator.app.exitApp();
     	} else{
     		if (flagNumber001=="none"||flagNumber002=="none"||flagNumber003=="none") {
+    			console.log("indexflagNumber"+indexflagNumber);
     			if (indexflagNumber!=0) {
     				//隐藏所有首页子弹框，保留首页
     				for (var i=0; i<indexClassObj.length;i++) {
@@ -89,20 +90,12 @@ var app = {
     			}
     		}
     	}
-    	
-    	
-    	if(flagNumber001=="block"||flagNumber002=="block"||flagNumber003=="block"){
-    		console.log("hello");
-
 //  		if () {} else{
 //  			document.getElementById("formInfo").style.display = "none";
 //		  		document.getElementById("myAwardInfo").style.display = "none";
 //		  		document.getElementById("detailInfo").style.display = "none";
 //		  		document.getElementById("indexhtml").style.display = "block";
 //  		}
-    	}else{
-    		navigator.app.exitApp();
-    	}
     },
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
