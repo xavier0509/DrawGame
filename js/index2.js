@@ -8,11 +8,11 @@ var lotterynumber = null;
 var activeId = 20;
 var msgCode = null;//短信验证码
 
-$(function() {
-	buttonInit();//index页面两个按钮事件
-	focuseffection();
-	dialogShow();
-});
+// $(function() {
+// 	buttonInit();//index页面两个按钮事件
+// 	focuseffection();
+// 	dialogShow();
+// });
 //index页面按钮点击切换效果
 function buttonInit(){
 	console.log("hello");
@@ -89,15 +89,15 @@ function pageInit(){
 			trueEnd = Date.parse(new Date(endtime));
 			console.log("活动结束时间：" + trueEnd);
 			if (nowTime < trueBegin ) {
-				dialogShow1("notStartMasking")
+				// dialogShow1("notStartMasking");
 				$("#awardList").text("活动尚未开始，请耐心等待");
 				document.getElementById("turntable_1").style.backgroundImage = "url("+app.rel_html_imgpath(__uri("../images/notstartdraw.png"))+")";
-				document.getElementById("turntable_1").setAttribute("disabled","");
+				// document.getElementById("turntable_1").setAttribute("disabled","");
 			}
 			else if (nowTime > trueEnd) {
-				dialogShow1("alEndMasking")
+				// dialogShow1("alEndMasking");
 				$("#awardList").text("活动已经结束，请期待下次活动");
-				document.getElementById("turntable_1").setAttribute("disabled","");
+				// document.getElementById("turntable_1").setAttribute("disabled","");
 				document.getElementById("turntable_1").style.backgroundImage = "url("+app.rel_html_imgpath(__uri("../images/activityEnd.png"))+")";
 			}else{
 				showAwardList();
@@ -176,13 +176,21 @@ function startDraw(){
 	if (loginstatus == "false") {
 		console.log("请先登录！！");
 	}else{
-		if (lotterynumber > 0) {
-			rotateStart();
+		var drawnow = new Date().getTime();
+		if (drawnow <　trueBegin) {
+			dialogShow1("notStartMasking");
+		}else if(drawnow > trueEnd){
+			dialogShow1("alEndMasking");
 		}
 		else{
-			console.log("请先获取抽奖机会");
-			dialogShow1("moreChanceMasking");
+			if (lotterynumber > 0) {
+			rotateStart();
 		}
+			else{
+				console.log("请先获取抽奖机会");
+				dialogShow1("moreChanceMasking");
+			}
+		}	
 	}
 }
 //转动转盘
@@ -200,7 +208,7 @@ function rotateStart(){
 	};
 	var mobile = "123";
 	var bRotate = false;
-	var rotateFn = function(awards, angles, txt, typeid, lotteryAwardMemberId) { //awards:奖项，angle:奖项对应的角度
+	var rotateFn = function(awards, angles, txt, typeid, lotteryAwardMemberId,awardId) { //awards:奖项，angle:奖项对应的角度
 		bRotate = !bRotate;
 		$('#rotate').stopRotate();
 		$('#rotate').rotate({
@@ -211,10 +219,21 @@ function rotateStart(){
 				//这里需要传递几个用得到的参数过去：奖品名称 图片url地址
 				console.log("got the winner award" + txt + angles + awards + "---" + typeid + "---" + lotteryAwardMemberId + "--------" );
 				//区分实体奖、虚体奖、谢谢参与
-				if (txt == '影视会员VIP') {
+				//115---年卡，113月卡，109 7天卡，110谢谢
+				if (awardId == '115') {
 					dialogShow1("VIPMasking");
+					document.getElementById("toast-img-2-2").src = app.rel_html_imgpath(__uri("../images/115.png"));
 					// showChild_002(txt, awards, typeid, lotteryAwardMemberId, imageurl); //抽中影视会员VIP
-				} else if (txt != '影视会员VIP' && txt != '谢谢参与') {
+				} 
+				else if(awardId == '113'){
+					dialogShow1("VIPMasking");
+					document.getElementById("toast-img-2-2").src = app.rel_html_imgpath(__uri("../images/113.png"));
+				}
+				else if(awardId == '109'){
+					dialogShow1("VIPMasking");
+					document.getElementById("toast-img-2-2").src = app.rel_html_imgpath(__uri("../images/109.png"));
+				}
+				else if (awardId != '110') {
 					console.log("no VIP and thanks for in");
 					if (mobile == null || mobile == "") {
 						dialogShow1("noTelMasking");
@@ -249,10 +268,11 @@ function rotateStart(){
 			Draw_awardName = data.data.awardName; //奖项名称
 			Draw_lotteryAwardMemberId = data.data.lotteryAwardMemberId; //奖品id短信验证时用于传给后台
 			Draw_awardTypeId = data.data.awardTypeId; //1是虚2是实
+			Draw_awardId = data.data.awardId;
 			//Draw_awardPictureUrl = null;
 			console.log("转圈前：" + Draw_angle + Draw_awardLevel + Draw_awardName);
 			if (bRotate) return;
-			rotateFn(Draw_awardLevel, Draw_angle, Draw_awardName, Draw_awardTypeId, Draw_lotteryAwardMemberId);
+			rotateFn(Draw_awardLevel, Draw_angle, Draw_awardName, Draw_awardTypeId, Draw_lotteryAwardMemberId,Draw_awardId);
 			showDrawTimes();
 			showAwardList();			
 		},
