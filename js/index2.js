@@ -5,6 +5,8 @@ var trueBegin = null;
 var trueEnd = null;
 var nowTime = new Date().getTime();
 var lotterynumber = null;
+var activeId = 20;
+var msgCode = null;//短信验证码
 
 $(function() {
 	buttonInit();//index页面两个按钮事件
@@ -24,6 +26,7 @@ function buttonInit(){
 		console.log("button_myAward");
 		document.getElementById("myAwardInfo").style.display = "block";
 		document.getElementById("indexhtml").style.display = "none";
+		showMyAward();
 	}
 	document.getElementById("notStartButton").onclick = function(){
 		console.log("notStartButton");
@@ -36,6 +39,8 @@ function buttonInit(){
 	document.getElementById("goodLuckButton_2").onclick = function(){
 		console.log("goodLuckButton_2");
 		document.getElementById("formInfo").style.display = "block";
+		document.getElementById("formInfoPINButton").onclick = sendMessage();
+		document.getElementById("formInfoButton").onclick = changePhone();	
 	}
 }
 
@@ -69,7 +74,7 @@ function pageInit(){
 	$.ajax({
 		type: "get",
 		async: true,
-		url: "https://beta.restful.lottery.coocaatv.com/v1/lottery/indepqy/active/20",
+		url: "https://beta.restful.lottery.coocaatv.com/v1/lottery/indepqy/active/"+activeId,
 		dataType: "jsonp",
 		jsonp: "callback",
 		success: function(data) {
@@ -84,11 +89,13 @@ function pageInit(){
 			trueEnd = Date.parse(new Date(endtime));
 			console.log("活动结束时间：" + trueEnd);
 			if (nowTime < trueBegin ) {
+				dialogShow1("notStartMasking")
 				$("#awardList").text("活动尚未开始，请耐心等待");
 				document.getElementById("turntable_1").style.backgroundImage = "url("+app.rel_html_imgpath(__uri("../images/notstartdraw.png"))+")";
 				document.getElementById("turntable_1").setAttribute("disabled","");
 			}
 			else if (nowTime > trueEnd) {
+				dialogShow1("alEndMasking")
 				$("#awardList").text("活动已经结束，请期待下次活动");
 				document.getElementById("turntable_1").setAttribute("disabled","");
 				document.getElementById("turntable_1").style.backgroundImage = "url("+app.rel_html_imgpath(__uri("../images/activityEnd.png"))+")";
@@ -110,7 +117,7 @@ function showDrawTimes(){
 	$.ajax({
 		type: "get",
 		async: true,
-		url: "https://beta.restful.lottery.coocaatv.com/v1/lottery/indepqy/leftNumber/20/" + accesstoken,
+		url: "https://beta.restful.lottery.coocaatv.com/v1/lottery/indepqy/leftNumber/"+activeId+"/" + accesstoken,
 		dataType: "jsonp",
 		jsonp: "callback",
 		success: function(data) {
@@ -126,10 +133,11 @@ function showDrawTimes(){
 
 //展示获奖名单
 function showAwardList(){
+	document.getElementById("awardul").innerHTML="" 
 	$.ajax({
 		type: "get",
 		async: true,
-		url: "https://beta.restful.lottery.coocaatv.com/v1/lottery/indepqy/awardList/20",
+		url: "https://beta.restful.lottery.coocaatv.com/v1/lottery/indepqy/awardList/"+activeId,
 		dataType: "jsonp",
 		jsonp: "callback",
 		success: function(data) {
@@ -163,6 +171,7 @@ function showAwardList(){
 
 //开始抽奖
 function startDraw(){
+	console.log("DRAWTIMES:"+lotterynumber);
 	if (loginstatus == "false") {
 		console.log("请先登录！！");
 	}else{
@@ -170,7 +179,8 @@ function startDraw(){
 			rotateStart();
 		}
 		else{
-			console.log("请先获取抽奖机会")
+			console.log("请先获取抽奖机会");
+			dialogShow1("moreChanceMasking");
 		}
 	}
 }
@@ -187,59 +197,79 @@ function rotateStart(){
 			}
 		});
 	};
+	var mobile = "123";
 	var bRotate = false;
-	var rotateFn = function(awards, angles, txt, typeid, lotteryAwardMemberId, imageurl) { //awards:奖项，angle:奖项对应的角度
+	var rotateFn = function(awards, angles, txt, typeid, lotteryAwardMemberId) { //awards:奖项，angle:奖项对应的角度
 		bRotate = !bRotate;
-		console.log("进来了！！！！"+awards+"@@@@@"+bRotate);
 		$('#rotate').stopRotate();
 		$('#rotate').rotate({
 			angle: 0,
-			animateTo: angles + 2000,
+			animateTo: angles + 720,
 			duration: 3000,
 			callback: function() {
-				console.log("转了！！！！");
-				// $("#unseediv").text(lotteryAwardMemberId);
 				//这里需要传递几个用得到的参数过去：奖品名称 图片url地址
-				// console.log("got the winner award" + txt + angles + awards + "---" + typeid + "---" + lotteryAwardMemberId + "--------" + imageurl);
+				console.log("got the winner award" + txt + angles + awards + "---" + typeid + "---" + lotteryAwardMemberId + "--------" );
 				//区分实体奖、虚体奖、谢谢参与
 				if (txt == '影视会员VIP') {
-					console.log("imageurl is " + imageurl);
+					dialogShow1("VIPMasking");
 					// showChild_002(txt, awards, typeid, lotteryAwardMemberId, imageurl); //抽中影视会员VIP
 				} else if (txt != '影视会员VIP' && txt != '谢谢参与') {
 					console.log("no VIP and thanks for in");
-					// phonewriteornot(txt, awards, typeid, lotteryAwardMemberId); //抽中其他
-					//$("#text_info-12-0").text(txt);
+					if (mobile == null || mobile == "") {
+						dialogShow1("noTelMasking");
+						document.getElementById("text_info-11-0").innerHTML = "【"+txt+"】";
+						document.getElementById("goodLuckButton_1").onclick = makesurePhone(lotteryAwardMemberId);
+					}else{
+						dialogShow1("goodLuckMasking");
+						document.getElementById("userTel").innerHTML = mobile;
+						document.getElementById("goodLuckName").innerHTML = "【"+txt+"】";
+
+					}
+					
 				} else {
-					// showChild_004(); //谢谢参与--未抽中
+					dialogShow1("badLuckMasking");
+					
 				}
 				bRotate = !bRotate;
 			}
 		})
 	};
 
-	rotateFn("1", "60", "Draw_awardName", "1234", "111", "1521515");
-
-	// $.ajax({
-	// 	type: "get",
-	// 	async: true,
-	// 	url: "https://beta.restful.lottery.coocaatv.com/v1/lottery/indepqy/lottery/20/" + mac + "/" + accesstoken,
-	// 	dataType: "jsonp",
-	// 	jsonp: "callback",
-	// 	success: function(data) {
-	// 		console.log("seccess...");
-			
-	// 	},
-	// 	error: function() {
-	// 		console.log("fail...");
-	// 	}
-	// });
-}
-
-function showMoreInfo(){
 	$.ajax({
 		type: "get",
 		async: true,
-		url: "https://beta.restful.lottery.coocaatv.com/v1/lottery/video/detail/20",
+		url: "https://beta.restful.lottery.coocaatv.com/v1/lottery/indepqy/lottery/"+activeId+"/" + mac + "/" + accesstoken,
+		dataType: "jsonp",
+		jsonp: "callback",
+		success: function(data) {
+			console.log("seccess...");
+			Draw_angle = data.data.angle; //角度
+			Draw_awardLevel = data.data.awardLevel; //几等奖
+			Draw_awardName = data.data.awardName; //奖项名称
+			Draw_lotteryAwardMemberId = data.data.lotteryAwardMemberId; //奖品id短信验证时用于传给后台
+			Draw_awardTypeId = data.data.awardTypeId; //1是虚2是实
+			//Draw_awardPictureUrl = null;
+			console.log("转圈前：" + Draw_angle + Draw_awardLevel + Draw_awardName);
+			if (bRotate) return;
+			rotateFn(Draw_awardLevel, Draw_angle, Draw_awardName, Draw_awardTypeId, Draw_lotteryAwardMemberId);
+			showDrawTimes();
+			showAwardList();			
+		},
+		error: function() {
+			console.log("fail...");
+		}
+	});
+}
+
+//确认手机号
+function makesurePhone(obj){
+	console.log("lotteryAwardMemberId:"+obj);
+	//TODO  隐藏弹框
+
+	$.ajax({
+		type: "get",
+		async: true,
+		url: "https://beta.restful.lottery.coocaatv.com/v1/lottery/indepqy/confirm/" + obj + "/" + mobile + "/" + accesstoken,
 		dataType: "jsonp",
 		jsonp: "callback",
 		//jsonpCallback: "receive",
@@ -252,6 +282,137 @@ function showMoreInfo(){
 		}
 	});
 }
+
+//发送短信
+function sendMessage(){
+	var phoneNumber = $("formInfoTel").val();
+	var rel = /^(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/;
+	if (rel.test(phoneNumber)) {
+		time(this);//验证通过读秒60秒
+		$.ajax({
+			type: "get",
+			async: true,
+			url: "https://beta.restful.lottery.coocaatv.com/v1/lottery/indepqy/sendMessage/" + phoneNumber ,
+			dataType: "jsonp",
+			jsonp: "callback",
+			//jsonpCallback: "receive",
+			success: function(data) {
+			},
+			error: function() {
+				console.log('fail');
+			}
+		});
+	}
+	else {
+		//TODO  填错手机号问题
+	}
+}
+
+//验证码读秒
+function time(o) {
+	if (wait == 0) {
+		o.removeAttribute("disabled");
+		o.value = "获取验证码";
+		wait = 60;
+	} else {
+		o.setAttribute("disabled", true);
+		o.value = "重新发送(" + wait + ")";
+		wait--;
+		setTimeout(function() {
+				time(o)
+			},
+			1000)
+	}
+}
+
+//修改手机号
+function changePhone(){
+	var phoneNumber = $('#formInfoTel').val();
+	var captcha_new = $('#formInfoPINText').val();
+	$.ajax({
+			type: "get",
+			async: true,
+			url: "https://beta.restful.lottery.coocaatv.com/v1/lottery/indepqy/updateUserInfo/" + Draw_lotteryAwardMemberId + "/" + phoneNumber + "/" + captcha_new + "/" + accesstoken,
+			dataType: "jsonp",
+			jsonp: "callback",
+			success: function(data) {
+				//TODO  修改成功后的UI
+			},
+			error: function() {
+				console.log('fail');
+			}
+		});
+}
+
+//我的奖品
+function showMyAward(){
+	var myAwardInfo = document.getElementById("myAwardInfo_1");
+	var _MyAwardsBeanlength = null;
+	var _AwardTypeId = new Array();
+	var _AwardName = new Array();
+	var _AwardExchangeFlag = new Array();
+	$.ajax({
+		type: "get",
+		async: true,
+		url: "https://beta.restful.lottery.coocaatv.com/v1/lottery/indepqy/myAwards/"+activeId+"/"+accesstoken,
+		dataType: "jsonp",
+		jsonp: "callback",
+		//jsonpCallback: "receive",
+		success: function(data) {
+			console.log("查询我的奖品成功");
+			_MyAwardsBeanlength = data.myAwardsBean.length
+			for (var i = 0; i < _MyAwardsBeanlength; i++) {
+				_AwardExchangeFlag[i] = data.myAwardsBean[i].awardExchangeFlag;
+				console.log("_AwardExchangeFlag=" + _AwardExchangeFlag[i]);
+				_AwardName[i] = data.myAwardsBean[i].awardName;
+				_AwardTypeId[i] = data.myAwardsBean[i].awardTypeId;
+				_Number = i;
+				var spanImg = document.createElement("span");
+				spanImg.setAttribute("style","width:45%;height:65%;margin-right: 5%;margin-top:1%;display:inline-block")
+				myAwardInfo.appendChild(spanImg);
+				var spanDiv = document.createElement("div");
+				spanDiv.setAttribute("style","width:100%;height:70%;background-color:white;");
+				spanImg.appendChild(spanDiv);
+				var awardImg = document.createElement("img");
+				awardImg.setAttribute("src",app.rel_html_imgpath(__uri("../images/scroll_1.png")));
+				spanDiv.appendChild(awardImg);
+				var spanDiv2 = document.createElement("div");
+				spanDiv2.setAttribute("style","width:100%;height:25%;background-color:blue;");
+				spanImg.appendChild(spanDiv2);
+				spanDiv2.innerHTML = _AwardName[i];
+				var awardButton = document.createElement("button");
+				if (_AwardExchangeFlag[i] == 0) {
+					awardButton.style.backgroundImage="url("+app.rel_html_imgpath(__uri("../images/rightnow.png"))+")"
+					// awardButton.setAttribute("style","background-image:url("+app.rel_html_imgpath(__uri("../images/rightnow.png"))+")")
+				}
+				spanDiv2.appendChild(awardButton);
+			}
+		},
+		error: function() {
+			console.log('fail');
+		}
+	});
+}
+
+//更多详情
+function showMoreInfo(){
+	$.ajax({
+		type: "get",
+		async: true,
+		url: "https://beta.restful.lottery.coocaatv.com/v1/lottery/video/detail/"+activeId,
+		dataType: "jsonp",
+		jsonp: "callback",
+		//jsonpCallback: "receive",
+		success: function(data) {
+			var MoreInfo_all = data.activeDetail;
+			$("#detailInfo_1").append(MoreInfo_all);
+		},
+		error: function() {
+			console.log('fail');
+		}
+	});
+}
+
 function dialogShow(){
 	var oClassButton = new Array();
 	var oDialogObj = ["notStartMasking","alEndMasking","VIPMasking","moreChanceMasking","badLuckMasking","noTelMasking","goodLuckMasking","8","9"];
@@ -265,6 +426,10 @@ function dialogShow(){
 			document.getElementById(oDialogObj[thisIndex]).style.display = "block";
 		}
 	}
+}
+
+function dialogShow1(txt){
+	document.getElementById(txt).style.display = "block";
 }
 
 

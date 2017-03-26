@@ -353,22 +353,22 @@ input{
 	background-color: rgba(0, 0, 0, 0);
 }
 #notStartInfo_1{
-	font-size: 39px;
+	font-size: 23px;
 	word-spacing: 10px;
 	margin-top: 9%;
 	margin-left: 14%;
-	width: 70%;
+	width: 73%;
 	height: 32%;
 	border: 0;
-	color: #FFFF00;
 	background-color: rgba(0, 0, 0, 0);
 }
 #notStartInfo_2{
-	font-size: 26px;
+	font-size: 30px;
 	word-spacing: 30px;
 	width: 100%;
 	height: 32%;
 	border: 0;
+	color: #FFFF00;
 	text-align: center;
 	background-color: rgba(0, 0, 0, 0);
 }
@@ -424,7 +424,7 @@ input{
     width: 66%;
     height: 16%;
     text-align: center;
-    font-size: 36px;
+    font-size: 24px;
     padding-top: 10%;
 	background-color: rgba(0, 0, 0, 0);
 }
@@ -538,7 +538,7 @@ input{
 	width: 72.9332%;
 	height: 32.7703%;
 	padding-top: 2%;
-	font-size: 26px;
+	font-size: 20px;
 	text-align: center;
 	background-color: rgba(0, 0, 0, 0);
 }
@@ -612,7 +612,7 @@ input{
 	top: 29.5608%;
 	width: 72.9332%;
 	height: 32.7703%;
-	font-size: 23px;
+	font-size: 20px;
 	text-align: center;
 	background-color: rgba(0, 0, 0, 0);
 }

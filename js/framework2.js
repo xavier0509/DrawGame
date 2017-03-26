@@ -171,7 +171,7 @@ var app = {
         // }, false);
 
         document.getElementById("turntable_1").addEventListener("click", function() {
-            rotateStart();
+            startDraw();
         }, false);
         
     }
