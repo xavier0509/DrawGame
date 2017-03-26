@@ -223,22 +223,28 @@ function rotateStart(){
 				if (awardId == '115') {
 					dialogShow1("VIPMasking");
 					document.getElementById("toast-img-2-2").src = app.rel_html_imgpath(__uri("../images/115.png"));
+					document.getElementById("activateNow").onclick = function(){
+						vipActive(lotteryAwardMemberId,awardId);
+					};
+					
 					// showChild_002(txt, awards, typeid, lotteryAwardMemberId, imageurl); //抽中影视会员VIP
 				} 
 				else if(awardId == '113'){
 					dialogShow1("VIPMasking");
 					document.getElementById("toast-img-2-2").src = app.rel_html_imgpath(__uri("../images/113.png"));
+					document.getElementById("activateNow").onclick = function(){vipActive(lotteryAwardMemberId,awardId);}
 				}
 				else if(awardId == '109'){
 					dialogShow1("VIPMasking");
 					document.getElementById("toast-img-2-2").src = app.rel_html_imgpath(__uri("../images/109.png"));
+					document.getElementById("activateNow").onclick = function(){vipActive(lotteryAwardMemberId,awardId);}
 				}
 				else if (awardId != '110') {
 					console.log("no VIP and thanks for in");
 					if (mobile == null || mobile == "") {
 						dialogShow1("noTelMasking");
 						document.getElementById("text_info-11-0").innerHTML = "【"+txt+"】";
-						document.getElementById("goodLuckButton_1").onclick = makesurePhone(lotteryAwardMemberId);
+						document.getElementById("goodLuckButton_1").onclick = function(){ makesurePhone(lotteryAwardMemberId);}
 					}else{
 						dialogShow1("goodLuckMasking");
 						document.getElementById("userTel").innerHTML = mobile;
@@ -275,6 +281,25 @@ function rotateStart(){
 			rotateFn(Draw_awardLevel, Draw_angle, Draw_awardName, Draw_awardTypeId, Draw_lotteryAwardMemberId,Draw_awardId);
 			showDrawTimes();
 			showAwardList();			
+		},
+		error: function() {
+			console.log("fail...");
+		}
+	});
+}
+
+//激活vip
+function vipActive(listId,awardId){
+	console.log("开始激活影视会员");
+	$.ajax({
+		type: "get",
+		async: true,
+		url: "https://beta.restful.lottery.coocaatv.com/v1/lottery/indepqy/"+listId+"/" +awardId+"/"+activeId+"/"+ mac + "/" + accesstoken,
+		dataType: "jsonp",
+		jsonp: "callback",
+		success: function(data) {
+			console.log("影视激活..."+data.success+"msg:"+data.msg);
+			
 		},
 		error: function() {
 			console.log("fail...");
