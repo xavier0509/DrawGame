@@ -74,7 +74,8 @@ var app = {
     				navigator.app.exitApp();
     			}
     		} else{
-    			if(myAwardInfoflagNumber!=0){
+    			console.log(myAwardInfoflagNumber);
+    			if(myAwardInfoflagNumber == 0){
     				//回到首页
     				document.getElementById("formInfo").style.display = "none";
 			  		document.getElementById("myAwardInfo").style.display = "none";
