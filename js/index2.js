@@ -432,7 +432,7 @@ function showMoreInfo(){
 
 function dialogShow(){
 	var oClassButton = new Array();
-	var oDialogObj = ["notStartMasking","alEndMasking","VIPMasking","moreChanceMasking","badLuckMasking","noTelMasking","goodLuckMasking","8","9"];
+	var oDialogObj = ["notStartMasking","alEndMasking","VIPMasking","moreChanceMasking","badLuckMasking","noTelMasking","goodLuckMasking","backWarn","inCompatibleMasking"];
 	oClassButton = document.getElementsByClassName("buttonstyle");
 	for(var i = 0; i < oClassButton.length; i++) {
 		oClassButton[i].index = i;
@@ -545,19 +545,19 @@ function focuseffection() {
 		loseFocus(this.id);
 	});
 
-//	$('#button-back-3-1').focus(function() {
-//		gotFocus(this.id);
-//	});
-//	$('#button-back-3-1').blur(function() {
-//		loseFocus(this.id);
-//	});
-//
-//	$('#button-back-3-2').focus(function() {
-//		gotFocus(this.id);
-//	});
-//	$('#button-back-3-2').blur(function() {
-//		loseFocus(this.id);
-//	});
+	$('#button-back-3-1').focus(function() {
+		gotFocus(this.id);
+	});
+	$('#button-back-3-1').blur(function() {
+		loseFocus(this.id);
+	});
+
+	$('#button-back-3-2').focus(function() {
+		gotFocus(this.id);
+	});
+	$('#button-back-3-2').blur(function() {
+		loseFocus(this.id);
+	});
 	$('#goodLuckButton_1').focus(function() {
 		gotFocus(this.id);
 	});
@@ -590,6 +590,13 @@ function focuseffection() {
 		gotFocus(this.id);
 	});
 	$('#noTelButton').blur(function() {
+		loseFocus(this.id);
+	});
+	
+	$('#activateNow').focus(function() {
+		gotFocus(this.id);
+	});
+	$('#activateNow').blur(function() {
 		loseFocus(this.id);
 	});
 
