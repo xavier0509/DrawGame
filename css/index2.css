@@ -82,11 +82,31 @@ input{
 	top: 2.9630%;
 	width: 9.4271%;
 	height: 10.6482%;
-	margin: 0 auto;
 	background-color: rgba(0, 0, 0, 0);
 	background-image: url(../images/buttonlogo1.png);
 	background-repeat: no-repeat;
 	background-size: 100%;
+}
+#userInfo{
+	position: absolute;
+	left: 72.7604%;
+	top: 2.9630%;
+	width: 11.9792%;
+	height: 10.6482%;
+}
+#userImage{
+	position: absolute;
+	top: 12.5%;
+	height: 75%;
+}
+#userName{
+	display: block;
+	float: right;
+	font-size: 20px;
+	width: 60%;
+	white-space: nowrap;
+	overflow:hidden; 
+	text-overflow:ellipsis;
 }
 #button_VIP{
 	position: fixed;
@@ -94,7 +114,6 @@ input{
 	top: 2.9630%;
 	width: 11.9792%;
 	height: 10.6482%;
-	margin: 0 auto;
 	background-color: rgba(0, 0, 0, 0);
 	background-image: url(../images/buttonopenVIPicon.png);
 	background-repeat: no-repeat;
@@ -106,7 +125,6 @@ input{
 	top: 56.5741%;
 	width: 10.6771%;
 	height: 9.6296%;
-	margin: 0 auto;
 	background-color: rgba(0, 0, 0, 0);
 	background-image: url(../images/buttonmoreinfoicon.png);
 	background-repeat: no-repeat;
@@ -135,7 +153,6 @@ input{
 	line-height:100%;
 	zoom:0.66;
 	background-color: rgba(0, 0, 0, 0);
-	/*border: 1px solid red;*/
 }
 #activityInfo_two{
 	position: absolute;
@@ -148,7 +165,6 @@ input{
 	background-color: rgba(0, 0, 0, 0);
 	overflow: hidden;
 	zoom:0.66;
-	/*border: 1px solid red;*/
 }
 #activityAward{
 	position: absolute;
@@ -197,9 +213,6 @@ input{
 	width: 33.125%;
 	height: 58.8889%;
 	margin: 0 auto;
-	/*background-image: url(../images/turntable.png);
-	background-repeat: no-repeat;
-	background-size: 100%;*/
 }
 #rotate{
 	position: absolute;
@@ -292,7 +305,7 @@ ul li{
     margin-top: 1.5%;
 }
 ul li:nth-child(1){
-	background-image: url(../images/ipad-mini.png);
+	background-image: url(../images/107.png);
    	background-size: 100%;
    	background-repeat: no-repeat;
 }
@@ -302,27 +315,27 @@ ul li:nth-child(2){
    	background-repeat: no-repeat;
 }
 ul li:nth-child(3){
-	background-image: url(../images/aiqiyi7days.png);
+	background-image: url(../images/109.png);
    	background-size: 100%;
    	background-repeat: no-repeat;
 }
 ul li:nth-child(4){
-	background-image: url(../images/aiqiyiyear.png);
+	background-image: url(../images/115.png);
    	background-size: 100%;
    	background-repeat: no-repeat;
 }
 ul li:nth-child(5){
-	background-image: url(../images/beitonggames.png);
+	background-image: url(../images/114.png);
    	background-size: 100%;
    	background-repeat: no-repeat;
 }
 ul li:nth-child(6){
-	background-image: url(../images/skyworthbox.png);
+	background-image: url(../images/111.png);
    	background-size: 100%;
    	background-repeat: no-repeat;
 }
 ul li:nth-child(7){
-	background-image: url(../images/movietiket.png);
+	background-image: url(../images/116.png);
    	background-size: 100%;
    	background-repeat: no-repeat;
 }
@@ -332,7 +345,7 @@ ul li:nth-child(8){
    	background-repeat: no-repeat;
 }
 ul li:nth-child(9){
-	background-image: url(../images/moviearound.png);
+	background-image: url(../images/112.png);
    	background-size: 100%;
    	background-repeat: no-repeat;
 }

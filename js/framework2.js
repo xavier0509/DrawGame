@@ -103,7 +103,7 @@ var app = {
         buttonInit();//index页面两个按钮事件
         startmarquee(25,60,1,1); //滚动获奖名单
         pageInit();//页面初始化
-
+		
         coocaaosapi.getDeviceInfo(function(message) {
             deviceInfo = message;
             mac = message.mac;

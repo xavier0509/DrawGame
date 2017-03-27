@@ -20,42 +20,37 @@ function buttonInit(){
 	console.log("hello");
 	document.getElementById("button_moreInfo").onclick = function(){
 		console.log("button_moreInfo");
-		document.getElementById("detailInfo").style.display = "block";
+		dialogShow1("detailInfo");
 		document.getElementById("indexhtml").style.display = "none";
 		showMoreInfo();
 	}
 	document.getElementById("button_myAward").onclick = function(){
 		console.log("button_myAward");
-		document.getElementById("myAwardInfo").style.display = "block";
+		dialogShow1("myAwardInfo");
 		document.getElementById("indexhtml").style.display = "none";
 		showMyAward();
 	}
 	document.getElementById("notStartButton").onclick = function(){
 		console.log("notStartButton");
-		document.getElementById("notStartMasking").style.display = "none";
+		dialogHide("notStartMasking");
 	}
 	document.getElementById("moreChanceButton_2").onclick = function(){
 		console.log("moreChanceButton_2");
-		document.getElementById("moreChanceMasking").style.display = "none";
+		dialogHide("moreChanceMasking");
 	}
 	document.getElementById("badLuckButton_1").onclick = function(){
 		console.log("badLuckButton_1");
-		document.getElementById("badLuckMasking").style.display = "none";
+		dialogHide("badLuckMasking");
 	}
 	document.getElementById("badLuckButton_2").onclick = function(){
 		console.log("badLuckButton_2");
-		document.getElementById("badLuckMasking").style.display = "none";
+		dialogHide("badLuckMasking");
 	}
 	document.getElementById("alEndButton").onclick = function(){
 		console.log("alEndButton");
-		document.getElementById("alEndMasking").style.display = "none";
+		dialogHide("alEndMasking");
 	}
-	document.getElementById("noTelButton").onclick = function(){
-		console.log("noTelButton");
-		document.getElementById("formInfo").style.display = "block";
-		document.getElementById("formInfoPINButton").onclick = function(){sendMessage();};
-		document.getElementById("formInfoButton").onclick = function(){changePhone();};
-	}
+
 }
 
 //获奖名单滚动效果
@@ -176,7 +171,6 @@ function showAwardList(){
 					$("#awardul").append(list);
 				}
 			}
-
 		},
 		error: function() {
 			console.log("fail...");
@@ -352,15 +346,6 @@ function vipActiveTwo(listId,awardId){
 	});
 }
 
-
-
-
-
-
-
-
-
-
 //我的奖品
 function showMyAward(){
 	var myAwardInfo = document.getElementById("myAwardInfo_1");
@@ -491,9 +476,11 @@ function dialogShow(){
 
 function dialogShow1(txt){
 	document.getElementById(txt).style.display = "block";
+	$("#indexhtml :button").attr("disabled", "disabled");
 }
 function dialogHide(txt){
 	document.getElementById(txt).style.display = "none";
+	$("#indexhtml :button").removeAttr("disabled");
 }
 
 //中文编码格式转换
@@ -696,19 +683,6 @@ function focuseffection() {
 		loseFocus(this.id);
 	});
 
-//	$('#button-img-6-1').focus(function() {
-//		gotFocus(this.id);
-//	});
-//	$('#button-img-6-1').blur(function() {
-//		loseFocus(this.id);
-//	});
-//
-//	$('#button-img-6-2').focus(function() {
-//		gotFocus(this.id);
-//	});
-//	$('#button-img-6-2').blur(function() {
-//		loseFocus(this.id);
-//	});
 	//短信验证页确定
 	$('#formInfoButton').focus(function() {
 		gotFocus(this.id);
@@ -716,25 +690,13 @@ function focuseffection() {
 	$('#formInfoButton').blur(function() {
 		loseFocus(this.id);
 	});
-//	//短信验证页验证码
-//	$('#form-info-7-5').focus(function() {
-//		$('#form-info-7-5').css("background-color", "red");
-//	});
-//	$('#form-info-7-5').blur(function() {
-//		$('#form-info-7-5').css("background-color", "blue");
-//	});
-//	$('#button-nologin-3-1').focus(function() {
-//		gotFocus(this.id);
-//	});
-//	$('#button-nologin-3-1').blur(function() {
-//		loseFocus(this.id);
-//	});
-//	$('#button-nologin-3-2').focus(function() {
-//		gotFocus(this.id);
-//	});
-//	$('#button-nologin-3-2').blur(function() {
-//		loseFocus(this.id);
-//	});
+	//短信验证页验证码
+	$('#form-info-7-5').focus(function() {
+		$('#form-info-7-5').css("background-color", "red");
+	});
+	$('#form-info-7-5').blur(function() {
+		$('#form-info-7-5').css("background-color", "blue");
+	});
 }
 
 function gotFocus(id) {
@@ -748,4 +710,11 @@ function loseFocus(id) {
 	var thisid;
 	thisid = document.getElementById(id).children[0].id;
 	document.getElementById(thisid).style.display = "none";
+}
+
+function indexhtmlButtonT(){
+	$("#indexhtml :button").attr("disabled", "disabled");
+}
+function indexhtmlButtonF(){
+	$("#indexhtml :button").removeAttr("disabled");
 }

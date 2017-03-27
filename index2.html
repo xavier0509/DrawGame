@@ -1,5 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
+
 	<head>
 		<meta http-equiv="Access-Control-Allow-Origin" content="text/html">
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -15,12 +16,14 @@
 	
 		<title>抽奖系统</title>
 	</head>
+
 	<body id="homepage" scroll="no">
 		<div id="deviceready" class="blink">
 			<input id="hideTxt"></input>
 			<!--首页-->
 			<div id="indexhtml">
 				<button id="button_logo" class="fontSize"></button>
+				<table id="userInfo"><td><img id="userImage" src="images/113.png"></td><td><span id="userName">阿Q小姐</td></table>
 				<button id="button_VIP" class="fontSize"></button>
 				<button id="button_moreInfo" class="fontSize"></button>
 				<button id="button_myAward" class="fontSize"></button>
@@ -28,8 +31,7 @@
 				<div id="activityInfo_two">参与方式：活动期间每位用户免费拥有一次抽奖机会，购买影视会员可额外增加抽奖机会</div>
 				<div id="activityAward">酷开40K2电视、IPADmini、影视会员年卡、北通游戏手柄、电影票、自拍杆、QQ公仔、影视会员月卡、影视会员7天卡</div>
 				<div id="awardList">
-					<ul id="awardul"> 
-					</ul> 
+					<ul id="awardul"></ul> 
 				</div>
 				<div id="luckyDraw">您还有<br/><span id="drawTimes"></span>次抽奖机会哦！</div>
 				<div id="turntable" class="rotate">
@@ -145,7 +147,7 @@
 				</div>
 			</div>
 			<!--弹出表单页-->
-			<div id="formInfo" class="webpage">
+			<!-- <div id="formInfo" class="webpage">
 				<div id="formInfoTitle" readonly="readonly" disabled="disabled" tabindex="-1">领取奖品</div>
 				<div id="formInfoTips" readonly="readonly" disabled="disabled" tabindex="-1">
 					请填写手机号和验证码
@@ -189,7 +191,7 @@
 						<input id="form-info-7-6-1" value="填写失败，请重新填写。" readonly="readonly"></input>
 					</div>
 				</div>
-			</div>
+			</div> -->
 			<!--详情页-->
 			<div id="detailInfo" class="webpage" style="display: none;">
 				<input id="detailInfo_0" disabled="disabled" value="活动规则">活动规则</input>
@@ -280,4 +282,5 @@
 		<script type="text/javascript" src="js/framework2.js"></script>
 		<script type="text/javascript" src="donothashme.js"></script>
 	</body>
+
 </html>
