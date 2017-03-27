@@ -37,7 +37,8 @@ var app = {
     },
     handleBackButton: function() {
     	console.log("Back Button Pressed!");
-    	var indexflagNumber,myAwardInfoflagNumber = 0;
+    	var indexflagNumber = 0;
+    	var myAwardInfoflagNumber = 0;
     	var flagNumber000 = document.getElementById("inCompatibleMasking").style.display;//兼容性弹框的显隐
     	var flagNumber001 = document.getElementById("formInfo").style.display;//填写手机号页的显隐
     	var flagNumber002 = document.getElementById("myAwardInfo").style.display;//我的奖品页的显隐
@@ -45,6 +46,7 @@ var app = {
     	var indexClassObj = document.getElementsByClassName("indexhtmlDialog");
     	var myAwardClassObj = document.getElementsByClassName("myAwardInfoDialog");
     	console.log("length:"+indexClassObj.length+"----"+myAwardClassObj.length);
+    	console.log("hhhhh:"+flagNumber000+"--"+flagNumber001+"--"+flagNumber002);
     	for (var i=0; i<indexClassObj.length;i++) {
     		if (indexClassObj[i].style.display == "block") {
     			indexflagNumber++;
@@ -63,8 +65,9 @@ var app = {
     	if (flagNumber000 == "block") {
     		navigator.app.exitApp();
     	} else{
-    		if (flagNumber001=="none"||flagNumber002=="none"||flagNumber003=="none") {
-    			console.log("indexflagNumber"+indexflagNumber);
+    		if ((flagNumber001=="none"||flagNumber001=="")&&(flagNumber002=="none"||flagNumber002=="")&&(flagNumber003=="none"||flagNumber003=="")) {
+    			console.log(indexflagNumber);
+    			console.log("hhhhh:"+flagNumber000+"--"+flagNumber001+"--"+flagNumber002);
     			if (indexflagNumber!=0) {
     				//隐藏所有首页子弹框，保留首页
     				for (var i=0; i<indexClassObj.length;i++) {
@@ -72,10 +75,12 @@ var app = {
 			    	}
     			} else{
     				//退出
+    				console.log("exit");
     				navigator.app.exitApp();
     			}
     		} else{
     			console.log(myAwardInfoflagNumber);
+    			console.log("hhhhh:"+flagNumber000+"--"+flagNumber001+"--"+flagNumber002);
     			if(myAwardInfoflagNumber == 0){
     				//回到首页
     				document.getElementById("formInfo").style.display = "none";
@@ -90,12 +95,6 @@ var app = {
     			}
     		}
     	}
-//  		if () {} else{
-//  			document.getElementById("formInfo").style.display = "none";
-//		  		document.getElementById("myAwardInfo").style.display = "none";
-//		  		document.getElementById("detailInfo").style.display = "none";
-//		  		document.getElementById("indexhtml").style.display = "block";
-//  		}
     },
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
