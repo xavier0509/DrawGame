@@ -556,12 +556,12 @@ function generateQRCode2(url) {
 //页面特效功能
 function focuseffection() {
 	//开通会员
-//	$('#gotovipcenter_speciallyeffect').focus(function() {
-//		gotFocus(this.id);
-//	});
-//	$('#gotovipcenter_speciallyeffect').blur(function() {
-//		loseFocus(this.id);
-//	});
+	$('#button_VIP').focus(function() {
+		gotFocus(this.id);
+	});
+	$('#button_VIP').blur(function() {
+		loseFocus(this.id);
+	});
 	//登录,如果用户没登录显示登录button
 	$('#button_logo').focus(function() {
 		gotFocus(this.id);
@@ -569,22 +569,13 @@ function focuseffection() {
 	$('#button_logo').blur(function() {
 		loseFocus(this.id);
 	});
-	//登录,如果用户已登录
-//	$('#button-been-logo').focus(function() {
-//		gotFocus(this.id);
-//	});
-//	$('#button-been-logo').blur(function() {
-//		loseFocus(this.id);
-//	});
 	//开始抽奖
-//	$('#startdDraw').focus(function() {
-//		document.getElementById("bg_Operation-img-2").style.display= "none";
-//		document.getElementById("bg_Operation-img-2-border").style.display= "block";
-//	});
-//	$('#startdDraw').blur(function() {
-//		document.getElementById("bg_Operation-img-2").style.display= "block";
-//		document.getElementById("bg_Operation-img-2-border").style.display= "none";
-//	});
+	$('#turntable_1').focus(function() {
+		gotFocus(this.id);
+	});
+	$('#turntable_1').blur(function() {
+		loseFocus(this.id);
+	});
 	//更多详情
 	$('#button_moreInfo').focus(function() {
 		gotFocus(this.id);
