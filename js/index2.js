@@ -700,3 +700,14 @@ function indexhtmlButtonT(){
 function indexhtmlButtonF(){
 	$("#indexhtml :button").removeAttr("disabled");
 }
+function exceptbutton(buttonidOne,buttonidTwo){
+	console.log("exceptbutton");
+	var thisIdOne = "#" + buttonidOne;
+	$(thisIdOne).removeAttr("disabled");
+	document.getElementById("buttonidOne").focus();
+	console.log("buttonidTwo:"+buttonidTwo+"||");
+	if(buttonidTwo!= ""){
+		var thisIdTwo = "#" + buttonidTwo;
+		$(thisIdTwo).removeAttr("disabled");
+	}
+}
