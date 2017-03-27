@@ -272,18 +272,69 @@ input{
 	background-color: rgba(0, 0, 0, 0);
 }
 .box2 ul{
+	display: block;
 	position:absolute;
 	left:0px;
 	top:0px;
-	width:100%;
+	width:180%;
 	height: 100%;
-	background-color: red;
-	/*animation:mov1 10s linear infinite;*/
+	overflow: hidden;
+	white-space:nowrap;  
+	animation:mov1 10s linear infinite;
 }
 ul li{
 	list-style:none;
-	float:right;
-	margin-right: 0.5%;
+	display: block;
+    float: left;
+    width: 11%;
+    height: 100%;
+    margin-right: 0.1%;
+    margin-top: 1.5%;
+}
+ul li:nth-child(1){
+	background-image: url(../images/ipad-mini.png);
+   	background-size: 100%;
+   	background-repeat: no-repeat;
+}
+ul li:nth-child(2){
+	background-image: url(../images/iphone7.png);
+   	background-size: 100%;
+   	background-repeat: no-repeat;
+}
+ul li:nth-child(3){
+	background-image: url(../images/aiqiyi7days.png);
+   	background-size: 100%;
+   	background-repeat: no-repeat;
+}
+ul li:nth-child(4){
+	background-image: url(../images/aiqiyiyear.png);
+   	background-size: 100%;
+   	background-repeat: no-repeat;
+}
+ul li:nth-child(5){
+	background-image: url(../images/beitonggames.png);
+   	background-size: 100%;
+   	background-repeat: no-repeat;
+}
+ul li:nth-child(6){
+	background-image: url(../images/skyworthbox.png);
+   	background-size: 100%;
+   	background-repeat: no-repeat;
+}
+ul li:nth-child(7){
+	background-image: url(../images/movietiket.png);
+   	background-size: 100%;
+   	background-repeat: no-repeat;
+}
+ul li:nth-child(8){
+	background-image: url(../images/coocaaA43.png);
+   	background-size: 100%;
+   	background-repeat: no-repeat;
+}
+ul li:nth-child(9){
+	background-image: url(../images/moviearound.png);
+   	background-size: 100%;
+   	background-repeat: no-repeat;
 }
 @keyframes mov1{
 	to{
