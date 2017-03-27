@@ -336,7 +336,7 @@ function vipActiveTwo(listId,awardId){
 		success: function(data) {
 			console.log("影视激活..."+data.success+"msg:"+data.msg);
 			if(data.success == true){
-				dialogShow1("activateSuccessMasking");
+				dialogShow1("activateSuccessMasking2");
 			}
 			else{
 				dialogShow1("activateFailureMasking2");
