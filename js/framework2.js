@@ -40,9 +40,8 @@ var app = {
     	var indexflagNumber = 0;
     	var myAwardInfoflagNumber = 0;
     	var flagNumber000 = document.getElementById("inCompatibleMasking").style.display;//兼容性弹框的显隐
-    	var flagNumber001 = document.getElementById("formInfo").style.display;//填写手机号页的显隐
-    	var flagNumber002 = document.getElementById("myAwardInfo").style.display;//我的奖品页的显隐
-    	var flagNumber003 = document.getElementById("detailInfo").style.display;//详情页的显隐
+    	var flagNumber001 = document.getElementById("myAwardInfo").style.display;//我的奖品页的显隐
+    	var flagNumber002 = document.getElementById("detailInfo").style.display;//详情页的显隐
     	var indexClassObj = document.getElementsByClassName("indexhtmlDialog");
     	var myAwardClassObj = document.getElementsByClassName("myAwardInfoDialog");
     	console.log("length:"+indexClassObj.length+"----"+myAwardClassObj.length);
@@ -65,7 +64,7 @@ var app = {
     	if (flagNumber000 == "block") {
     		navigator.app.exitApp();
     	} else{
-    		if ((flagNumber001=="none"||flagNumber001=="")&&(flagNumber002=="none"||flagNumber002=="")&&(flagNumber003=="none"||flagNumber003=="")) {
+    		if ((flagNumber001=="none"||flagNumber001=="")&&(flagNumber002=="none"||flagNumber002=="")) {
     			console.log(indexflagNumber);
     			console.log("hhhhh:"+flagNumber000+"--"+flagNumber001+"--"+flagNumber002);
     			if (indexflagNumber!=0) {
@@ -83,7 +82,6 @@ var app = {
     			console.log("hhhhh:"+flagNumber000+"--"+flagNumber001+"--"+flagNumber002);
     			if(myAwardInfoflagNumber == 0){
     				//回到首页
-    				document.getElementById("formInfo").style.display = "none";
 			  		document.getElementById("myAwardInfo").style.display = "none";
 			  		document.getElementById("detailInfo").style.display = "none";
 			  		document.getElementById("indexhtml").style.display = "block";

@@ -563,12 +563,12 @@ function focuseffection() {
 //		loseFocus(this.id);
 //	});
 	//登录,如果用户没登录显示登录button
-//	$('#button-logo').focus(function() {
-//		gotFocus(this.id);
-//	});
-//	$('#button-logo').blur(function() {
-//		loseFocus(this.id);
-//	});
+	$('#button_logo').focus(function() {
+		gotFocus(this.id);
+	});
+	$('#button_logo').blur(function() {
+		loseFocus(this.id);
+	});
 	//登录,如果用户已登录
 //	$('#button-been-logo').focus(function() {
 //		gotFocus(this.id);
@@ -586,19 +586,19 @@ function focuseffection() {
 //		document.getElementById("bg_Operation-img-2-border").style.display= "none";
 //	});
 	//更多详情
-//	$('#moreinfo_speciallyeffect').focus(function() {
-//		gotFocus(this.id);
-//	});
-//	$('#moreinfo_speciallyeffect').blur(function() {
-//		loseFocus(this.id);
-//	});
+	$('#button_moreInfo').focus(function() {
+		gotFocus(this.id);
+	});
+	$('#button_moreInfo').blur(function() {
+		loseFocus(this.id);
+	});
 	//我的奖品
-//	$('#myaward_speciallyeffect').focus(function() {
-//		gotFocus(this.id);
-//	});
-//	$('#myaward_speciallyeffect').blur(function() {
-//		loseFocus(this.id);
-//	});
+	$('#button_myAward').focus(function() {
+		gotFocus(this.id);
+	});
+	$('#button_myAward').blur(function() {
+		loseFocus(this.id);
+	});
 
 	$('#alEndButton').focus(function() {
 		gotFocus(this.id);
@@ -641,19 +641,7 @@ function focuseffection() {
 	$('#button-back-3-2').blur(function() {
 		loseFocus(this.id);
 	});
-	// $('#goodLuckButton_1').focus(function() {
-	// 	gotFocus(this.id);
-	// });
-	// $('#goodLuckButton_1').blur(function() {
-	// 	loseFocus(this.id);
-	// });
 
-	// $('#goodLuckButton_2').focus(function() {
-	// 	gotFocus(this.id);
-	// });
-	// $('#goodLuckButton_2').blur(function() {
-	// 	loseFocus(this.id);
-	// });
 
 	$('#badLuckButton_1').focus(function() {
 		gotFocus(this.id);
