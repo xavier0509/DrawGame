@@ -1681,7 +1681,7 @@ module.exports = {
 function onMessageFromNative(msg) {
     var cordova = require('cordova');
     var action = msg.action;
-
+    console.log("动作行为："+action);
     switch (action)
     {
         // Button events

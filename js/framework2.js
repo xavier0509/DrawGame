@@ -133,6 +133,8 @@ var app = {
                     console.log("open_id " + message.open_id);
                     console.log("mobile "+message.mobile);
                     console.log("nick_name "+message.nick_name);
+                    document.getElementById("userInfo").style.display="block";
+                    document.getElementById("userName").innerHTML=message.nick_name;
                     coocaaosapi.getUserAccessToken(function(message) {
                         console.log("usertoken " + message.accesstoken);
                         accesstoken = message.accesstoken;
@@ -172,33 +174,7 @@ var app = {
             });
         }, false);
         //登录
-        document.getElementById("button_logo").addEventListener("click", function() {
-            coocaaosapi.startUserSetting(function(message) {
-                console.log(message);
-            }, function(error) {
-                console.log(error);
-            });
-            coocaaosapi.addUserChanggedListener(function(message){
-                console.log(message);
-                loginstatus = "true";
-                coocaaosapi.getUserInfo(function(message) {
-                    userInfo = message;
-                    mobile = message.mobile;
-                    console.log("external_info " + message.external_info);
-                    console.log("open_id " + message.open_id);
-                    console.log("mobile "+message.mobile);
-                    console.log("nick_name "+message.nick_name);
-                    coocaaosapi.getUserAccessToken(function(message) {
-                        console.log("usertoken " + message.accesstoken);
-                        accesstoken = message.accesstoken;
-                    }, function(error) {
-                        console.log(error);
-                    });
-                }, function(error) {
-                    console.log(error);
-                });
-            });
-        }, false);
+        document.getElementById("button_logo").addEventListener("click", experienceonclick, false);
 
         //已登录
         // document.getElementById("button-been-logo").addEventListener("click", function() {
@@ -235,5 +211,33 @@ var app = {
         
     }
 };
+
+function experienceonclick() {
+    if (loginstatus == "false") {
+        coocaaosapi.startUserSettingAndFinish(function(message)  {console.log(message); },function(error){console.log(error);});
+        coocaaosapi.addUserChanggedListener(function(message){
+            console.log(message);
+            loginstatus = "true";
+            coocaaosapi.getUserInfo(function(message) {
+                userInfo = message;
+                mobile = message.mobile;
+                console.log("external_info " + message.external_info);
+                console.log("open_id " + message.open_id);
+                console.log("mobile "+message.mobile);
+                console.log("nick_name "+message.nick_name);
+                document.getElementById("userInfo").style.display="block";
+                document.getElementById("userName").innerHTML=message.nick_name;
+                coocaaosapi.getUserAccessToken(function(message) {
+                    console.log("usertoken " + message.accesstoken);
+                    accesstoken = message.accesstoken;
+                }, function(error) {
+                    console.log(error);
+                });
+            }, function(error) {
+                console.log(error);
+            });
+        });
+    }
+}
 
 app.initialize();

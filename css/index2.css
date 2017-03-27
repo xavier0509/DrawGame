@@ -104,6 +104,7 @@ input{
 	width: 11.9792%;
 	height: 10.6482%;
 	display: none;
+	/*border: 1px solid red;*/
 }
 #userImage{
 	position: absolute;
