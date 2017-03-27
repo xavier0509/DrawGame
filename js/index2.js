@@ -8,11 +8,11 @@ var lotterynumber = null;
 var activeId = 20;
 var msgCode = null;//短信验证码
 
-// $(function() {
-// 	buttonInit();//index页面两个按钮事件
-// 	focuseffection();
-// 	dialogShow();
-// });
+$(function() {
+ 	buttonInit();//index页面两个按钮事件
+   	focuseffection();
+   	dialogShow();
+});
 //index页面按钮点击切换效果
 function buttonInit(){
 	console.log("hello");
