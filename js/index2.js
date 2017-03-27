@@ -7,11 +7,12 @@ var nowTime = new Date().getTime();
 var lotterynumber = null;
 var activeId = 20;
 var msgCode = null;//短信验证码
+var changeFlag = false;
 
 $(function() {
- 	buttonInit();//index页面两个按钮事件
-   	focuseffection();
-   	dialogShow();
+	buttonInit();//index页面两个按钮事件
+	focuseffection();
+	dialogShow();
 });
 //index页面按钮点击切换效果
 function buttonInit(){
@@ -275,6 +276,7 @@ function rotateStart(){
 					document.getElementById("activateNow").onclick = function(){vipActive(lotteryAwardMemberId,awardId);}
 				}
 				else if (awardId != '110') {
+					document.getElementById("hideTxt").value = lotteryAwardMemberId;
 					console.log("no VIP and thanks for in");
 					if (mobile == null || mobile == "") {
 						dialogShow1("noTelMasking");
@@ -285,7 +287,6 @@ function rotateStart(){
 						document.getElementById("userTel").innerHTML = mobile;
 						document.getElementById("goodLuckName").innerHTML = "【"+txt+"】";
 						document.getElementById("goodLuckButton_1").onclick = function(){ makesurePhone(lotteryAwardMemberId);}
-
 					}
 					
 				} else {
@@ -326,7 +327,7 @@ function rotateStart(){
 
 //激活vip--index
 function vipActive(listId,awardId){
-	console.log("开始激活影视会员");
+	console.log("开始首页激活影视会员");
 	$.ajax({
 		type: "get",
 		async: true,
@@ -355,7 +356,7 @@ function vipActive(listId,awardId){
 
 //激活vip--myaward
 function vipActiveTwo(listId,awardId){
-	console.log("开始激活影视会员");
+	console.log("开始我的奖品页激活影视会员");
 	$.ajax({
 		type: "get",
 		async: true,
@@ -391,8 +392,9 @@ function makesurePhone(obj){
 		jsonp: "callback",
 		//jsonpCallback: "receive",
 		success: function(data) {
-			var MoreInfo_all = data.activeDetail;
-			$("#detailInfo_1").append(MoreInfo_all);
+			console.log("领取成功");
+			dialogHide("goodLuckMasking");
+			
 		},
 		error: function() {
 			console.log('fail');
@@ -402,7 +404,8 @@ function makesurePhone(obj){
 
 //发送短信
 function sendMessage(){
-	var phoneNumber = $("formInfoTel").val();
+	var phoneNumber = document.getElementById("formInfoTel").value;
+	console.log("电话号码："+phoneNumber);
 	var rel = /^(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/;
 	if (rel.test(phoneNumber)) {
 		time(this);//验证通过读秒60秒
@@ -422,7 +425,29 @@ function sendMessage(){
 	}
 	else {
 		//TODO  填错手机号问题
+		console.log("手机号填写："+phoneNumber);
+		if (phoneNumber == "  请准确填写手机号") {
+			console.log("空" + phoneNumber);
+			var ul = document.getElementById("toastfalse");
+			if (ul.style.display == "none") {
+				ul.style.display = "block";
+			} else {
+				ul.style.display = "block";
+			}
+			$("#form-info-7-6-1").val("手机号不能为空，请重新填写。");
+			setTimeout("toWriteAgain()", 2000);
+		} else {
+			var ul = document.getElementById("toastfalse");
+			if (ul.style.display == "none") {
+				ul.style.display = "block";
+			} else {
+				ul.style.display = "block";
+			}
+			$("#form-info-7-6-1").val("手机号不匹配请重新填写。");
+			setTimeout("toWriteAgain()", 2000);
+		}
 	}
+	setTimeout(overflow, 3000);
 }
 
 //验证码读秒
@@ -442,23 +467,120 @@ function time(o) {
 	}
 }
 
+function overflow() {
+	var fiveFlag = $("#fivePhone").text();
+	console.log("fiveFlag="+fiveFlag);
+	if (fiveFlag=="true") {
+		console.log("Thr number id less than 5.");
+	} else{
+		console.log("Thr number id over than 5.");
+		var ul = document.getElementById("numberBigFive");
+		if (ul.style.display == "none") {
+			ul.style.display = "block";
+		} else {
+			ul.style.display = "block";
+		}
+		setTimeout("overflowRemove()", 3000);
+	}
+}
+function overflowRemove() {
+	var ul = document.getElementById("numberBigFive");
+		if (ul.style.display == "block") {
+			ul.style.display = "none";
+		} else {
+			ul.style.display = "none";
+		}
+}
+
+//重新填写
+function toWriteAgain() {
+	//隐藏错误信息
+	var ul = document.getElementById("toastfalse");
+	if (ul.style.display == "block") {
+		ul.style.display = "none";
+	} else {
+		ul.style.display = "none";
+	}
+}
+
 //修改手机号
 function changePhone(){
 	var phoneNumber = $('#formInfoTel').val();
 	var captcha_new = $('#formInfoPINText').val();
+	var lotteryID = $('#hideTxt').val();
 	$.ajax({
 			type: "get",
 			async: true,
-			url: "https://beta.restful.lottery.coocaatv.com/v1/lottery/indepqy/updateUserInfo/" + Draw_lotteryAwardMemberId + "/" + phoneNumber + "/" + captcha_new + "/" + accesstoken,
+			url: "https://beta.restful.lottery.coocaatv.com/v1/lottery/indepqy/updateUserPhone/" + lotteryID + "/" + phoneNumber + "/" + captcha_new + "/" + accesstoken,
 			dataType: "jsonp",
 			jsonp: "callback",
 			success: function(data) {
 				//TODO  修改成功后的UI
+				var changePhoneFlag = data.success;
+				changeFlag = true;
+				theInfoResult(changePhoneFlag);
+
 			},
 			error: function() {
 				console.log('fail');
 			}
 		});
+	setTimeout(codeFlag, 3000);
+}
+
+function codeFlag(){
+	if (changeFlag == true) {
+		console.log("code id right");
+	} else{
+		var ul = document.getElementById("codeIsWrong");
+		if (ul.style.display == "none") {
+			ul.style.display = "block";
+		} else {
+			ul.style.display = "block";
+		}
+		
+		setTimeout("codeFlagRemove()", 3000);
+	}
+}
+function codeFlagRemove(){
+	var ul = document.getElementById("codeIsWrong");
+		if (ul.style.display == "block") {
+			ul.style.display = "none";
+		} else {
+			ul.style.display = "none";
+		}
+}
+
+//判定信息修改的结果
+function theInfoResult(result) {
+	//获取后台的判定结果
+	if (result) {
+		var ul = document.getElementById("toastsuccess");
+		if (ul.style.display == "none") {
+			ul.style.display = "block";
+		} else {
+			ul.style.display = "block";
+		}
+		
+		//1秒后弹出提示框，3秒后回到抽奖主界面
+		setTimeout("func()", 1000);
+		setTimeout("showChild_008_return()", 3000);
+
+	} else {
+		var ul = document.getElementById("toastfalse");
+		if (ul.style.display == "none") {
+			ul.style.display = "block";
+		} else {
+			ul.style.display = "block";
+		}
+		$("#form-info-7-6-1").val("验证码错误，请重新填写。");
+		setTimeout("toWriteAgain()", 2000);
+	}
+}
+
+//跳转回到抽奖主界面
+function showChild_008_return() {
+	window.location.reload();
 }
 
 //我的奖品
@@ -488,7 +610,36 @@ function showMyAward(){
 				_AwardId[i] = data.myAwardsBean[i].awardId;
 				_AwardMemberId[i] = data.myAwardsBean[i].lotteryAwardMemberId;
 				_Number = i;
-				var awardImg = app.rel_html_imgpath(__uri('../images/scroll_1.png'));
+				if (_AwardId[i] == "107") {
+					var awardImg = app.rel_html_imgpath(__uri('../images/107.png'));
+				}
+				if (_AwardId[i] == "108") {
+					var awardImg = app.rel_html_imgpath(__uri('../images/108.png'));
+				}
+				if (_AwardId[i] == "109") {
+					var awardImg = app.rel_html_imgpath(__uri('../images/109.png'));
+				}
+				if (_AwardId[i] == "110") {
+					var awardImg = app.rel_html_imgpath(__uri('../images/110.png'));
+				}
+				if (_AwardId[i] == "111") {
+					var awardImg = app.rel_html_imgpath(__uri('../images/111.png'));
+				}
+				if (_AwardId[i] == "112") {
+					var awardImg = app.rel_html_imgpath(__uri('../images/112.png'));
+				}
+				if (_AwardId[i] == "113") {
+					var awardImg = app.rel_html_imgpath(__uri('../images/113.png'));
+				}
+				if (_AwardId[i] == "114") {
+					var awardImg = app.rel_html_imgpath(__uri('../images/114.png'));
+				}
+				if (_AwardId[i] == "115") {
+					var awardImg = app.rel_html_imgpath(__uri('../images/115.png'));
+				}
+				if (_AwardId[i] == "116") {
+					var awardImg = app.rel_html_imgpath(__uri('../images/116.png'));
+				}
 
 				if (_AwardExchangeFlag[i] == 0) {
 					var imgurl = app.rel_html_imgpath(__uri('../images/rightnow.png'));
@@ -496,11 +647,9 @@ function showMyAward(){
 					var imgurl = app.rel_html_imgpath(__uri('../images/successnow.png'));
 				}
 				
-				// var awardButton = '<button  style="width: 65%; height: 100%; float: left;' + 'background-image: url(' + imgurl + ');background-size:100%;"></button>';
-				// // awardButton.appendChild(buttonImg);
-				// spanDiv2.innerHTML=awardButton;
+				//TypeID=2实体奖，4为虚拟奖
 				if (_AwardTypeId[i] == "2") {
-				var _div = '<div title="images" class="wrap"  style="float:left;border:0px solid; width: 45%; height: 65%; padding-right: 5%; margin-top: 0.5%; overflow: hidden; text-overflow: ellipsis;  opacity: 1; float: left; "><div title ="AwardImage" class ="AwardImageUrl" style="background-repeat: no-repeat;background-size: 100%;border:0px solid blue; width: 95%; height: 80%; padding-left: 0%; padding-top: 0%;  margin-top: 0.5%; margin-left: 0.5%; background-color: white; overflow: hidden;  text-overflow: ellipsis; border: 1px solid black; opacity: 0.5; background-image: url('+awardImg+');background-size:100%;"></div><div title="Detail" tabindex="-1" style="position:relative;border:1px solid; width: 95%; height: 17%;  margin-left: 0.5%; text-align: center; border: 1px solid black; opacity: 1;"><span class="awardName">'+_AwardName[i]+'</span><button onclick="vipActive()" style="background-color: rgba(0, 0, 0, 0);position:absolute;width:28%;height:70%;top:15%;right:2%;float:right;background-image:url('+imgurl+');background-repeat: no-repeat;background-size: 100%;"></button></div></div>'					
+				var _div = '<div title="images" class="wrap"  style="float:left;border:0px solid; width: 45%; height: 65%; padding-right: 5%; margin-top: 0.5%; overflow: hidden; text-overflow: ellipsis;  opacity: 1; float: left; "><div title ="AwardImage" class ="AwardImageUrl" style="background-repeat: no-repeat;background-size: 100%;border:0px solid blue; width: 95%; height: 80%; padding-left: 0%; padding-top: 0%;  margin-top: 0.5%; margin-left: 0.5%; background-color: white; overflow: hidden;  text-overflow: ellipsis; border: 1px solid black; opacity: 0.5; background-image: url('+awardImg+');background-size:100%;"></div><div title="Detail" tabindex="-1" style="position:relative;border:1px solid; width: 95%; height: 17%;  margin-left: 0.5%; text-align: center; border: 1px solid black; opacity: 1;"><span class="awardName">'+_AwardName[i]+'</span><button onclick="getMyAward('+_AwardMemberId[i]+')" style="background-color: rgba(0, 0, 0, 0);position:absolute;width:28%;height:70%;top:15%;right:2%;float:right;background-image:url('+imgurl+');background-repeat: no-repeat;background-size: 100%;"></button></div></div>'					
 				}
 				else if (_AwardTypeId[i] == "4") {
 				var _div = '<div title="images" class="wrap"  style="float:left;border:0px solid; width: 45%; height: 65%; padding-right: 5%; margin-top: 0.5%; overflow: hidden; text-overflow: ellipsis;  opacity: 1; float: left; "><div title ="AwardImage" class ="AwardImageUrl" style="background-repeat: no-repeat;background-size: 100%;border:0px solid blue; width: 95%; height: 80%; padding-left: 0%; padding-top: 0%;  margin-top: 0.5%; margin-left: 0.5%; background-color: white; overflow: hidden;  text-overflow: ellipsis; border: 1px solid black; opacity: 0.5; background-image: url('+awardImg+');background-size:100%;"></div><div title="Detail" tabindex="-1" style="position:relative;border:1px solid; width: 95%; height: 17%;  margin-left: 0.5%; text-align: center; border: 1px solid black; opacity: 1;"><span class="awardName">'+_AwardName[i]+'</span><button onclick="vipActiveTwo('+_AwardMemberId[i]+','+_AwardId[i]+')" style="background-color: rgba(0, 0, 0, 0);position:absolute;width:28%;height:70%;top:15%;right:2%;float:right;background-image:url('+imgurl+');background-repeat: no-repeat;background-size: 100%;"></button></div></div>'					
@@ -513,6 +662,17 @@ function showMyAward(){
 		}
 	});
 }
+
+//点击我的奖品领取实体奖
+function getMyAward(memberId){
+	console.log("点击我的奖品领取实体奖");
+	document.getElementById("hideTxt").value = memberId;
+	document.getElementById("myAwardInfo").style.display = "none";
+	document.getElementById("formInfo").style.display = "block";
+	document.getElementById("formInfoPINButton").onclick = function(){sendMessage();};
+	document.getElementById("formInfoButton").onclick = function(){changePhone();};
+}
+
 
 //更多详情
 function showMoreInfo(){
@@ -555,6 +715,18 @@ function dialogShow1(txt){
 function dialogHide(txt){
 	document.getElementById(txt).style.display = "none";
 	$("#indexhtml :button").removeAttr("disabled");
+}
+//得到焦点触发事件--文本框效果图
+function OnfocusFun(element, elementvalue) {
+	if (element.value == elementvalue) {
+		element.value = "";
+	}
+}
+//离开输入框触发事件
+function OnBlurFun(element, elementvalue) {
+	if (element.value == "" || element.value.replace(/\s/g, "") == "") {
+		element.value = elementvalue;
+	}
 }
 
 

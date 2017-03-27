@@ -902,7 +902,7 @@ ul li:nth-child(9){
 	top: 4.5370%;
 	width: 22.9167%;
 	height: 6.2963%;
-	margin: 0 atuo;
+	margin: 0 auto;
 	font-size: 36px;
 	border: 0;
 	background-color: rgba(0, 0, 0, 0);
@@ -1262,4 +1262,7 @@ ul li:nth-child(9){
 	font-size: 16px;
 	color: red;
 	z-index: 9999;
+}
+#hideTxt{
+	display: none;
 }
