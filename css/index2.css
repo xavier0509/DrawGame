@@ -268,11 +268,29 @@ input{
 	width: 83.125%;
 	height: 28.7963%;
 	padding-left: 1%;
-	overflow: auto;
-	margin: 0 auto;
+	overflow: hidden;
 	background-color: rgba(0, 0, 0, 0);
-	border: 1px solid red;
 }
+.box2 ul{
+	position:absolute;
+	left:0px;
+	top:0px;
+	width:100%;
+	height: 100%;
+	background-color: red;
+	/*animation:mov1 10s linear infinite;*/
+}
+ul li{
+	list-style:none;
+	float:right;
+	margin-right: 0.5%;
+}
+@keyframes mov1{
+	to{
+		left:-600px;
+	}
+}
+
 #myAwardInfo_0{
 	position: fixed;
 	left: 3.2292%;
