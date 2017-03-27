@@ -72,6 +72,7 @@ var app = {
     				for (var i=0; i<indexClassObj.length;i++) {
 			    		indexClassObj[i].style.display = "none";
 			    	}
+    				$("#indexhtml :button").removeAttr("disabled");
     			} else{
     				//退出
     				console.log("exit");
@@ -85,6 +86,7 @@ var app = {
 			  		document.getElementById("myAwardInfo").style.display = "none";
 			  		document.getElementById("detailInfo").style.display = "none";
 			  		document.getElementById("indexhtml").style.display = "block";
+			  		$("#indexhtml :button").removeAttr("disabled");
     			} else{
     				//隐藏子弹框，保留我的奖品页	
     				for (var i=0; i<myAwardClassObj.length;i++) {
