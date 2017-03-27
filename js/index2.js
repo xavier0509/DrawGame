@@ -536,26 +536,6 @@ function generateQRCode2(url) {
     });
     console.log("end img--------------");
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //页面特效功能
 function focuseffection() {
 	//开通会员
@@ -704,7 +684,7 @@ function exceptbutton(buttonidOne,buttonidTwo){
 	console.log("exceptbutton");
 	var thisIdOne = "#" + buttonidOne;
 	$(thisIdOne).removeAttr("disabled");
-	document.getElementById("buttonidOne").focus();
+	document.getElementById(buttonidOne).focus();
 	console.log("buttonidTwo:"+buttonidTwo+"||");
 	if(buttonidTwo!= ""){
 		var thisIdTwo = "#" + buttonidTwo;
