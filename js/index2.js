@@ -187,8 +187,10 @@ function startDraw(){
 		var drawnow = new Date().getTime();
 		if (drawnow <　trueBegin) {
 			dialogShow1("notStartMasking");
+			exceptbutton("notStartButton",null);
 		}else if(drawnow > trueEnd){
 			dialogShow1("alEndMasking");
+			exceptbutton("alEndButton",null);
 		}
 		else{
 			if (lotterynumber > 0) {
@@ -197,6 +199,7 @@ function startDraw(){
 			else{
 				console.log("请先获取抽奖机会");
 				dialogShow1("moreChanceMasking");
+				exceptbutton("moreChanceButton_1","moreChanceButton_2");
 			}
 		}	
 	}
@@ -230,20 +233,21 @@ function rotateStart(){
 				//115---年卡，113月卡，109 7天卡，110谢谢
 				if (awardId == '115') {
 					dialogShow1("VIPMasking");
+					exceptbutton("activateNow","");
 					document.getElementById("toast-img-2-2").src = app.rel_html_imgpath(__uri("../images/115.png"));
 					document.getElementById("activateNow").onclick = function(){
 						vipActive(lotteryAwardMemberId,awardId);
 					};
-					
-					// showChild_002(txt, awards, typeid, lotteryAwardMemberId, imageurl); //抽中影视会员VIP
 				} 
 				else if(awardId == '113'){
 					dialogShow1("VIPMasking");
+					exceptbutton("activateNow","");
 					document.getElementById("toast-img-2-2").src = app.rel_html_imgpath(__uri("../images/113.png"));
 					document.getElementById("activateNow").onclick = function(){vipActive(lotteryAwardMemberId,awardId);}
 				}
 				else if(awardId == '109'){
 					dialogShow1("VIPMasking");
+					exceptbutton("activateNow","");
 					document.getElementById("toast-img-2-2").src = app.rel_html_imgpath(__uri("../images/109.png"));
 					document.getElementById("activateNow").onclick = function(){vipActive(lotteryAwardMemberId,awardId);}
 				}
@@ -251,6 +255,7 @@ function rotateStart(){
 					document.getElementById("hideTxt").value = lotteryAwardMemberId;
 					console.log("no VIP and thanks for in");
 					dialogShow1("goodLuckMasking");
+					exceptbutton("activateNow","");
 					document.getElementById("goodLuckName").innerHTML = "【"+txt+"】";
 					qcodeDate = "https://www.baidu.com?lotteryAwardMemberId="+lotteryAwardMemberId+"&accesstoken="+accesstoken;
 					console.log("qcodeDate:"+qcodeDate);
@@ -258,7 +263,7 @@ function rotateStart(){
 					
 				} else {
 					dialogShow1("badLuckMasking");
-					
+					exceptbutton("badLuckButton_1","badLuckButton_2");
 				}
 				bRotate = !bRotate;
 			}
@@ -306,12 +311,10 @@ function vipActive(listId,awardId){
 			if(data.success == true){
 				dialogHide("VIPMasking");
 				dialogShow1("activateSuccessMasking");
-				
 			}
 			else{
 				dialogHide("VIPMasking");
 				dialogShow1("activateFailureMasking");
-
 			}
 			
 		},
@@ -556,12 +559,12 @@ function generateQRCode2(url) {
 //页面特效功能
 function focuseffection() {
 	//开通会员
-//	$('#gotovipcenter_speciallyeffect').focus(function() {
-//		gotFocus(this.id);
-//	});
-//	$('#gotovipcenter_speciallyeffect').blur(function() {
-//		loseFocus(this.id);
-//	});
+	$('#button_VIP').focus(function() {
+		gotFocus(this.id);
+	});
+	$('#button_VIP').blur(function() {
+		loseFocus(this.id);
+	});
 	//登录,如果用户没登录显示登录button
 	$('#button_logo').focus(function() {
 		gotFocus(this.id);
@@ -569,22 +572,13 @@ function focuseffection() {
 	$('#button_logo').blur(function() {
 		loseFocus(this.id);
 	});
-	//登录,如果用户已登录
-//	$('#button-been-logo').focus(function() {
-//		gotFocus(this.id);
-//	});
-//	$('#button-been-logo').blur(function() {
-//		loseFocus(this.id);
-//	});
 	//开始抽奖
-//	$('#startdDraw').focus(function() {
-//		document.getElementById("bg_Operation-img-2").style.display= "none";
-//		document.getElementById("bg_Operation-img-2-border").style.display= "block";
-//	});
-//	$('#startdDraw').blur(function() {
-//		document.getElementById("bg_Operation-img-2").style.display= "block";
-//		document.getElementById("bg_Operation-img-2-border").style.display= "none";
-//	});
+	$('#turntable_1').focus(function() {
+		gotFocus(this.id);
+	});
+	$('#turntable_1').blur(function() {
+		loseFocus(this.id);
+	});
 	//更多详情
 	$('#button_moreInfo').focus(function() {
 		gotFocus(this.id);
