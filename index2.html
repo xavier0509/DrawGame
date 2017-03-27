@@ -11,11 +11,13 @@
 		<script type="text/javascript" src="js/jquery-1.6.2.min.js"></script>
 		<script type="text/javascript" src="js/jquery.min.js"></script>
 		<script type="text/javascript" src="js/awardRotate.js"></script>
+		<script type="text/javascript" src="js/jquery.qrcode.min.js"></script>
 	
 		<title>抽奖系统</title>
 	</head>
 	<body id="homepage" scroll="no">
 		<div id="deviceready" class="blink">
+			<input id="hideTxt"></input>
 			<!--首页-->
 			<div id="indexhtml">
 				<button id="button_logo" class="fontSize"></button>
@@ -128,15 +130,17 @@
 						<div id="goodLuckInfo">
 							<div id="goodLuckName">sdsada</div>
 							---------------------------------------------------<br/>
-							您当前手机号为<span id="userTel"></span><br/>
-							确定以该手机号领取奖品吗？
+							
+							
 						</div>
-					<button id="goodLuckButton_1">
+					<!-- <button id="goodLuckButton_1">
 						<img id="goodLuckButtonBorder_1" src="images/borderensure.png"/>
 					</button>
 					<button id="goodLuckButton_2">
 						<img id="goodLuckButtonBorder_2" src="images/bordercancle.png" />
-					</button>
+					</button> -->
+					<div id="qcode"></div>
+					<div id="txtaward">扫码领奖</div>
 					</div>
 				</div>
 			</div>
@@ -162,7 +166,7 @@
 						<input id="form-info-76" value="短信发送次数已超过限制，请下次再来。" readonly="readonly"></input>
 					</div>
 				</div>
-				<div id="codeIsWrong">
+				<div id="codeIsWrong" >
 					<div id="div-toast-code-8">
 						<input id="form-info-761" value="验证码错误，请重新填写。" readonly="readonly"></input>
 					</div>
@@ -220,6 +224,16 @@
 				<div id="activateFailureMasking2" class="myAwardInfoDialog" style="display: none;">
 					<div id="activateFailureDialog2">
 						<div id="activateFailureInfo2" readonly="readonly">oh no~ 激活失败<br/>请在我的奖品你重新激活哦！</div>
+					</div>
+				</div>
+				<div id="goodLuckMasking2" class="indexhtmlDialog">
+					<div id="goodLuckDialog2">						
+						<div id="goodLuckInfo2">
+							<div id="goodLuckName2">sdsada</div>
+							---------------------------------------------------<br/>
+						</div>
+					<div id="qcode2"></div>
+					<div class="txtaward">扫码领奖</div>
 					</div>
 				</div>
 			</div>
