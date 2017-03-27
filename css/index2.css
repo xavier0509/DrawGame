@@ -82,11 +82,31 @@ input{
 	top: 2.9630%;
 	width: 9.4271%;
 	height: 10.6482%;
-	margin: 0 auto;
 	background-color: rgba(0, 0, 0, 0);
 	background-image: url(../images/buttonlogo1.png);
 	background-repeat: no-repeat;
 	background-size: 100%;
+}
+#userInfo{
+	position: absolute;
+	left: 72.7604%;
+	top: 2.9630%;
+	width: 11.9792%;
+	height: 10.6482%;
+}
+#userImage{
+	position: absolute;
+	top: 12.5%;
+	height: 75%;
+}
+#userName{
+	display: block;
+	float: right;
+	font-size: 20px;
+	width: 60%;
+	white-space: nowrap;
+	overflow:hidden; 
+	text-overflow:ellipsis;
 }
 #button_VIP{
 	position: fixed;
@@ -94,7 +114,6 @@ input{
 	top: 2.9630%;
 	width: 11.9792%;
 	height: 10.6482%;
-	margin: 0 auto;
 	background-color: rgba(0, 0, 0, 0);
 	background-image: url(../images/buttonopenVIPicon.png);
 	background-repeat: no-repeat;
@@ -106,7 +125,6 @@ input{
 	top: 56.5741%;
 	width: 10.6771%;
 	height: 9.6296%;
-	margin: 0 auto;
 	background-color: rgba(0, 0, 0, 0);
 	background-image: url(../images/buttonmoreinfoicon.png);
 	background-repeat: no-repeat;
@@ -135,7 +153,6 @@ input{
 	line-height:100%;
 	zoom:0.66;
 	background-color: rgba(0, 0, 0, 0);
-	/*border: 1px solid red;*/
 }
 #activityInfo_two{
 	position: absolute;
@@ -148,7 +165,6 @@ input{
 	background-color: rgba(0, 0, 0, 0);
 	overflow: hidden;
 	zoom:0.66;
-	/*border: 1px solid red;*/
 }
 #activityAward{
 	position: absolute;
@@ -197,9 +213,6 @@ input{
 	width: 33.125%;
 	height: 58.8889%;
 	margin: 0 auto;
-	/*background-image: url(../images/turntable.png);
-	background-repeat: no-repeat;
-	background-size: 100%;*/
 }
 #rotate{
 	position: absolute;
