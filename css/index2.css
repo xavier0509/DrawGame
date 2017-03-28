@@ -1385,3 +1385,20 @@ ul li:nth-child(9){
 	left: 43%;
 	font-size: 18px;
 }
+
+::-webkit-scrollbar {
+	width: 8px;
+	height: 8px;
+}
+::-webkit-scrollbar-button {
+	display: none;
+}
+::-webkit-scrollbar-track {
+	/*background: url("../imagesne.jpg") center;*/
+}
+::-webkit-scrollbar-thumb {
+	padding-left: 2px;
+	border-radius: 6px;
+	border: solid 2px #A6A6A6;
+	background-color: rgba(255, 255, 255, 1);
+}
