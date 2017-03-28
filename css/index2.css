@@ -338,6 +338,7 @@ input{
 	height: 28.7963%;
 	padding-left: 1%;
 	overflow: hidden;
+	border: 1px solid red;
 	background-color: rgba(0, 0, 0, 0);
 }
 .box2 ul{
@@ -659,22 +660,6 @@ ul li:nth-child(9){
 	display: none;
 	background-color: rgba(0, 0, 0, 0);
 }
-/*#VIPGetInfo_2{
-	margin-top: 1%;
-	font-size: 24px;
-	left: 33.8542%;
-	width: 100%;
-	height: 40%;
-	text-align: center;
-	background-color: rgba(0, 0, 0, 0);
-}
-#startVIPCenter{
-	border: 0;
-	font-size: 24px;
-	color: #ffff00;
-	background-color: rgba(0, 0, 0, 0);
-}*/
-
 
 #moreChanceMasking{
 	position: absolute;
@@ -1385,6 +1370,47 @@ ul li:nth-child(9){
 	left: 43%;
 	font-size: 18px;
 }
+
+.box {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 180%;
+	}
+.box1,.box2 {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+.box2 {
+	/*left: 10%;*/
+}
+.box1 img{
+	position: relative;
+	display: block;
+	width: 12.5%;
+	height: 100%;
+	background-repeat: no-repeat;
+	background-size: 100%;
+	float: left;
+	border: 1px solid red;
+}
+.box2 img{
+	position: relative;
+	display: block;
+	width: 12.5%;
+	height: 100%;
+	background-repeat: no-repeat;
+	background-size: 100%;
+	float: left;
+	border: 1px solid red;
+}
+
+
+
+
+
 
 ::-webkit-scrollbar {
 	width: 8px;

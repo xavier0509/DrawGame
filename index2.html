@@ -157,59 +157,13 @@
 					</div>
 				</div>
 			</div>
-			<!--弹出表单页-->
-			<!-- <div id="formInfo" class="webpage">
-				<div id="formInfoTitle" readonly="readonly" disabled="disabled" tabindex="-1">领取奖品</div>
-				<div id="formInfoTips" readonly="readonly" disabled="disabled" tabindex="-1">
-					请填写手机号和验证码
-				</div>
-				<input id="formInfoTel" type="text" value="  请准确填写手机号" id="form-info-7-3" onfocus="OnfocusFun(this,'  请准确填写手机号')" onblur="OnBlurFun(this,'  请准确填写手机号')" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" maxlength="11"
-						size="14" name="form-info-7-3" type="text" />
-				<form id="formInfoPIN">
-					<input id="formInfoPINText" type="text" value="  验证码" class="c_code_msg" onfocus="OnfocusFun(this,'  验证码')" onblur="OnBlurFun(this,'  验证码')" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" maxlength="6"
-						size="14" name="form-info-7-4" type="text"></input>
-					<input id="formInfoPINButton" type="button" class="captcha" name="获取验证码" value="获取验证码"></input>
-				</form>
-				<button id="formInfoButton">
-					<img id="formInfoButtonBorder" src="images/borderphoneinfoensure.png">
-				</button>
-	
-				<div id="numberBigFive">
-					<div id="div-toast-number-8">
-						<input id="form-info-76" value="短信发送次数已超过限制，请下次再来。" readonly="readonly"></input>
-					</div>
-				</div>
-				<div id="codeIsWrong" >
-					<div id="div-toast-code-8">
-						<input id="form-info-761" value="验证码错误，请重新填写。" readonly="readonly"></input>
-					</div>
-				</div>
-	
-				<div id="toastsuccess">
-					<div id="div-toast-text-8">
-						<div id="form-icon-0">
-							<img id="toast-text-7-2" src="images/toastformright.png">
-						</div>
-						<input id="form-info-7-6" value="填写成功，我们会尽快与您联系。" readonly="readonly"></input>
-					</div>
-				</div>
-	
-				<div id="toastfalse">
-					<div id="div-toast-text-8-1">
-						<div id="form-icon-1">
-							<img id="toast-text-7-2-1" src="images/toastformwrong.png">
-						</div>
-						<input id="form-info-7-6-1" value="填写失败，请重新填写。" readonly="readonly"></input>
-					</div>
-				</div>
-			</div> -->
 			<!--详情页-->
 			<div id="detailInfo" class="webpage" style="display: none;">
 				<input id="detailInfo_0" disabled="disabled" value="活动规则"></input>
 				<span id="detailInfo_1" ></span>
 				<input id="detailInfo_2" disabled="disabled" value="活动奖品"></input>
-				<div id="detailInfo_3" class="box2">
-					<ul>
+				<div id="detailInfo_3" class="row">
+					<!--<ul>
 						<li></li>
 						<li></li>
 						<li></li>
@@ -219,7 +173,29 @@
 						<li></li>
 						<li></li>
 						<li></li>
-					</ul>
+					</ul>-->
+					<div class="box" id="box">
+						<div class="box1" id="box1">
+							<img src="images/107.png">
+							<img src="images/109.png">
+							<img src="images/111.png">
+							<img src="images/112.png">
+							<img src="images/114.png">
+							<img src="images/115.png">
+							<img src="images/116.png">
+							<img src="images/iphone7.png">
+						</div>
+						<div class="box2" id="box2">
+							<img src="images/107.png">
+							<img src="images/109.png">
+							<img src="images/111.png">
+							<img src="images/112.png">
+							<img src="images/114.png">
+							<img src="images/115.png">
+							<img src="images/116.png">
+							<img src="images/iphone7.png">
+						</div>
+					</div>
 				</div>
 			</div>
 			<!--我的奖品-->
@@ -276,5 +252,26 @@
 		<script type="text/javascript" src="js/framework2.js"></script>
 		<script type="text/javascript" src="donothashme.js"></script>
 	</body>
-
+	<script type="text/javascript">
+		window.onload = function() {
+			var _box1 = document.getElementById("box1");
+			var _box2 = document.getElementById("box2");
+			var x = 0;
+			var cWidth = window.screen.width;
+			var myWidth = cWidth*0.83125*1.8*1.475;
+			console.log("cWidth:"+cWidth+"myWidth"+myWidth);
+			var fun = function() {
+				_box1.style.left = x + 'px';
+				_box2.style.left = (x + myWidth) + 'px';
+				x = x-1;
+				if((x + myWidth) == 0||(x + myWidth)<0) {
+					console.log(x);
+					x = 0;
+					_box1.style.left = x + 'px';
+					_box2.style.left = (x + myWidth) + 'px';
+				}
+			}
+			setInterval(fun, 1);
+		}
+	</script>
 </html>
