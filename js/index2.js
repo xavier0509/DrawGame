@@ -415,10 +415,10 @@ function showMyAward(){
 				
 				//TypeID=2实体奖，4为虚拟奖
 				if (_AwardTypeId[i] == "2") {
-				var _div = '<div title="images" class="wrap"  style="float:left;border:0px solid; width: 45%; height: 65%; padding-right: 5%; margin-top: 0.5%; overflow: hidden; text-overflow: ellipsis;  opacity: 1; float: left; "><div title ="AwardImage" class ="AwardImageUrl" style="background-repeat: no-repeat;background-size: 100%;border:0px solid blue; width: 95%; height: 80%; padding-left: 0%; padding-top: 0%;  margin-top: 0.5%; margin-left: 0.5%; background-color: white; overflow: hidden;  text-overflow: ellipsis; border: 1px solid black; opacity: 0.5; background-image: url('+awardImg+');background-size:100%;"></div><div title="Detail" tabindex="-1" style="position:relative;border:1px solid; width: 95%; height: 17%;  margin-left: 0.5%; text-align: center; border: 1px solid black; opacity: 1;"><span class="awardName">'+_AwardName[i]+'</span><button awardname='+_AwardName[i]+' lottery='+_AwardMemberId[i]+' onclick="getMyAward(this)" style="background-color: rgba(0, 0, 0, 0);position:absolute;width:28%;height:70%;top:15%;right:2%;float:right;background-image:url('+imgurl+');background-repeat: no-repeat;background-size: 100%;"></button></div></div>'					
+				var _div = '<div title="images" class="wrap"  style="float:left;border:0px solid; width: 45%; height: 65%; padding-right: 5%; margin-top: 0.5%; overflow: hidden; text-overflow: ellipsis;  opacity: 1; float: left; "><div title ="AwardImage" class ="AwardImageUrl" style="background-repeat: no-repeat;background-size: 100%;border:0px solid blue; width: 95%; height: 80%; padding-left: 0%; padding-top: 0%;  margin-top: 0.5%; margin-left: 0.5%; background-color: white; overflow: hidden;  text-overflow: ellipsis; border: 1px solid black; opacity: 0.5; background-image: url('+awardImg+');background-size:100%;"></div><div title="Detail" tabindex="-1" style="position:relative;border:1px solid; width: 95%; height: 17%;  margin-left: 0.5%; text-align: center; border: 1px solid black; opacity: 1;"><span class="awardName">'+_AwardName[i]+'</span><button awardname='+_AwardName[i]+' lottery='+_AwardMemberId[i]+' onclick="getMyAward(this)" onfocus="gotFocusClass(this);" onblur="loseFocusClass(this);" style="background-color: rgba(0, 0, 0, 0);position:absolute;width:28%;height:70%;top:15%;right:2%;float:right;background-image:url('+imgurl+');background-repeat: no-repeat;background-size: 100%;"><img class="getRightNowBorder" src="images/myAwardUse.png" /></button></div></div>'					
 				}
 				else if (_AwardTypeId[i] == "4") {
-				var _div = '<div title="images" class="wrap"  style="float:left;border:0px solid; width: 45%; height: 65%; padding-right: 5%; margin-top: 0.5%; overflow: hidden; text-overflow: ellipsis;  opacity: 1; float: left; "><div title ="AwardImage" class ="AwardImageUrl" style="background-repeat: no-repeat;background-size: 100%;border:0px solid blue; width: 95%; height: 80%; padding-left: 0%; padding-top: 0%;  margin-top: 0.5%; margin-left: 0.5%; background-color: white; overflow: hidden;  text-overflow: ellipsis; border: 1px solid black; opacity: 0.5; background-image: url('+awardImg+');background-size:100%;"></div><div title="Detail" tabindex="-1" style="position:relative;border:1px solid; width: 95%; height: 17%;  margin-left: 0.5%; text-align: center; border: 1px solid black; opacity: 1;"><span class="awardName">'+_AwardName[i]+'</span><button onclick="vipActiveTwo('+_AwardMemberId[i]+','+_AwardId[i]+')" style="background-color: rgba(0, 0, 0, 0);position:absolute;width:28%;height:70%;top:15%;right:2%;float:right;background-image:url('+imgurl+');background-repeat: no-repeat;background-size: 100%;"></button></div></div>'					
+				var _div = '<div title="images" class="wrap"  style="float:left;border:0px solid; width: 45%; height: 65%; padding-right: 5%; margin-top: 0.5%; overflow: hidden; text-overflow: ellipsis;  opacity: 1; float: left; "><div title ="AwardImage" class ="AwardImageUrl" style="background-repeat: no-repeat;background-size: 100%;border:0px solid blue; width: 95%; height: 80%; padding-left: 0%; padding-top: 0%;  margin-top: 0.5%; margin-left: 0.5%; background-color: white; overflow: hidden;  text-overflow: ellipsis; border: 1px solid black; opacity: 0.5; background-image: url('+awardImg+');background-size:100%;"></div><div title="Detail" tabindex="-1" style="position:relative;border:1px solid; width: 95%; height: 17%;  margin-left: 0.5%; text-align: center; border: 1px solid black; opacity: 1;"><span class="awardName">'+_AwardName[i]+'</span><button onclick="vipActiveTwo('+_AwardMemberId[i]+','+_AwardId[i]+')" onfocus="gotFocusClass(this);" onblur="loseFocusClass(this);" style="background-color: rgba(0, 0, 0, 0);position:absolute;width:28%;height:70%;top:15%;right:2%;float:right;background-image:url('+imgurl+');background-repeat: no-repeat;background-size: 100%;"><img class="getRightNowBorder" src="images/myAwardUse.png" /></button></div></div>'					
 				}
 				$("#myAwardInfo_1").append(_div);
 			}
@@ -644,21 +644,6 @@ function focuseffection() {
 	$('#activateNow').blur(function() {
 		loseFocus(this.id);
 	});
-
-	//短信验证页确定
-	$('#formInfoButton').focus(function() {
-		gotFocus(this.id);
-	});
-	$('#formInfoButton').blur(function() {
-		loseFocus(this.id);
-	});
-	//短信验证页验证码
-	$('#form-info-7-5').focus(function() {
-		$('#form-info-7-5').css("background-color", "red");
-	});
-	$('#form-info-7-5').blur(function() {
-		$('#form-info-7-5').css("background-color", "blue");
-	});
 }
 
 function gotFocus(id) {
@@ -672,6 +657,20 @@ function loseFocus(id) {
 	var thisid;
 	thisid = document.getElementById(id).children[0].id;
 	document.getElementById(thisid).style.display = "none";
+}
+
+function getFocusClass(obj){
+	console.log(obj);
+	console.log(obj.childNodes);
+	console.log(obj.childNodes[0]);
+	console.log(obj.childNodes[0].style.display);
+}
+
+function loseFocusClass(obj){
+	console.log(obj);
+	console.log(obj.childNodes);
+	console.log(obj.childNodes[0]);
+	console.log(obj.childNodes[0].style.display);
 }
 
 function indexhtmlButtonT(){
