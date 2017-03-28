@@ -10,9 +10,10 @@ var msgCode = null;//短信验证码
 var changeFlag = false;
 
 $(function() {
-	buttonInit();//index页面两个按钮事件
+	// buttonInit();//index页面两个按钮事件
 	focuseffection();
 	dialogShow();
+	// startmarquee(25,60,1,1); //滚动获奖名单
 	// generateQRCode("http://www.baidu.com",qcode);
 });
 //index页面按钮点击切换效果
@@ -26,9 +27,7 @@ function buttonInit(){
 		horizontalScrolling();
 	}
 	document.getElementById("button_myAward").onclick = function(){
-		console.log("button_myAward");
-		dialogShow1("myAwardInfo");
-		document.getElementById("indexhtml").style.display = "none";
+		
 		showMyAward();
 	}
 	document.getElementById("notStartButton").onclick = function(){
@@ -56,6 +55,7 @@ function buttonInit(){
 
 //获奖名单滚动效果
 function startmarquee(lh,speed,delay,index){ 
+	console.log("开始滚动！！！！！！！！！！！！！");
 	var t; 
 	var p=false; 
 	var o=document.getElementById("awardList"); 
@@ -67,7 +67,7 @@ function startmarquee(lh,speed,delay,index){
 		t=setInterval(scrolling,speed); 
 		if(!p){ o.scrollTop += 1;} 
 	} 
-	function scrolling(){ 
+	function scrolling(){ 		
 		if(o.scrollTop%lh!=0){ 
 			o.scrollTop += 1; 
 			if(o.scrollTop>=o.scrollHeight/2) o.scrollTop = 0; 
@@ -177,6 +177,7 @@ function startDraw(){
 		else{
 			if (lotterynumber > 0) {
 			rotateStart();
+			document.getElementById("turntable_1").setAttribute("disabled","");
 		}
 			else{
 				console.log("请先获取抽奖机会");
@@ -209,24 +210,25 @@ function rotateStart(){
 			animateTo: angles + 720,
 			duration: 3000,
 			callback: function() {
+				document.getElementById("turntable_1").removeAttribute("disabled");
 				//这里需要传递几个用得到的参数过去：奖品名称 图片url地址
 				console.log("got the winner award" + txt + angles + awards + "---" + typeid + "---" + lotteryAwardMemberId + "--------" );
 				//区分实体奖、虚体奖、谢谢参与
 				//115---年卡，113月卡，109 7天卡，110谢谢
-				if (awardId == '115') {
+				if (awardId == '113') {
 					dialogShow1("VIPMasking");
 					exceptbutton("activateNow","");
-					document.getElementById("toast-img-2-2").src = app.rel_html_imgpath(__uri("../images/115.png"));
+					document.getElementById("toast-img-2-2").src = app.rel_html_imgpath(__uri("../images/113.png"));
 					document.getElementById("activateNow").onclick = function(){
 						vipActive(lotteryAwardMemberId,awardId);
 					};
 				} 
-				else if(awardId == '113'){
-					dialogShow1("VIPMasking");
-					exceptbutton("activateNow","");
-					document.getElementById("toast-img-2-2").src = app.rel_html_imgpath(__uri("../images/113.png"));
-					document.getElementById("activateNow").onclick = function(){vipActive(lotteryAwardMemberId,awardId);}
-				}
+				// else if(awardId == '113'){
+				// 	dialogShow1("VIPMasking");
+				// 	exceptbutton("activateNow","");
+				// 	document.getElementById("toast-img-2-2").src = app.rel_html_imgpath(__uri("../images/113.png"));
+				// 	document.getElementById("activateNow").onclick = function(){vipActive(lotteryAwardMemberId,awardId);}
+				// }
 				else if(awardId == '109'){
 					dialogShow1("VIPMasking");
 					exceptbutton("activateNow","");
@@ -238,7 +240,7 @@ function rotateStart(){
 					console.log("no VIP and thanks for in");
 					dialogShow1("goodLuckMasking");
 					exceptbutton("activateNow","");
-					document.getElementById("goodLuckName").innerHTML = "【"+txt+"】";
+					document.getElementById("goodLuckName").innerHTML = "恭喜您抽中【"+txt+"】";
 					qcodeDate = "https://www.baidu.com?lotteryAwardMemberId="+lotteryAwardMemberId+"&accesstoken="+accesstoken+"&awardId="+awardId;
 					console.log("qcodeDate:"+qcodeDate);
 					generateQRCode(qcodeDate);
@@ -337,87 +339,94 @@ function vipActiveTwo(listId,awardId,awardChangeFlag){
 
 //我的奖品
 function showMyAward(){
-	var myAwardInfo = document.getElementById("myAwardInfo_1");
-	var _MyAwardsBeanlength = null;
-	var _AwardTypeId = new Array();
-	var _AwardName = new Array();
-	var _AwardExchangeFlag = new Array();
-	var _AwardId = new Array();
-	var _AwardMemberId = new Array();
-	$.ajax({
-		type: "get",
-		async: true,
-		url: "https://beta.restful.lottery.coocaatv.com/v1/lottery/indepqy/myAwards/"+activeId+"/"+accesstoken,
-		dataType: "jsonp",
-		jsonp: "callback",
-		//jsonpCallback: "receive",
-		success: function(data) {
-			console.log("查询我的奖品成功");
-			// $("#myAwardInfo_1").remove();
-			document.getElementById("myAwardInfo_1").innerHTML = "";
-			_MyAwardsBeanlength = data.myAwardsBean.length;
-			for (var i = 0; i < _MyAwardsBeanlength; i++) {
-				_AwardExchangeFlag[i] = data.myAwardsBean[i].awardExchangeFlag;
-				console.log("_AwardExchangeFlag=" + _AwardExchangeFlag[i]);
-				_AwardName[i] = data.myAwardsBean[i].awardName;
-				_AwardTypeId[i] = data.myAwardsBean[i].awardTypeId;
-				_AwardId[i] = data.myAwardsBean[i].awardId;
-				_AwardMemberId[i] = data.myAwardsBean[i].lotteryAwardMemberId;
-				_Number = i;
-				if (_AwardId[i] == "107") {
-					var awardImg = app.rel_html_imgpath(__uri('../images/107.png'));
-				}
-				if (_AwardId[i] == "108") {
-					var awardImg = app.rel_html_imgpath(__uri('../images/108.png'));
-				}
-				if (_AwardId[i] == "109") {
-					var awardImg = app.rel_html_imgpath(__uri('../images/109.png'));
-				}
-				if (_AwardId[i] == "110") {
-					var awardImg = app.rel_html_imgpath(__uri('../images/110.png'));
-				}
-				if (_AwardId[i] == "111") {
-					var awardImg = app.rel_html_imgpath(__uri('../images/111.png'));
-				}
-				if (_AwardId[i] == "112") {
-					var awardImg = app.rel_html_imgpath(__uri('../images/112.png'));
-				}
-				if (_AwardId[i] == "113") {
-					var awardImg = app.rel_html_imgpath(__uri('../images/113.png'));
-				}
-				if (_AwardId[i] == "114") {
-					var awardImg = app.rel_html_imgpath(__uri('../images/114.png'));
-				}
-				if (_AwardId[i] == "115") {
-					var awardImg = app.rel_html_imgpath(__uri('../images/115.png'));
-				}
-				if (_AwardId[i] == "116") {
-					var awardImg = app.rel_html_imgpath(__uri('../images/116.png'));
-				}
+	console.log("loginstatus======"+loginstatus);
+	if (loginstatus == "false") {experienceonclick();}
+	else{
+		console.log("button_myAward");
+		dialogShow1("myAwardInfo");
+		document.getElementById("indexhtml").style.display = "none";
+		var myAwardInfo = document.getElementById("myAwardInfo_1");
+		var _MyAwardsBeanlength = null;
+		var _AwardTypeId = new Array();
+		var _AwardName = new Array();
+		var _AwardExchangeFlag = new Array();
+		var _AwardId = new Array();
+		var _AwardMemberId = new Array();
+		$.ajax({
+			type: "get",
+			async: true,
+			url: "https://beta.restful.lottery.coocaatv.com/v1/lottery/indepqy/myAwards/"+activeId+"/"+accesstoken,
+			dataType: "jsonp",
+			jsonp: "callback",
+			//jsonpCallback: "receive",
+			success: function(data) {
+				console.log("查询我的奖品成功");
+				// $("#myAwardInfo_1").remove();
+				document.getElementById("myAwardInfo_1").innerHTML = "";
+				_MyAwardsBeanlength = data.myAwardsBean.length;
+				for (var i = 0; i < _MyAwardsBeanlength; i++) {
+					_AwardExchangeFlag[i] = data.myAwardsBean[i].awardExchangeFlag;
+					console.log("_AwardExchangeFlag=" + _AwardExchangeFlag[i]);
+					_AwardName[i] = data.myAwardsBean[i].awardName;
+					_AwardTypeId[i] = data.myAwardsBean[i].awardTypeId;
+					_AwardId[i] = data.myAwardsBean[i].awardId;
+					_AwardMemberId[i] = data.myAwardsBean[i].lotteryAwardMemberId;
+					_Number = i;
+					if (_AwardId[i] == "107") {
+						var awardImg = app.rel_html_imgpath(__uri('../images/107.png'));
+					}
+					if (_AwardId[i] == "108") {
+						var awardImg = app.rel_html_imgpath(__uri('../images/108.png'));
+					}
+					if (_AwardId[i] == "109") {
+						var awardImg = app.rel_html_imgpath(__uri('../images/109.png'));
+					}
+					if (_AwardId[i] == "110") {
+						var awardImg = app.rel_html_imgpath(__uri('../images/110.png'));
+					}
+					if (_AwardId[i] == "111") {
+						var awardImg = app.rel_html_imgpath(__uri('../images/111.png'));
+					}
+					if (_AwardId[i] == "112") {
+						var awardImg = app.rel_html_imgpath(__uri('../images/112.png'));
+					}
+					if (_AwardId[i] == "113") {
+						var awardImg = app.rel_html_imgpath(__uri('../images/113.png'));
+					}
+					if (_AwardId[i] == "114") {
+						var awardImg = app.rel_html_imgpath(__uri('../images/114.png'));
+					}
+					if (_AwardId[i] == "115") {
+						var awardImg = app.rel_html_imgpath(__uri('../images/115.png'));
+					}
+					if (_AwardId[i] == "116") {
+						var awardImg = app.rel_html_imgpath(__uri('../images/116.png'));
+					}
 
-				if (_AwardExchangeFlag[i] == 0) {
-					var imgurl = app.rel_html_imgpath(__uri('../images/rightnow.png'));
-				}else{
-					var imgurl = app.rel_html_imgpath(__uri('../images/successnow.png'));
+					if (_AwardExchangeFlag[i] == 0) {
+						var imgurl = app.rel_html_imgpath(__uri('../images/rightnow.png'));
+					}else{
+						var imgurl = app.rel_html_imgpath(__uri('../images/successnow.png'));
+					}
+					
+					//TypeID=2实体奖，4为虚拟奖
+					var borderImg = app.rel_html_imgpath(__uri("../images/bordermyAwardUse.png"));
+					console.log(borderImg);
+					if (_AwardTypeId[i] == "2") {
+					var _div = '<div title="images" class="wrap"  style="float:left;border:0px solid; width: 45%; height: 65%; padding-right: 5%; margin-top: 0.5%; overflow: hidden; text-overflow: ellipsis;  opacity: 1; float: left; "><div title ="AwardImage" class ="AwardImageUrl" style="background-repeat: no-repeat;background-size: 100%;border:0px solid blue; width: 95%; height: 80%; padding-left: 0%; padding-top: 0%;  margin-top: 0.5%; margin-left: 0.5%; background-color: white; overflow: hidden;  text-overflow: ellipsis; border: 0px solid black;  background-image: url('+awardImg+');background-size:100%;"></div><div title="Detail" tabindex="-1" style="position:relative; width: 95%; height: 17%;  margin-left: 0.5%; text-align: center;  opacity: 1;"><span class="awardName">'+_AwardName[i]+'</span><button awardId = '+ _AwardId[i] +' AwardExchangeFlag='+_AwardExchangeFlag[i]+' awardname='+_AwardName[i]+' lottery='+_AwardMemberId[i]+' onclick="getMyAward(this)" onfocus="gotFocusClass(this);" onblur="loseFocusClass(this);" style="background-color: rgba(0, 0, 0, 0);position:absolute;width:28%;height:70%;top:15%;right:2%;float:right;background-image:url('+imgurl+');background-repeat: no-repeat;background-size: 100%;"><img class="getRightNowBorder" src="'+borderImg+'"/></button></div></div>';					
+					}
+					else if (_AwardTypeId[i] == "4") {
+					var _div = '<div title="images" class="wrap"  style="float:left;border:0px solid; width: 45%; height: 65%; padding-right: 5%; margin-top: 0.5%; overflow: hidden; text-overflow: ellipsis;  opacity: 1; float: left; "><div title ="AwardImage" class ="AwardImageUrl" style="background-repeat: no-repeat;background-size: 100%;border:0px solid blue; width: 95%; height: 80%; padding-left: 0%; padding-top: 0%;  margin-top: 0.5%; margin-left: 0.5%; background-color: white; overflow: hidden;  text-overflow: ellipsis; border: 0px solid black;  background-image: url('+awardImg+');background-size:100%;"></div><div title="Detail" tabindex="-1" style="position:relative; width: 95%; height: 17%;  margin-left: 0.5%; text-align: center;  opacity: 1;"><span class="awardName">'+_AwardName[i]+'</span><button onclick="vipActiveTwo('+_AwardMemberId[i]+','+_AwardId[i]+','+_AwardExchangeFlag[i]+')" onfocus="gotFocusClass(this);" onblur="loseFocusClass(this);" style="background-color: rgba(0, 0, 0, 0);position:absolute;width:28%;height:70%;top:15%;right:2%;float:right;background-image:url('+imgurl+');background-repeat: no-repeat;background-size: 100%;"><img class="getRightNowBorder" src="'+borderImg+'" /></button></div></div>';					
+					}
+					
+					$("#myAwardInfo_1").append(_div);
 				}
-				
-				//TypeID=2实体奖，4为虚拟奖
-				var borderImg = app.rel_html_imgpath(__uri("../images/bordermyAwardUse.png"));
-				console.log(borderImg);
-				if (_AwardTypeId[i] == "2") {
-				var _div = '<div title="images" class="wrap"  style="float:left;border:0px solid; width: 45%; height: 65%; padding-right: 5%; margin-top: 0.5%; overflow: hidden; text-overflow: ellipsis;  opacity: 1; float: left; "><div title ="AwardImage" class ="AwardImageUrl" style="background-repeat: no-repeat;background-size: 100%;border:0px solid blue; width: 95%; height: 80%; padding-left: 0%; padding-top: 0%;  margin-top: 0.5%; margin-left: 0.5%; background-color: white; overflow: hidden;  text-overflow: ellipsis; border: 1px solid black; opacity: 0.5; background-image: url('+awardImg+');background-size:100%;"></div><div title="Detail" tabindex="-1" style="position:relative;border:1px solid; width: 95%; height: 17%;  margin-left: 0.5%; text-align: center; border: 1px solid black; opacity: 1;"><span class="awardName">'+_AwardName[i]+'</span><button awardId = '+ _AwardId[i] +' AwardExchangeFlag='+_AwardExchangeFlag[i]+' awardname='+_AwardName[i]+' lottery='+_AwardMemberId[i]+' onclick="getMyAward(this)" onfocus="gotFocusClass(this);" onblur="loseFocusClass(this);" style="background-color: rgba(0, 0, 0, 0);position:absolute;width:28%;height:70%;top:15%;right:2%;float:right;background-image:url('+imgurl+');background-repeat: no-repeat;background-size: 100%;"><img class="getRightNowBorder" src="'+borderImg+'"/></button></div></div>';					
-				}
-				else if (_AwardTypeId[i] == "4") {
-				var _div = '<div title="images" class="wrap"  style="float:left;border:0px solid; width: 45%; height: 65%; padding-right: 5%; margin-top: 0.5%; overflow: hidden; text-overflow: ellipsis;  opacity: 1; float: left; "><div title ="AwardImage" class ="AwardImageUrl" style="background-repeat: no-repeat;background-size: 100%;border:0px solid blue; width: 95%; height: 80%; padding-left: 0%; padding-top: 0%;  margin-top: 0.5%; margin-left: 0.5%; background-color: white; overflow: hidden;  text-overflow: ellipsis; border: 1px solid black; opacity: 0.5; background-image: url('+awardImg+');background-size:100%;"></div><div title="Detail" tabindex="-1" style="position:relative;border:1px solid; width: 95%; height: 17%;  margin-left: 0.5%; text-align: center; border: 1px solid black; opacity: 1;"><span class="awardName">'+_AwardName[i]+'</span><button onclick="vipActiveTwo('+_AwardMemberId[i]+','+_AwardId[i]+','+_AwardExchangeFlag[i]+')" onfocus="gotFocusClass(this);" onblur="loseFocusClass(this);" style="background-color: rgba(0, 0, 0, 0);position:absolute;width:28%;height:70%;top:15%;right:2%;float:right;background-image:url('+imgurl+');background-repeat: no-repeat;background-size: 100%;"><img class="getRightNowBorder" src="'+borderImg+'" /></button></div></div>';					
-				}
-				
-				$("#myAwardInfo_1").append(_div);
+			},
+			error: function() {
+				console.log('fail');
 			}
-		},
-		error: function() {
-			console.log('fail');
-		}
-	});
+		});
+	}
 }
 
 //点击我的奖品领取实体奖
@@ -506,6 +515,7 @@ function utf16to8(str) {
 //二维码生成
 function generateQRCode(url) {
     console.log("create img--------------");
+    document.getElementById("qcode").innerHTML="";
     $("#qcode").qrcode({ 
         render: "canvas", // 渲染方式有table方式（IE兼容）和canvas方式
         width: 110, //宽度 
@@ -520,6 +530,7 @@ function generateQRCode(url) {
 }
 function generateQRCode2(url) {
     console.log("create img--------------");
+    document.getElementById("qcode2").innerHTML="";
     $("#qcode2").qrcode({ 
         render: "canvas", // 渲染方式有table方式（IE兼容）和canvas方式
         width: 170, //宽度 
