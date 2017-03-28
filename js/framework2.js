@@ -226,10 +226,12 @@ function experienceonclick() {
                 console.log("mobile "+message.mobile);
                 console.log("nick_name "+message.nick_name);
                 document.getElementById("userInfo").style.display="block";
+                document.getElementById("button_logo").style.display="none";
                 document.getElementById("userName").innerHTML=message.nick_name;
                 coocaaosapi.getUserAccessToken(function(message) {
                     console.log("usertoken " + message.accesstoken);
                     accesstoken = message.accesstoken;
+                    showDrawTimes();
                 }, function(error) {
                     console.log(error);
                 });
@@ -238,6 +240,28 @@ function experienceonclick() {
             });
         });
     }
+}
+
+
+//展示抽奖次数
+function showDrawTimes(){
+    console.log("展示抽奖次数: " );
+    console.log("access_token : " + accesstoken);
+    $.ajax({
+        type: "get",
+        async: true,
+        url: "https://beta.restful.lottery.coocaatv.com/v1/lottery/indepqy/leftNumber/"+activeId+"/" + accesstoken,
+        dataType: "jsonp",
+        jsonp: "callback",
+        success: function(data) {
+            console.log("抽奖次数获取成功：" + data.number);
+            lotterynumber = data.number;
+            $("#drawTimes").text(lotterynumber);
+        },
+        error: function() {
+            console.log("fail...");
+        }
+    });
 }
 
 app.initialize();
