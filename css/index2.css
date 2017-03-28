@@ -104,7 +104,6 @@ input{
 	width: 11.9792%;
 	height: 10.6482%;
 	display: none;
-	/*border: 1px solid red;*/
 }
 #userInfo td:nth-child(1){
 	position: absolute;
@@ -308,7 +307,6 @@ input{
 	margin: 0 auto;
 	font-size: 36px;
 	background-color: rgba(0, 0, 0, 0);
-	border: 1px solid red;
 }
 #detailInfo_1{
 	position: absolute;
@@ -321,7 +319,6 @@ input{
 	overflow: auto;
 	text-overflow: ellipsis;
 	background-color: rgba(0, 0, 0, 0);
-	border: 1px solid red;
 }
 #detailInfo_2{
 	position: fixed;
@@ -332,7 +329,6 @@ input{
 	margin: 0 auto;
 	font-size: 30px;
 	background-color: rgba(0, 0, 0, 0);
-	border: 1px solid red;
 }
 #detailInfo_3{
 	position: absolute;
@@ -424,7 +420,6 @@ ul li:nth-child(9){
 	margin: 0 auto;
 	font-size: 48px;
 	background-color: rgba(0, 0, 0, 0);
-	border: 1px solid red;
 	zoom:0.66;
 }
 #myAwardInfo_1{
@@ -437,7 +432,6 @@ ul li:nth-child(9){
 	font-size: 24px;
 	overflow: auto;
 	background-color: rgba(0, 0, 0, 0);
-	border: 1px solid red;
 	line-height: initial;
 	zoom:0.66;
 }
@@ -924,7 +918,6 @@ ul li:nth-child(9){
 	width: 20%;
 	height: 9%;
 	text-align: center;
-	border: 1px solid red;
 	font-size: 31px;
 	background-color: rgba(0, 0, 0, 0);
 }

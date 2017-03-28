@@ -652,11 +652,12 @@ function loseFocus(id) {
 	document.getElementById(thisid).style.display = "none";
 }
 
-function getFocusClass(obj){
+function gotFocusClass(obj){
 	console.log(obj);
 	console.log(obj.childNodes);
 	console.log(obj.childNodes[0]);
 	console.log(obj.childNodes[0].style.display);
+	obj.childNodes[0].style.display = "block";
 }
 
 function loseFocusClass(obj){
@@ -664,6 +665,7 @@ function loseFocusClass(obj){
 	console.log(obj.childNodes);
 	console.log(obj.childNodes[0]);
 	console.log(obj.childNodes[0].style.display);
+	obj.childNodes[0].style.display = "none";
 }
 
 function indexhtmlButtonT(){
