@@ -23,6 +23,7 @@ function buttonInit(){
 		dialogShow1("detailInfo");
 		document.getElementById("indexhtml").style.display = "none";
 		showMoreInfo();
+		horizontalScrolling();
 	}
 	document.getElementById("button_myAward").onclick = function(){
 		console.log("button_myAward");
@@ -686,4 +687,23 @@ function exceptbutton(buttonidOne,buttonidTwo){
 		var thisIdTwo = "#" + buttonidTwo;
 		$(thisIdTwo).removeAttr("disabled");
 	}
+}
+
+function horizontalScrolling(){
+	var _box1 = document.getElementById("box1");
+			var _box2 = document.getElementById("box2");
+			var x = 0;
+			var cWidth = window.screen.width;
+			var myWidth = cWidth*0.83125*1.25;
+			console.log("cWidth:"+cWidth+"myWidth"+myWidth);
+			var fun = function() {
+				_box1.style.left = x + 'px';
+				_box2.style.left = (x + myWidth) + 'px';
+				x = x-0.25;
+				if((x + myWidth) == 0||(x + myWidth)<0) {
+					console.log(x);
+					x = 0;
+				}
+			}
+			setInterval(fun, 1);
 }

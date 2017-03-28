@@ -252,26 +252,4 @@
 		<script type="text/javascript" src="js/framework2.js"></script>
 		<script type="text/javascript" src="donothashme.js"></script>
 	</body>
-	<script type="text/javascript">
-		window.onload = function() {
-			var _box1 = document.getElementById("box1");
-			var _box2 = document.getElementById("box2");
-			var x = 0;
-			var cWidth = window.screen.width;
-			var myWidth = cWidth*0.83125*1.8*1.475;
-			console.log("cWidth:"+cWidth+"myWidth"+myWidth);
-			var fun = function() {
-				_box1.style.left = x + 'px';
-				_box2.style.left = (x + myWidth) + 'px';
-				x = x-1;
-				if((x + myWidth) == 0||(x + myWidth)<0) {
-					console.log(x);
-					x = 0;
-					_box1.style.left = x + 'px';
-					_box2.style.left = (x + myWidth) + 'px';
-				}
-			}
-			setInterval(fun, 1);
-		}
-	</script>
 </html>

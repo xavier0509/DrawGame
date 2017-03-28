@@ -338,7 +338,6 @@ input{
 	height: 28.7963%;
 	padding-left: 1%;
 	overflow: hidden;
-	border: 1px solid red;
 	background-color: rgba(0, 0, 0, 0);
 }
 .box2 ul{
@@ -1394,7 +1393,6 @@ ul li:nth-child(9){
 	background-repeat: no-repeat;
 	background-size: 100%;
 	float: left;
-	border: 1px solid red;
 }
 .box2 img{
 	position: relative;
@@ -1404,7 +1402,6 @@ ul li:nth-child(9){
 	background-repeat: no-repeat;
 	background-size: 100%;
 	float: left;
-	border: 1px solid red;
 }
 
 
