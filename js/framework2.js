@@ -147,6 +147,7 @@ var app = {
                 });
 
             } else {
+                document.getElementById("drawTimes").innerHTML = "1";
                 console.log("haslogin three:" + message.haslogin);
             }
         }, function(error) {
