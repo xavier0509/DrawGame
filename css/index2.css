@@ -168,7 +168,7 @@ input{
 	position: absolute;
 	left: 0;
 	top: 0;
-	width: 99%;
+	width: 100%;
 	height: 100%;
 	display: none;
 	background-color: rgba(0, 0, 0, 0);
@@ -189,7 +189,7 @@ input{
 	position: absolute;
 	left: 0;
 	top: 0;
-	width: 99%;
+	width: 100%;
 	height: 100%;
 	display: none;
 	background-color: rgba(0, 0, 0, 0);
@@ -241,7 +241,7 @@ input{
 	font-size: 18px;
 	word-spacing: 30px;
 	overflow: hidden;	
-	zoom:0.66;
+	/*zoom:0.66;*/
 	background-color: rgba(0, 0, 0, 0);
 }
 #luckyDraw{
@@ -290,8 +290,8 @@ input{
 }
 #turntable_border{
 	position: absolute;
-    left: 0;
-    top: 23%;
+    left: 1%;
+    top: 24%;
     width: 99%;
     height: 76%;
     display: none;
@@ -366,42 +366,42 @@ ul li:nth-child(1){
    	background-repeat: no-repeat;
 }
 ul li:nth-child(2){
-	background-image: url(../images/iphone7.png);
+	background-image: url(../images/108.png);
    	background-size: 100%;
    	background-repeat: no-repeat;
 }
 ul li:nth-child(3){
-	background-image: url(../images/109.png);
-   	background-size: 100%;
-   	background-repeat: no-repeat;
-}
-ul li:nth-child(4){
 	background-image: url(../images/115.png);
    	background-size: 100%;
    	background-repeat: no-repeat;
 }
-ul li:nth-child(5){
+ul li:nth-child(4){
 	background-image: url(../images/114.png);
    	background-size: 100%;
    	background-repeat: no-repeat;
 }
-ul li:nth-child(6){
+ul li:nth-child(5){
 	background-image: url(../images/111.png);
    	background-size: 100%;
    	background-repeat: no-repeat;
 }
+ul li:nth-child(6){
+	background-image: url(../images/112.png);
+   	background-size: 100%;
+   	background-repeat: no-repeat;
+}
 ul li:nth-child(7){
-	background-image: url(../images/116.png);
+	background-image: url(../images/113.png);
    	background-size: 100%;
    	background-repeat: no-repeat;
 }
 ul li:nth-child(8){
-	background-image: url(../images/coocaaA43.png);
+	background-image: url(../images/116.png);
    	background-size: 100%;
    	background-repeat: no-repeat;
 }
 ul li:nth-child(9){
-	background-image: url(../images/112.png);
+	background-image: url(../images/109.png);
    	background-size: 100%;
    	background-repeat: no-repeat;
 }
@@ -448,10 +448,10 @@ ul li:nth-child(9){
 	list-style-type:none;
 	width: 100%;
 	background: rgba(0,0,0,0);
-    background-color: rgba(0, 0, 0, 0);
+    /*background-color: rgba(0, 0, 0, 0);*/
 } 
 .testspan{
-	padding-left: 3%;
+	/*padding-left: 3%;*/
     display: inline-block;
     width: 30%;
     overflow: hidden;
@@ -1337,7 +1337,7 @@ ul li:nth-child(9){
 	left: 0;
 	top: 0;
 	width: 100%;
-	height: 100%;
+	height: 115%;
 	display: none;
 	background-color: rgba(0, 0, 0, 0);
 }

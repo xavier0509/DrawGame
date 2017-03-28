@@ -5,6 +5,8 @@ var mobile = null;
 var mac = null;
 var androidsdk = null;   //安卓4.3为18，则小于18的均不支持此活动
 var loginstatus = false;
+
+var loginFlag = 0; //未登录默认为0，打开登陆页面后为1
 var app = {
     canonical_uri: function(src, base_path) {
         var root_page = /^[^?#]*\//.exec(location.href)[0],
@@ -64,45 +66,53 @@ var app = {
     	if (flagNumber000 == "block") {
     		navigator.app.exitApp();
     	} else{
-    		if ((flagNumber001=="none"||flagNumber001=="")&&(flagNumber002=="none"||flagNumber002=="")) {
-    			console.log(indexflagNumber);
-    			console.log("hhhhh:"+flagNumber000+"--"+flagNumber001+"--"+flagNumber002);
-    			if (indexflagNumber!=0) {
-    				//隐藏所有首页子弹框，保留首页
-    				for (var i=0; i<indexClassObj.length;i++) {
-			    		indexClassObj[i].style.display = "none";
-			    	}
-    				$("#indexhtml :button").removeAttr("disabled");
-    			} else{
-    				//退出
-    				console.log("exit");
-    				navigator.app.exitApp();
-    			}
-    		} else{
-    			console.log(myAwardInfoflagNumber);
-    			console.log("hhhhh:"+flagNumber000+"--"+flagNumber001+"--"+flagNumber002);
-    			if(myAwardInfoflagNumber == 0){
-    				//回到首页
-			  		document.getElementById("myAwardInfo").style.display = "none";
-			  		document.getElementById("detailInfo").style.display = "none";
-			  		document.getElementById("indexhtml").style.display = "block";
-			  		$("#indexhtml :button").removeAttr("disabled");
-    			} else{
-    				//隐藏子弹框，保留我的奖品页	
-    				for (var i=0; i<myAwardClassObj.length;i++) {
-			    		myAwardClassObj[i].style.display = "none";
-			    	}
-    			}
-    		}
-    	}
+            if (loginFlag == 1) {
+                loginFlag = 0;
+            }else{
+        		if ((flagNumber001=="none"||flagNumber001=="")&&(flagNumber002=="none"||flagNumber002=="")) {
+        			console.log(indexflagNumber);
+        			console.log("hhhhh:"+flagNumber000+"--"+flagNumber001+"--"+flagNumber002);
+        			if (indexflagNumber!=0) {
+        				//隐藏所有首页子弹框，保留首页
+        				for (var i=0; i<indexClassObj.length;i++) {
+    			    		indexClassObj[i].style.display = "none";
+    			    	}
+        				$("#indexhtml :button").removeAttr("disabled");
+        			} else{
+        				//退出
+        				console.log("exit");
+        				navigator.app.exitApp();
+        			}
+        		} else{
+        			console.log(myAwardInfoflagNumber);
+        			console.log("hhhhh:"+flagNumber000+"--"+flagNumber001+"--"+flagNumber002);
+        			if(myAwardInfoflagNumber == 0){
+        				//回到首页
+    			  		document.getElementById("myAwardInfo").style.display = "none";
+    			  		document.getElementById("detailInfo").style.display = "none";
+    			  		document.getElementById("indexhtml").style.display = "block";
+    			  		$("#indexhtml :button").removeAttr("disabled");
+        			} else{
+        				//隐藏子弹框，保留我的奖品页	
+        				for (var i=0; i<myAwardClassObj.length;i++) {
+    			    		myAwardClassObj[i].style.display = "none";
+    			    	}
+        			}
+        		}
+        	}
+        }
     },
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
         app.triggleButton();
 
         buttonInit();//index页面两个按钮事件
-        startmarquee(25,60,1,1); //滚动获奖名单
+        startmarquee(1000,60,0,1); //滚动获奖名单
         pageInit();//页面初始化
+        focuseffection();
+        dialogShow();
+
+        document.getElementById("turntable_1").focus();
 		
         coocaaosapi.getDeviceInfo(function(message) {
             deviceInfo = message;
@@ -176,35 +186,9 @@ var app = {
         }, false);
         //登录
         document.getElementById("button_logo").addEventListener("click", experienceonclick, false);
-
-        //已登录
-        // document.getElementById("button-been-logo").addEventListener("click", function() {
-        //     coocaaosapi.startUserSetting(function(message) {
-        //         console.log(message);
-        //     }, function(error) {
-        //         console.log(error);
-        //     });
-        //     coocaaosapi.addUserChanggedListener(function(message){
-        //         console.log(message);
-        //         loginstatus = "true";
-        //         coocaaosapi.getUserInfo(function(message) {
-        //             userInfo = message;
-        //             mobile = message.mobile;
-        //             console.log("external_info " + message.external_info);
-        //             console.log("open_id " + message.open_id);
-        //             console.log("mobile "+message.mobile);
-        //             console.log("nick_name "+message.nick_name);
-        //             coocaaosapi.getUserAccessToken(function(message) {
-        //                 console.log("usertoken " + message.accesstoken);
-        //                 accesstoken = message.accesstoken;
-        //             }, function(error) {
-        //                 console.log(error);
-        //             });
-        //         }, function(error) {
-        //             console.log(error);
-        //         });
-        //     });
-        // }, false);
+        document.getElementById("moreChanceButton_1").addEventListener("click", function (){
+            coocaaosapi.startMovieMemberCenter('qq',function(message) {console.log(message); },function(error) { console.log(error);});
+       },false);
 
         document.getElementById("turntable_1").addEventListener("click", function() {
             startDraw();
@@ -213,10 +197,13 @@ var app = {
     }
 };
 
+
 function experienceonclick() {
+    loginFlag = 1;
     if (loginstatus == "false") {
         coocaaosapi.startUserSettingAndFinish(function(message)  {console.log(message); },function(error){console.log(error);});
         coocaaosapi.addUserChanggedListener(function(message){
+            loginFlag = 0;
             console.log(message);
             loginstatus = "true";
             coocaaosapi.getUserInfo(function(message) {
