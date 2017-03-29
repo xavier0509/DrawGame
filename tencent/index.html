@@ -1,0 +1,256 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<meta http-equiv="Access-Control-Allow-Origin" content="text/html">
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta http-equiv="expires" content="0">
+		<meta http-equiv="pragma" content="no-cache">
+		<meta http-equiv="cache-control" content="no-cache">
+		<link rel="stylesheet" href="css/reset.css" />
+		<link rel="stylesheet" href="css/index.css" />
+		<script type="text/javascript" src="js/jquery-1.6.2.min.js"></script>
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<script type="text/javascript" src="js/awardRotate.js"></script>
+		<script type="text/javascript" src="js/jquery.qrcode.min.js"></script>
+	
+		<title>抽奖系统</title>
+	</head>
+
+	<body id="homepage" scroll="no">
+		<div id="deviceready" class="blink">
+			<input id="hideTxt"></input>
+			<!--首页-->
+			<div id="indexhtml">
+				<button id="button_logo" class="fontSize">
+					<img id="logo_border" src="images/bordercancle.png" />
+				</button>
+				<table id="userInfo">
+					<td>
+						<img id="userImage" src="images/default.png">
+					</td>
+					<td>
+						<span id="userName">阿Q小姐</span>
+					</td>
+				</table>
+				<button id="button_VIP" class="fontSize">
+					<img id="VIP_border" src="images/borderopenVIP.png" />
+				</button>
+				<button id="button_moreInfo" class="fontSize">
+					<img id="moreInfo_border" src="images/bordermoreinfo.png" />
+				</button>
+				<button id="button_myAward" class="fontSize">
+					<img id="myAward_border" src="images/bordermyaward.png" />
+				</button>
+				<div id="activityInfo_one">活动时间：2017年3月31日-2017年4月7日</div>
+				<div id="activityInfo_two">参与方式：活动期间每位用户免费拥有一次抽奖机会，购买影视会员可额外增加抽奖机会</div>
+				<div id="activityAward">Iphone7 红色版，酷开40K2、IPAD mini、影视会员年卡、北通游戏手柄、电影票、自拍杆、QQ公仔、影视会员7天卡</div>
+				<div id="awardList">
+					<ul id="awardul"></ul> 
+				</div>
+				<div id="luckyDraw">您还有<br/><span id="drawTimes"></span>次抽奖机会哦！</div>
+				<div id="turntable" class="rotate">
+					<img id="rotate" src="images/turntable.png" />
+				</div>
+				<button id="turntable_1">
+					<img id="turntable_border" src="images/borderstartdraw.png" />
+				</button>
+				<!--Toast-活动还未开始-->
+				<div id="notStartMasking" class="indexhtmlDialog">
+					<div id="notStartDialog">
+						<div id="notStartInfo" readonly="readonly">
+							<div id="notStartInfo_1" readonly="readonly">宝宝别急，大奖在</div>
+							<div id="notStartInfo_2" readonly="readonly">3月31日-4月7日开启</div>
+						</div>
+						<button id="notStartButton">
+							<img id="notStartButton_border" src="images/bordergetchance.png" />
+						</button>
+					</div>
+				</div>
+				<!--Toast-激活成功-->
+				<div id="activateSuccessMasking" class="indexhtmlDialog">
+					<div id="activateSuccessDialog">
+						<div id="activateSuccessInfo" readonly="readonly">激活成功</div>
+					</div>
+				</div>
+				<!--Toast-激活失败-->
+				<div id="activateFailureMasking" class="indexhtmlDialog">
+					<div id="activateFailureDialog">
+						<div id="activateFailureInfo" readonly="readonly">oh no~ 激活失败<br/>请在我的奖品里重新激活哦！</div>
+					</div>
+				</div>
+				<!--Toast-活动已经结束-->
+				<div id="alEndMasking" class="indexhtmlDialog">
+					<div id="alEndDialog">
+						<div id="alEndInfo" readonly="readonly">好遗憾，活动已经结束了!</div>
+						<button id="alEndButton">
+							<img id="alEndButton_border" src="images/bordergetchance.png" />
+						</button>
+					</div>
+				</div>
+				<!--Toast-获得影视中心会员-->
+				<div id="VIPMasking" class="indexhtmlDialog">
+					<div id="VIPGetDialog">
+						<div id="VIPImgDiv">
+							<img id="toast-img-2-2" src="" />
+						</div>
+						<div id="VIPGetInfo">
+							<div id="VIPGetInfo_1" readonly="readonly">影视VIP会员</div>
+							<button id="activateNow">
+								<img id="activateNowBorder" src="images/activatenowborder.png" />
+							</button>
+						</div>
+					</div>
+				</div>
+				<!--获取机会-->
+				<div id="moreChanceMasking" class="indexhtmlDialog">
+					<div id="moreChanceDialog">
+						<div id="moreChanceInfo" readonly="readonly">嘤嘤嘤,抽奖机会已用完
+							<br/>购买影视会员获取更多抽奖机会！
+						</div>
+						<button id="moreChanceButton_1">
+							<img id="moreChance_border1" src="images/bordergetchance.png" />
+						</button>
+						<button id="moreChanceButton_2">
+							<img id="moreChance_border2" src="images/bordercancle.png" />
+						</button>
+					</div>
+				</div>
+				<!--未抽中-->
+				<div id="badLuckMasking" class="indexhtmlDialog">
+					<div id="badLuckDialog">
+					<div id="badLuckInfo" readonly="readonly">这次运气不佳哦~换个姿势再来！</div>
+					<button id="badLuckButton_1">
+						<img id="badLuckButton_border1" src="images/borderensure.png" />
+					</button>
+					<button id="badLuckButton_2">
+						<img id="badLuckButton_border2" src="images/bordercancle.png" />
+					</button>
+					</div>
+				</div>
+				<!--抽中但没有手机号-->
+				<div id="noTelMasking" class="indexhtmlDialog">
+					<div id="noTelDialog">
+						<div id="noTelInfo">
+							<div id="text_info-11-0" >xxxxxx</div>
+							<div id="text_info-11-1" readonly="readonly">
+								---------------------------------------------------<br/>
+								请填写您的手机号码领取奖品
+							</div>
+						</div>
+						<button id="noTelButton">
+							<img id="noTelButtonborder" src="images/borderensure.png" />						
+						</button>
+					</div>
+				</div>
+				<!--抽中奖品 -->
+				<div id="goodLuckMasking" class="indexhtmlDialog">
+					<div id="goodLuckDialog">						
+						<div id="goodLuckInfo">
+							<div id="goodLuckName">sdsada</div>
+							---------------------------------------------------<br/>
+							
+							
+						</div>
+					<div id="qcode"></div>
+					<div class="txtaward">扫码领奖</div>
+					</div>
+				</div>
+			</div>
+			<!--详情页-->
+			<div id="detailInfo" class="webpage" style="display: none;">
+				<input id="detailInfo_0" disabled="disabled" value="活动规则"></input>
+				<span id="detailInfo_1" ></span>
+				<input id="detailInfo_2" disabled="disabled" value="活动奖品"></input>
+				<div id="detailInfo_3" style=" overflow: hidden;"><!--class="row" -->
+					<table border="0" cellspacing="0" cellpadding="0">
+						<tr>
+							<td valign="top" id="marquePic1" class="eachDivStyle">
+								<!-- 要循环滚动的图片 -->
+								<table border="0" align="center" cellpadding="0" cellspacing="0">
+									<tr align="center">
+										<td><img src="images/122.png" width="300px" height="200px" border="1"><span>iPhone 7</span></td>
+										<td><img src="images/123.png" width="300px" height="200px" border="1"><span>ipad-mini</span></td>
+										<td><img src="images/130.png" width="300px" height="200px" border="1"><span>电视</span></td>							
+										<td><img src="images/128.png" width="300px" height="200px" border="1"><span>自拍杆</span></td>
+										<td><img src="images/127.png" width="300px" height="200px" border="1"><span>QQ公仔</span></td>
+										<td><img src="images/129.png" width="300px" height="200px" border="1"><span>北通游戏手柄</span></td>
+										<td><img src="images/124.png" width="300px" height="200px" border="1"><span>年卡</span></td>
+										<td><img src="images/132.png" width="300px" height="200px" border="1"><span>电影票</span></td>
+										<td><img src="images/126.png" width="300px" height="200px" border="1"><span>七天卡</span></td>
+									</tr>
+								</table>
+							</td>
+							<td id="marquePic2" width="1" class="eachDivStyle"></td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			<!--我的奖品-->
+			<div id="myAwardInfo" class="webpage">
+				<div id="myAwardInfo_0">我的奖品</div>
+				<div id="myAwardInfo_1">
+				</div>
+				<!--Toast-激活成功-->
+				<div id="activateSuccessMasking2" class="myAwardInfoDialog" style="display: none;">
+					<div id="activateSuccessDialog2">
+						<div id="activateSuccessInfo2" readonly="readonly">激活成功</div>
+					</div>
+				</div>
+				<!--Toast-激活失败-->
+				<div id="activateFailureMasking2" class="myAwardInfoDialog" style="display: none;">
+					<div id="activateFailureDialog2">
+						<div id="activateFailureInfo2" readonly="readonly">oh no~ 激活失败<br/>请在我的奖品你重新激活哦！</div>
+					</div>
+				</div>
+				<div id="goodLuckMasking2" class="myAwardInfoDialog">
+					<div id="goodLuckDialog2">						
+						<div id="goodLuckInfo2">
+							<div id="goodLuckName2">sdsada</div>
+							---------------------------------------------------<br/>
+						</div>
+					<div id="qcode2"></div>
+					<div class="txtaward">扫码领奖</div>
+					</div>
+				</div>
+			</div>
+			<!--Toast-机器版本不兼容-->
+			<div id="inCompatibleMasking">
+				<div id="inCompatibleDialog">
+					<div id="inCompatibleInfo" readonly="readonly">由于你的电视不兼容转盘游戏，无法参与该活动。</div>
+				</div>
+			</div>
+				
+			<!--按返回键的提示框  -->
+			<div id="backWarn" class="webpage">
+				<div id="backWarnInfo">
+					<div id="form-back-4" readonly="readonly">您确定要放弃这次抽奖机会吗？</div>
+					<button id="button-back-3-1" onclick="gotohomepage()">
+						<img id="toast-back-3-1-border" src="images/borderensure.png"/>
+					</button>
+					<button id="button-back-3-2" onclick="cancelToastback(this.id)">
+						<img id="toast-back-3-2-border" src="images/bordercancle.png" />
+					</button>
+				</div>
+			</div>	
+		</div>
+		<!--cordova通用框架-->
+		<script type="text/javascript" src="js/index.js"></script>
+		<script type="text/javascript" src="cordova.js"></script>
+		<script type="text/javascript" src="js/framework.js"></script>
+		<script type="text/javascript" src="donothashme.js"></script>
+	</body>
+	<script language="javascript">
+		var speed = 30; //设置间隔时间
+		marquePic2.innerHTML = marquePic1.innerHTML;
+		var demo = document.getElementById("detailInfo_3"); //获取detailInfo_3对象
+		function Marquee(n) { //实现图片循环滚动的方法
+			if(marquePic1.offsetWidth - demo.scrollLeft <= 0) {
+				demo.scrollLeft = 0;
+			} else {
+				demo.scrollLeft = demo.scrollLeft + n;
+			}
+		}
+		var MyMar = setInterval("Marquee(5)", speed);
+	</script>
+</html>

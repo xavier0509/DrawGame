@@ -1,0 +1,1378 @@
+@charset "utf-8";
+
+body {
+	width: 100%;
+	height: 100%;
+	color: #E4E4E4;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	color: #E4E4E4;
+	outline: none;
+	z-index: 0;
+}
+img {
+	outline: none;
+	border: 0;
+}
+div {
+	outline: none;
+	border: 0;
+}
+button{
+	outline: none;
+	border: 0;
+}
+input{
+	border: 0;
+}
+
+#homepage,#deviceready{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+#indexhtml{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background-image: url(../images/drawbg.jpg);
+	background-repeat: no-repeat;
+	background-size: 100%;
+	display: block;
+}
+#formInfo,#detailInfo,#myAwardInfo{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	outline: 0;
+	display: none;
+	background: url(../images/bgform.jpg);
+	background-repeat: no-repeat;
+	background-size: 100%;
+	zoom: 0.66;
+}
+#backWarn{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	margin: 0 auto;
+	display: none;
+	background-color: rgba(0, 0, 0, 0.3);
+}
+#backWarnInfo{
+	position: absolute;
+	left: 30%;
+	top: 30%;
+	width: 40%;
+	height: 50%;
+	background-image: url(../images/toastnotaward.png);
+	background-repeat: no-repeat;
+	background-size: 100%;
+}
+#button_logo{
+	position: absolute;
+	left: 75.2083%;
+	top: 2.9630%;
+	width: 9.4271%;
+	height: 10.6482%;
+	background-color: rgba(0, 0, 0, 0);
+	background-image: url(../images/buttonlogo1.png);
+	background-repeat: no-repeat;
+	background-size: 100%;
+	display: block;
+}
+#logo_border{
+	position: absolute;
+	left: 0.5%;
+    top: 0.5%;
+    width: 102%;
+    height: 99%;
+    display: none;
+	background-color: rgba(0, 0, 0, 0);
+}
+#userInfo{
+	position: absolute;
+	left: 72.7604%;
+	top: 2.9630%;
+	width: 11.9792%;
+	height: 10.6482%;
+	display: none;
+}
+#userInfo td:nth-child(1){
+	position: absolute;
+	left: 0;
+	width: 37%;
+	height: 100%;
+}
+#userInfo td:nth-child(2){
+	position: absolute;
+	right: 0;
+	width: 62%;
+	height: 100%;
+}
+#userImage{
+	position: absolute;
+	top: 12.5%;
+	height: 75%;
+}
+#userName{
+	display: block;
+	float: right;
+	font-size: 20px;
+	width: 100%;
+	height: 100%;
+	line-height: 64px;
+	white-space: nowrap;
+	overflow:hidden; 
+	text-overflow:ellipsis;
+}
+#button_VIP{
+	position: fixed;
+	left: 85.625%;
+	top: 2.9630%;
+	width: 11.9792%;
+	height: 10.6482%;
+	background-color: rgba(0, 0, 0, 0);
+	background-image: url(../images/buttonopenVIPicon.png);
+	background-repeat: no-repeat;
+	background-size: 100%;
+}
+#VIP_border{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	display: none;
+	background-color: rgba(0, 0, 0, 0);
+}
+#button_moreInfo{
+	position: fixed;
+	left: 5.8854%;
+	top: 56.5741%;
+	width: 10.6771%;
+	height: 9.6296%;
+	background-color: rgba(0, 0, 0, 0);
+	background-image: url(../images/buttonmoreinfoicon.png);
+	background-repeat: no-repeat;
+	background-size: 100%;
+}
+#moreInfo_border{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	display: none;
+	background-color: rgba(0, 0, 0, 0);
+}
+#button_myAward{
+	position: fixed;
+	left: 16.6146%;
+	top: 56.5741%;
+	width: 10.6771%;
+	height: 9.6296%;
+	margin: 0 auto;
+	background-color: rgba(0, 0, 0, 0);
+	background-image: url(../images/buttonmyawardicon.png);
+	background-repeat: no-repeat;
+	background-size: 100%;
+}
+#myAward_border{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	display: none;
+	background-color: rgba(0, 0, 0, 0);
+}
+#activityInfo_one{
+	position: absolute;
+	left: 7.5%;
+	top: 36.8519%;
+	width: 19.0104%;
+	height: 6.9407%;
+	margin: 0 auto;
+	font-size: 18px;
+	line-height:100%;
+	zoom:0.66;
+	background-color: rgba(0, 0, 0, 0);
+}
+#activityInfo_two{
+	position: absolute;
+	left: 7.5%;
+	top: 44.6666%;
+	width: 19.0104%;
+	height: 9.4296%;
+	font-size: 18px;
+	line-height:100%;
+	background-color: rgba(0, 0, 0, 0);
+	overflow: hidden;
+	zoom:0.66;
+}
+#activityAward{
+	position: absolute;
+	left: 8.2292%;
+	top: 74.1667%;
+	width: 19.0104%;
+	height: 11.1111%;
+	margin: 0 auto;
+	font-size: 18px;
+	line-height: 100%;
+	overflow: hidden;
+	background-color: rgba(0, 0, 0, 0);
+	zoom:0.66;
+}
+#awardList{
+	position: absolute;
+	left: 73.2292%;
+	top: 35.4630%;
+	width: 20.6771%;
+	height: 28.9815%;
+	margin: 0 auto;
+	font-size: 18px;
+	word-spacing: 30px;
+	overflow: hidden;	
+	/*zoom:0.66;*/
+	background-color: rgba(0, 0, 0, 0);
+}
+#luckyDraw{
+	position: absolute;
+	left: 74.0104%;
+	top: 70.7407%;
+	width: 19.0104%;
+	height: 13.5185%;
+	margin: 0 auto;
+	font-size: 24px;
+	letter-spacing: 2px;
+	line-height: 150%;
+	text-align: center;
+	zoom:0.66;
+	background-color: rgba(0, 0, 0, 0);
+}
+#turntable{
+	position: absolute;
+	left: 33.75%;
+	top: 28.8889%;
+	width: 33.125%;
+	height: 58.8889%;
+	margin: 0 auto;
+}
+#rotate{
+	position: absolute;
+	left: 0%;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	margin: 0 auto;
+}
+
+#turntable_1{
+	position: absolute;
+	left: 44.9479%;
+	top: 44.1852%;
+	width: 10.6771%;
+	height: 24.1481%;
+	margin: 0 auto;
+	display: block;
+	background-color: rgba(0, 0, 0, 0);
+	background-image: url(../images/onstartdraw.png);
+	background-repeat: no-repeat;
+	background-size: 100%;
+}
+#turntable_border{
+	position: absolute;
+    left: 1%;
+    top: 24%;
+    width: 99%;
+    height: 76%;
+    display: none;
+	background-color: rgba(0, 0, 0, 0);
+}
+
+#detailInfo_0{
+	position: absolute;
+	left: 3.2292%;
+	top: 4.5370%;
+	width: 22.9167%;
+	height: 6.2963%;
+	margin: 0 auto;
+	font-size: 36px;
+	background-color: rgba(0, 0, 0, 0);
+}
+#detailInfo_1{
+	position: absolute;
+	left: 8.4375%;
+	top: 15.0926%;
+	width: 83.125%;
+	height: 41.9444%;
+	margin: 0 auto;
+	font-size: 24px;
+	overflow: auto;
+	text-overflow: ellipsis;
+	background-color: rgba(0, 0, 0, 0);
+}
+#detailInfo_2{
+	position: fixed;
+	left: 8.4375%;
+	top: 58.7963%;
+	width: 34.1667%;
+	height: 5.1852%;
+	margin: 0 auto;
+	font-size: 30px;
+	background-color: rgba(0, 0, 0, 0);
+}
+#detailInfo_3{
+	position: absolute;
+	left: 8.4375%;
+	top: 66.8519%;
+	width: 83.125%;
+	height: 28.7963%;
+	padding-left: 1%;
+	overflow: hidden;
+	background-color: rgba(0, 0, 0, 0);
+}
+.box2 ul{
+	display: block;
+	position:absolute;
+	left:0px;
+	top:0px;
+	width:180%;
+	height: 100%;
+	overflow: hidden;
+	white-space:nowrap;  
+	animation:mov1 10s linear infinite;
+}
+
+@keyframes mov1{
+	to{
+		left:-600px;
+	}
+}
+
+#myAwardInfo_0{
+	position: fixed;
+	left: 3.2292%;
+	top: 4.5370%;
+	width: 22.9167%;
+	height: 6.2963%;
+	margin: 0 auto;
+	font-size: 48px;
+	background-color: rgba(0, 0, 0, 0);
+	zoom:0.66;
+}
+#myAwardInfo_1{
+	position: absolute;
+	left: 17.34375%;
+	top: 18.148%;
+	width: 70.3125%;
+	height: 80%;
+	margin: 0 auto;
+	font-size: 24px;
+	overflow: auto;
+	background-color: rgba(0, 0, 0, 0);
+	line-height: initial;
+	zoom:0.66;
+}
+
+#awardList ul{
+	margin:0; 
+	padding:0;
+	width: 100%;
+} 
+#awardList li{
+	height:25px; 
+	line-height:25px; 
+	font-size:12px;  
+	list-style-type:none;
+	width: 100%;
+	background: rgba(0,0,0,0);
+    /*background-color: rgba(0, 0, 0, 0);*/
+} 
+.testspan{
+	padding-left: 3%;
+    display: inline-block;
+    width: 30%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow:ellipsis;
+
+}
+
+#notStartMasking{
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	margin: 0 auto;
+	display: none;
+	background-color: rgba(0, 0, 0, 0.3);
+}
+#notStartDialog{
+	position: absolute;
+	left: 26.5104%;
+	top: 24.8148%;
+	width: 45.9896%;
+	height: 54.8148%;
+	margin: 0 auto;
+	background-color: rgba(0, 0, 0, 0);
+	background-image: url(../images/toastactivitynotstart.png);
+	background-repeat: no-repeat;
+	background-size: 100%;
+}
+#notStartInfo{
+	position: absolute;
+	left: 17%;
+	top: 25%;
+	width: 66%;
+	height: 40%;
+	margin: 0 auto;
+	text-align: center;
+	font-size: 24px;
+	background-color: rgba(0, 0, 0, 0);
+}
+#notStartInfo_1{
+	font-size: 23px;
+	word-spacing: 10px;
+	margin-top: 9%;
+	margin-left: 14%;
+	width: 73%;
+	height: 32%;
+	border: 0;
+	background-color: rgba(0, 0, 0, 0);
+}
+#notStartInfo_2{
+	font-size: 30px;
+	word-spacing: 30px;
+	width: 100%;
+	height: 32%;
+	border: 0;
+	color: #FFFF00;
+	text-align: center;
+	background-color: rgba(0, 0, 0, 0);
+}
+#notStartButton{
+	position: absolute;
+	left: 33.5147%;
+	top: 65%;
+	width: 31.4583%;
+	height: 17.4074%;
+	background-color: rgba(0, 0, 0, 0);
+	background-image: url(../images/buttonensure.png);
+	background-repeat: no-repeat;
+	background-size: 100%;
+}
+#notStartButton_border{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 99%;
+	height: 118%;
+	margin: 0 auto;
+	display: none;
+	background-color: rgba(0, 0, 0, 0);
+}
+
+#alEndMasking{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	margin: 0 atuo;
+	border: 0;
+	display: none;
+	background-color: rgba(0, 0, 0, 0.3);
+}
+#alEndDialog{
+	position: absolute;
+	left: 26.5104%;
+	top: 24.8148%;
+	width: 45.9896%;
+	height: 54.8148%;
+	margin: 0 atuo;
+	background-color: rgba(0, 0, 0, 0);
+	background-image: url(../images/toastactivityend.png);
+	background-repeat: no-repeat;
+	background-size: 100%;
+}
+#alEndInfo{
+	position: absolute;
+    left: 17%;
+    top: 28%;
+    width: 66%;
+    height: 16%;
+    text-align: center;
+    font-size: 24px;
+    padding-top: 10%;
+	background-color: rgba(0, 0, 0, 0);
+}
+#alEndButton{
+	position: absolute;
+	left: 33.5147%;
+	top: 59.0185%;
+	width: 31.4583%;
+	height: 17.4074%;
+	background-color: rgba(0, 0, 0, 0);
+	background-image: url(../images/buttonensure.png);
+	background-repeat: no-repeat;
+	background-size: 100%;
+}
+#alEndButton_border{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 99%;
+	height: 118%;
+	display: none;
+	background-color: rgba(0, 0, 0, 0);
+}
+#VIPMasking{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	display: none;
+	background-color: rgba(0, 0, 0, 0.3);
+}
+#VIPGetDialog{
+	position: absolute;
+	left: 26.5104%;
+	top: 24.8148%;
+	width: 45.9896%;
+	height: 54.8148%;
+	background-color: rgba(0, 0, 0, 0);
+	background-image: url(../images/toastgetaward.png);
+	background-repeat: no-repeat;
+	background-size: 100%;
+}
+#VIPImgDiv{
+	position: absolute;
+	left: 29.1619%;
+	top: 26.3649%;
+	width: 41.6761%;
+	height: 35.1351%;
+	background-color: rgba(0, 0, 0, 0);
+}
+#toast-img-2-2 {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+}
+#VIPGetInfo{
+	position: absolute;
+	left: 16.7044%;
+	top: 62.3311%;
+	width: 66.5912%;
+	height: 19.7635%;
+	text-align: center;
+	background-color: rgba(0, 0, 0, 0);
+}
+#VIPGetInfo_1{
+	margin-top: 1%;
+	font-size: 24px;
+	width: 100%;
+	height: 40%;
+	text-align: center;
+	background-color: rgba(0, 0, 0, 0);
+}
+#activateNow{
+	position: absolute;
+    left: 33.5147%;
+    top: 46%;
+    width: 31.4583%;
+    height: 68%;
+    background-color: rgba(0, 0, 0, 0);
+    background-image: url(../images/activatenow.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+#activateNowBorder{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 97%;
+	display: none;
+	background-color: rgba(0, 0, 0, 0);
+}
+
+#moreChanceMasking{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	display: none;
+	background-color: rgba(0, 0, 0, 0.3);
+}
+#moreChanceDialog{
+	position: absolute;
+	left: 26.5104%;
+	top: 24.8148%;
+	width: 45.9896%;
+	height: 54.8148%;
+	background-color: rgba(0, 0, 0, 0);
+	background-image: url(../images/toastgetchance.png);
+	background-repeat: no-repeat;
+	background-size: 100%;
+}
+#moreChanceInfo{
+	position: absolute;
+	left: 13.5334%;
+	top: 29.5608%;
+	width: 72.9332%;
+	height: 32.7703%;
+	padding-top: 2%;
+	font-size: 20px;
+	text-align: center;
+	background-color: rgba(0, 0, 0, 0);
+}
+#VIPPackages{
+	color: #FFFF00;
+	white-space: nowrap;
+}
+#moreChanceButton_1{
+	position: absolute;
+	left: 21.1778%;
+	top: 65.6959%;
+	width: 26.2741%;
+	height: 17.7365%;
+	background-color: rgba(0, 0, 0, 0);
+	background-image: url(../images/buttongetchance.png);
+	background-repeat: no-repeat;
+	background-size: 100%;
+}
+#moreChance_border1{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 97%;
+	display: none;
+	background-color: rgba(0, 0, 0, 0);
+}
+#moreChanceButton_2{
+	position: absolute;
+	left: 50.9626%;
+	top: 65.6959%;
+	width: 26.2741%;
+	height: 17.7365%;
+	background-color: rgba(0, 0, 0, 0);
+	background-image: url(../images/buttoncancle.png);
+	background-repeat: no-repeat;
+	background-size: 100%;
+}
+#moreChance_border2{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 97%;
+	display: none;
+	background-color: rgba(0, 0, 0, 0);
+}
+#badLuckMasking{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	display: none;
+	background-color: rgba(0, 0, 0, 0.3);
+}
+#badLuckDialog{
+	position: fixed;
+	left: 26.5104%;
+	top: 24.8148%;
+	width: 45.9896%;
+	height: 54.8148%;
+	background-color: rgba(0, 0, 0, 0);
+	background-image: url(../images/toastnotaward.png);
+	background-repeat: no-repeat;
+	background-size: 100%;
+}
+#badLuckInfo{
+	position: absolute;
+	left: 13.5334%;
+	top: 29.5608%;
+	width: 72.9332%;
+	height: 32.7703%;
+	font-size: 20px;
+	text-align: center;
+	background-color: rgba(0, 0, 0, 0);
+}
+#badLuckButton_1{
+	position: absolute;
+	left: 21.1778%;
+	top: 65.6959%;
+	width: 26.2741%;
+	height: 17.7365%;
+	background-color: rgba(0, 0, 0, 0);
+	background-image: url(../images/buttonensure.png);
+	background-repeat: no-repeat;
+	background-size: 100%;
+}
+#badLuckButton_border1{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 97%;
+	display: none;
+	background-color: rgba(0, 0, 0, 0);
+}
+#badLuckButton_2{
+	position: absolute;
+	left: 50.9626%;
+	top: 65.6959%;
+	width: 26.2741%;
+	height: 17.7365%;
+	background-color: rgba(0, 0, 0, 0);
+	background-image: url(../images/buttoncancle.png);
+	background-repeat: no-repeat;
+	background-size: 100%;
+}
+#badLuckButton_border2{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 97%;
+	display: none;
+	background-color: rgba(0, 0, 0, 0);
+}
+#noTelMasking{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	display: none;
+	background-color: rgba(0, 0, 0, 0.3);
+}
+#noTelDialog{
+	position: absolute;
+	left: 26.5104%;
+	top: 24.8148%;
+	width: 45.9896%;
+	height: 54.8148%;
+	background-color: rgba(0, 0, 0, 0);
+	background-image: url(../images/toastgetaward.png);
+	background-repeat: no-repeat;
+	background-size: 100%;
+}
+#noTelInfo{
+	position: absolute;
+	left: 13.5334%;
+	top: 29.5608%;
+	width: 72.9332%;
+	height: 32.7703%;
+	font-size: 23px;
+	text-align: center;
+	background-color: rgba(0, 0, 0, 0);
+}
+#noTelButton{
+	position: absolute;
+	left: 36.8610%;
+	top: 65.6959%;
+	width: 26.2741%;
+	height: 17.7365%;
+	background-color: rgba(0, 0, 0, 0);
+	background-image: url(../images/buttonwriteinfo.png);
+	background-repeat: no-repeat;
+	background-size: 100%;
+}
+#noTelButtonborder{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 97%;
+	display: none;
+	background-color: rgba(0, 0, 0, 0);
+}
+#goodLuckMasking{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	display: none;
+	background-color: rgba(0, 0, 0, 0.3);
+}
+#goodLuckDialog{
+	position: absolute;
+	left: 26.5104%;
+	top: 24.8148%;
+	width: 45.9896%;
+	height: 54.8148%;
+	background-color: rgba(0, 0, 0, 0);
+	background-image: url(../images/toastgetaward.png);
+	background-repeat: no-repeat;
+	background-size: 100%;
+}
+#goodLuckMasking2{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	display: none;
+	background-color: rgba(0, 0, 0, 0.3);
+}
+#goodLuckDialog2{
+	position: absolute;
+	left: 26.5104%;
+	top: 24.8148%;
+	width: 45.9896%;
+	height: 54.8148%;
+	background-color: rgba(0, 0, 0, 0);
+	background-image: url(../images/toastgetaward.png);
+	background-repeat: no-repeat;
+	background-size: 100%;
+}
+#goodLuckInfo1{
+	position: absolute;
+	left: 40%;
+	top: 38%;
+	width: 20%;
+	height: 9%;
+	text-align: center;
+	font-size: 31px;
+	background-color: rgba(0, 0, 0, 0);
+}
+#goodLuckButton_1{
+	position: fixed;
+	left: 36.25%;
+	top: 60.2778%;
+	width: 12.0833%;
+	height: 9.7222%;
+	background-color: rgba(0, 0, 0, 0);
+	background-image: url(../images/buttonensure.png);
+	background-repeat: no-repeat;
+	background-size: 100%;
+}
+#goodLuckButton_2{
+	position: fixed;
+	left: 49.9479%;
+	top: 60.2778%;
+	width: 12.0833%;
+	height: 9.7222%;
+	background-color: rgba(0, 0, 0, 0);
+	background-image: url(../images/buttonchangetel.png);
+	background-repeat: no-repeat;
+	background-size: 100%;
+}
+#goodLuckInfo{
+	position: absolute;
+	left: 13.5334%;
+	top: 23.5608%;
+	width: 72.9332%;
+	height: 32.7703%;
+	font-size: 23px;
+	text-align: center;
+	background-color: rgba(0, 0, 0, 0);
+}
+#goodLuckInfo2{
+	position: absolute;
+	left: 13.5334%;
+	top: 23.5608%;
+	width: 72.9332%;
+	height: 32.7703%;
+	font-size: 23px;
+	text-align: center;
+	background-color: rgba(0, 0, 0, 0);
+}
+#goodLuckButtonBorder_1{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 97%;
+	display: none;
+	background-color: rgba(0, 0, 0, 0);
+}
+#goodLuckButtonBorder_2{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 97%;
+	display: none;
+	background-color: rgba(0, 0, 0, 0);
+}
+#formInfoTitle{
+	position: absolute;
+	left: 3.2292%;
+	top: 4.5370%;
+	width: 22.9167%;
+	height: 6.2963%;
+	margin: 0 auto;
+	font-size: 36px;
+	border: 0;
+	background-color: rgba(0, 0, 0, 0);
+}
+
+#formInfoTips{
+	position: absolute;
+	left: 27.2917%;
+	top: 23.9259%;
+	width: 44.9479%;
+	height: 6.2963%;
+	font-size: 32px;
+	line-height: normal;
+	background-color: rgba(0, 0, 0, 0);
+}
+#formInfoTel{
+	position: absolute;
+	left: 27.2917%;
+	top: 33.4259%;
+	width: 45.5729%;
+	height: 8.9815%;
+	font-size: 32px;
+	line-height: normal;
+	background-color: #999999;
+}
+#formInfoPIN{
+	position: absolute;
+	left: 27.2917%;
+	top: 46.4815%;
+	width: 45.625%;
+	height: 8.9815%;
+	font-size: 32px;
+	background-color: rgba(0, 0, 0, 0);
+	opacity: 0.8;
+}
+#formInfoPINText{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 67%;
+	height: 100%;
+	font-size: 32px;
+	line-height: normal;
+	background-color: #999999;
+	opacity: 0.8;
+	ime-mode: disabled;
+}
+#formInfoPINButton{
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 32%;
+	height: 100%;
+	font-size: 32px;
+	line-height: normal;
+	background-color: #999999;
+	opacity: 0.8;
+	ime-mode: disabled;
+}
+#formInfoButton{
+	position: absolute;
+	left: 26.1458%;
+	top: 58.1481%;
+	width: 47.8646%;
+	height: 12.5%;
+	background-color: rgba(0, 0, 0, 0);
+	background-image: url(../images/buttonformensure.png);
+	background-repeat: no-repeat;
+	background-size: 100%;
+}
+#formInfoButtonBorder{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 97%;
+	display: none;
+	background-color: rgba(0, 0, 0, 0);
+}
+
+.awardName{
+	position: absolute;
+    left: 0;
+    top: 32%;
+    line-height: 100%;
+    font-size: 61px;
+}
+#numberBigFive{
+	position: absolute;
+	left: 22.3958%;
+	top: 58.7963%;
+	width: 55.2604%;
+	height: 21.7593%;
+	background-color: #5B5B5B;
+	display: none;
+}
+#div-toast-number-8 {
+	position: absolute;
+	left: 26.1458%;
+	top: 58.1481%;
+	width: 47.8646%;
+	height: 12.5%;
+	padding-top: 2%;
+}
+#form-info-76 {
+	position: absolute;
+	left: 27.6875%;
+	top: 67.0015%;
+	width: 50.6979%;
+	height: 7.2222%;
+	font-size: 32px;
+	background-color: rgba(0, 0, 0, 0);
+}
+#codeIsWrong{
+	position: absolute;
+	left: 22.3958%;
+	top: 58.7963%;
+	width: 55.2604%;
+	height: 21.7593%;
+	background-color: #5B5B5B;
+	display: none;
+}
+#div-toast-code-8 {
+	position: absolute;
+    left: 26.1458%;
+    top: 46.1481%;
+    width: 100%;
+}
+#form-info-761 {
+	width: 50.6979%;
+	height: 7.2222%;
+	font-size: 32px;
+	text-align: center;
+	background-color: rgba(0, 0, 0, 0);
+}
+#toastsuccess{
+	position: absolute;
+	left: 22.3958%;
+	top: 58.7963%;
+	width: 55.2604%;
+	height: 21.7593%;
+	background-color: #5B5B5B;
+	display: none;
+}
+#div-toast-text-8 {
+	position: absolute;
+	left: 26.1458%;
+	top: 58.1481%;
+	width: 47.8646%;
+	height: 12.5%;
+	padding-top: 2%;
+}
+#toast-text-7-2 {
+	position: absolute;
+	left: 31.5625%;
+	top: 66.0185%;
+	width: 5.2083%;
+	height: 9.25925%;
+	background-color: rgba(0, 0, 0, 0);
+}
+#form-info-7-6 {
+	position: absolute;
+	left: 37.6875%;
+	top: 67.0015%;
+	width: 35.6979%;
+	height: 7.2222%;
+	font-size: 32px;
+	background-color: rgba(0, 0, 0, 0);
+}
+#toastfalse{
+	position: absolute;
+	left: 22.3958%;
+	top: 58.7963%;
+	width: 55.2604%;
+	height: 21.7593%;
+	background-color: #5B5B5B;
+	display: none;
+}
+#div-toast-text-8-1 {	
+	position: absolute;
+	left: 26.1458%;
+	top: 58.1481%;
+	width: 47.8646%;
+	height: 12.5%;
+}
+#toast-text-7-2-1 {
+	position: absolute;
+	left: 31.5625%;
+	top: 66.0185%;
+	width: 5.2083%;
+	height: 9.25925%;
+	background-color: rgba(0, 0, 0, 0);
+}
+#form-info-7-6-1 {
+	position: absolute;
+	left: 37.6875%;
+	top: 67.0015%;
+	width: 35.6979%;
+	height: 7.2222%;
+	font-size: 32px;
+	background-color: rgba(0, 0, 0, 0);
+}
+#form-back-4{
+	position: absolute;
+    left: 20%;
+    top: 34%;
+    width: 60%;
+    height: 20%;
+    font-size: 24px;
+    background: rgba(0,0,0,0);
+}
+#button-back-3-1 {
+	position: absolute;
+	left: 21.1778%;
+	top: 62.6959%;
+	width: 26.2741%;
+	height: 17.7365%;
+	background-color: rgba(0, 0, 0, 0);
+	background-image: url(../images/buttonensure.png);
+	background-repeat: no-repeat;
+	background-size: 100%;
+}
+#button-back-3-2 {
+	position: absolute;
+	left: 50.9626%;
+	top: 62.6959%;
+	width: 26.2741%;
+	height: 17.7365%;
+	background-color: rgba(0, 0, 0, 0);
+	background-image: url(../images/buttoncancle.png);
+	background-repeat: no-repeat;
+	background-size: 100%;
+}
+#toast-back-3-1-border {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 95%;
+	display: none;
+	background-color: rgba(0, 0, 0, 0);
+}
+#toast-back-3-2-border {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 95%;
+	display: none;
+	background-color: rgba(0, 0, 0, 0);
+}
+#inCompatibleMasking{
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	display: none;
+	background-color: rgba(0, 0, 0, 0.3);
+}
+#inCompatibleDialog{
+	position: absolute;
+	left: 26.5104%;
+	top: 24.8148%;
+	width: 45.9896%;
+	height: 54.8148%;
+	background-color: rgba(0, 0, 0, 0);
+	background-image: url(../images/inCompatible.png);
+	background-repeat: no-repeat;
+	background-size: 100%;
+}
+#inCompatibleInfo{
+	position: absolute;
+    left: 14%;
+    top: 37%;
+    width: 70%;
+    height: 25%;
+    font-size: 24px;
+    text-align: center;
+}
+#activateSuccessMasking,#activateSuccessMasking2{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	display: none;
+	background-color: rgba(0, 0, 0, 0.3);
+}
+#activateSuccessDialog,#activateSuccessDialog2{
+	position: absolute;
+	left: 26.5104%;
+	top: 24.8148%;
+	width: 45.9896%;
+	height: 54.8148%;
+	background-color: rgba(0, 0, 0, 0);
+	background-image: url(../images/lucky.png);
+	background-repeat: no-repeat;
+	background-size: 100%;
+}
+#activateSuccessInfo,#activateSuccessInfo2{
+	position: absolute;
+    left: 14%;
+    top: 37%;
+    width: 70%;
+    height: 16%;
+    font-size: 24px;
+    padding-top: 5%;
+    line-height: initial;
+    text-align: center;
+}
+#activateSuccessInfo2{font-size: 36px;}
+#activateFailureMasking,#activateFailureMasking2{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	display: none;
+}
+#activateFailureDialog,#activateFailureDialog2{
+	position: absolute;
+	left: 26.5104%;
+	top: 24.8148%;
+	width: 45.9896%;
+	height: 54.8148%;
+	background-color: rgba(0, 0, 0, 0);
+	background-image: url(../images/activatefailure.png);
+	background-repeat: no-repeat;
+	background-size: 100%;
+}
+#activateFailureInfo,#activateFailureInfo2{
+	position: absolute;
+    left: 14%;
+    top: 41%;
+    width: 70%;
+    height: 17%;
+    font-size: 24px;
+    text-align: center;
+}
+
+#activateFailureInfo2{font-size: 36px;}
+
+
+.getRightNowBorder{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 115%;
+	display: none;
+	background-color: rgba(0, 0, 0, 0);
+}
+
+
+
+
+.fontSize{
+	text-align: center;
+	font-size: 26px;
+	line-height: initial;
+}
+.buttonstyle{
+	position: relative;
+	font-size: 16px;
+	color: red;
+	z-index: 9999;
+}
+#hideTxt{
+	display: none;
+}
+#qcode{
+	width: 115px;
+	height: 115px;
+	background-color: white;
+	position: absolute;
+	top:38%;
+	left: 37%;
+	padding-top: 5px;
+	padding-left: 5px;
+}
+#qcode2{
+	width: 175px;
+	height: 175px;
+	background-color: white;
+	position: absolute;
+	top:38%;
+	left: 37%;
+	padding-top: 5px;
+	padding-left: 5px;
+}
+.txtaward{
+	position: absolute;
+	top:78%;
+	left: 43%;
+	font-size: 18px;
+}
+
+.box {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 180%;
+	}
+.box1,.box2 {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+.box2 {
+	/*left: 10%;*/
+}
+.box1 img{
+	position: relative;
+	display: block;
+	width: 12.5%;
+	height: 100%;
+	background-repeat: no-repeat;
+	background-size: 100%;
+	float: left;
+}
+.box2 img{
+	position: relative;
+	display: block;
+	width: 12.5%;
+	height: 100%;
+	background-repeat: no-repeat;
+	background-size: 100%;
+	float: left;
+}
+
+.eachDivStyle img{
+	margin-right: 5px;
+}
+
+
+
+
+::-webkit-scrollbar {
+	width: 8px;
+	height: 8px;
+}
+::-webkit-scrollbar-button {
+	display: none;
+}
+::-webkit-scrollbar-track {
+	/*background: url("../imagesne.jpg") center;*/
+}
+::-webkit-scrollbar-thumb {
+	padding-left: 2px;
+	border-radius: 6px;
+	border: solid 2px #A6A6A6;
+	background-color: rgba(255, 255, 255, 1);
+}
