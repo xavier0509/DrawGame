@@ -702,19 +702,20 @@ function exceptbutton(buttonidOne,buttonidTwo){
 
 function horizontalScrolling(){
 	var _box1 = document.getElementById("box1");
-			var _box2 = document.getElementById("box2");
-			var x = 0;
-			var cWidth = window.screen.width;
-			var myWidth = cWidth*0.83125*1.25;
-			console.log("cWidth:"+cWidth+"myWidth"+myWidth);
-			var fun = function() {
-				_box1.style.left = x + 'px';
-				_box2.style.left = (x + myWidth) + 'px';
-				x = x-0.25;
-				if((x + myWidth) == 0||(x + myWidth)<0) {
-					console.log(x);
-					x = 0;
-				}
-			}
-			setInterval(fun, 1);
+	var _box2 = document.getElementById("box2");
+	var x = 0;
+	var cWidth = window.screen.width;
+	var myWidth = cWidth*0.83125*1.42;
+	//var youWidth = document.getElementById("box1").style.width;
+	console.log("cWidth:"+cWidth+"myWidth"+myWidth);
+	var fun = function() {
+		_box1.style.left = x + 'px';
+		_box2.style.left = (x + myWidth) + 'px';
+		x = x-300;
+		if((x + myWidth) == 0||(x + myWidth)<0) {
+			console.log(x);
+			x = 0;
+		}
+	}
+	setInterval(fun, 1000);
 }
