@@ -1,4 +1,4 @@
-document.write("<script language=javascript src='../js/framework2.js' charset=\"utf-8\"></script>");
+document.write("<script language=javascript src='../js/framework.js' charset=\"utf-8\"></script>");
 var begintime = null;//活动开始时间(后台)
 var endtime = null;  //活动结束时间（后台）
 var trueBegin = null;
@@ -33,22 +33,27 @@ function buttonInit(){
 	document.getElementById("notStartButton").onclick = function(){
 		console.log("notStartButton");
 		dialogHide("notStartMasking");
+		document.getElementById("turntable_1").focus();
 	}
 	document.getElementById("moreChanceButton_2").onclick = function(){
 		console.log("moreChanceButton_2");
 		dialogHide("moreChanceMasking");
+		document.getElementById("turntable_1").focus();
 	}
 	document.getElementById("badLuckButton_1").onclick = function(){
 		console.log("badLuckButton_1");
 		dialogHide("badLuckMasking");
+		document.getElementById("turntable_1").focus();
 	}
 	document.getElementById("badLuckButton_2").onclick = function(){
 		console.log("badLuckButton_2");
 		dialogHide("badLuckMasking");
+		document.getElementById("turntable_1").focus();
 	}
 	document.getElementById("alEndButton").onclick = function(){
 		console.log("alEndButton");
 		dialogHide("alEndMasking");
+		document.getElementById("turntable_1").focus();
 	}
 
 }

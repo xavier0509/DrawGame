@@ -351,60 +351,7 @@ input{
 	white-space:nowrap;  
 	animation:mov1 10s linear infinite;
 }
-ul li{
-	list-style:none;
-	display: block;
-    float: left;
-    width: 11%;
-    height: 100%;
-    margin-right: 0.1%;
-    margin-top: 1.5%;
-}
-ul li:nth-child(1){
-	background-image: url(../images/107.png);
-   	background-size: 100%;
-   	background-repeat: no-repeat;
-}
-ul li:nth-child(2){
-	background-image: url(../images/108.png);
-   	background-size: 100%;
-   	background-repeat: no-repeat;
-}
-ul li:nth-child(3){
-	background-image: url(../images/115.png);
-   	background-size: 100%;
-   	background-repeat: no-repeat;
-}
-ul li:nth-child(4){
-	background-image: url(../images/114.png);
-   	background-size: 100%;
-   	background-repeat: no-repeat;
-}
-ul li:nth-child(5){
-	background-image: url(../images/111.png);
-   	background-size: 100%;
-   	background-repeat: no-repeat;
-}
-ul li:nth-child(6){
-	background-image: url(../images/112.png);
-   	background-size: 100%;
-   	background-repeat: no-repeat;
-}
-ul li:nth-child(7){
-	background-image: url(../images/113.png);
-   	background-size: 100%;
-   	background-repeat: no-repeat;
-}
-ul li:nth-child(8){
-	background-image: url(../images/116.png);
-   	background-size: 100%;
-   	background-repeat: no-repeat;
-}
-ul li:nth-child(9){
-	background-image: url(../images/109.png);
-   	background-size: 100%;
-   	background-repeat: no-repeat;
-}
+
 @keyframes mov1{
 	to{
 		left:-600px;
@@ -451,11 +398,13 @@ ul li:nth-child(9){
     /*background-color: rgba(0, 0, 0, 0);*/
 } 
 .testspan{
-	/*padding-left: 3%;*/
+	padding-left: 3%;
     display: inline-block;
     width: 30%;
     overflow: hidden;
     white-space: nowrap;
+    text-overflow:ellipsis;
+
 }
 
 #notStartMasking{
@@ -1404,7 +1353,9 @@ ul li:nth-child(9){
 	float: left;
 }
 
-
+.eachDivStyle img{
+	margin-right: 5px;
+}
 
 
 

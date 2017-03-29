@@ -7,307 +7,250 @@
 		<meta http-equiv="expires" content="0">
 		<meta http-equiv="pragma" content="no-cache">
 		<meta http-equiv="cache-control" content="no-cache">
-		<link rel="stylesheet" href="css/DrawSystem.css" />
+		<link rel="stylesheet" href="css/reset.css" />
+		<link rel="stylesheet" href="css/index.css" />
 		<script type="text/javascript" src="js/jquery-1.6.2.min.js"></script>
-		<script type="text/javascript" src="js/DrawSystem.js"></script>
 		<script type="text/javascript" src="js/jquery.min.js"></script>
 		<script type="text/javascript" src="js/awardRotate.js"></script>
-		<script src="js/scroolingList-2.js" type="text/javascript"></script>
-		<script src="js/scroolingList.js" type="text/javascript"></script>
-		<script src="js/framework.js" type="text/javascript"></script>
-		<script type="text/javascript">
-			myFocus.set({
-				id: 'text_info-2',
-				pattern: 'mF_sd_tqq',
-				time: 2
-			});
-		</script>
+		<script type="text/javascript" src="js/jquery.qrcode.min.js"></script>
+	
 		<title>抽奖系统</title>
 	</head>
 
 	<body id="homepage" scroll="no">
 		<div id="deviceready" class="blink">
+			<input id="hideTxt"></input>
+			<!--首页-->
 			<div id="indexhtml">
-				<img id="bg_Operation-img" src="images/drawbgimg.jpg" />
-				<div class="rotate">
-					<img id="rotate" src="images/turntable2.png" />
-				</div>
-				<!--开始抽奖-->
-				<div id="startdDraw-1">
-					<img id="bg_Operation-img-2-1" src="images/notstartdraw.png" />
-				</div>
-				<button id="startdDraw" class="pointer" onclick="startDraw()">
-					<img id="bg_Operation-img-2" src="images/startdraw.png" />
-					<img id="bg_Operation-img-2-border" src="images/borderstartdraw.png" />
+				<button id="button_logo" class="fontSize">
+					<img id="logo_border" src="images/bordercancle.png" />
 				</button>
-				<img id="bg_Operation-img-3" src="images/title.png" />
-				<!--登录-->
-				<div id="bg_Operation-img-5">
-					<button id="button-logo">
-						<img id="button-logo-1" src="images/buttonlogo1.png" />
-						<img id="button-logo-1-border" src="images/bordercancle.png" />
+				<table id="userInfo">
+					<td>
+						<img id="userImage" src="images/default.png">
+					</td>
+					<td>
+						<span id="userName">阿Q小姐</span>
+					</td>
+				</table>
+				<button id="button_VIP" class="fontSize">
+					<img id="VIP_border" src="images/borderopenVIP.png" />
+				</button>
+				<button id="button_moreInfo" class="fontSize">
+					<img id="moreInfo_border" src="images/bordermoreinfo.png" />
+				</button>
+				<button id="button_myAward" class="fontSize">
+					<img id="myAward_border" src="images/bordermyaward.png" />
+				</button>
+				<div id="activityInfo_one">活动时间：2017年3月31日-2017年4月7日</div>
+				<div id="activityInfo_two">参与方式：活动期间每位用户免费拥有一次抽奖机会，购买影视会员可额外增加抽奖机会</div>
+				<div id="activityAward">Iphone7红色版，酷开A43、IPAD mini、影视会员年卡、创维盒子、北通游戏手柄、电影票、影视周边套组、影视会员7天卡</div>
+				<div id="awardList">
+					<ul id="awardul"></ul> 
+				</div>
+				<div id="luckyDraw">您还有<br/><span id="drawTimes"></span>次抽奖机会哦！</div>
+				<div id="turntable" class="rotate">
+					<img id="rotate" src="images/turntable.png" />
+				</div>
+				<button id="turntable_1">
+					<img id="turntable_border" src="images/borderstartdraw.png" />
+				</button>
+				<!--Toast-活动还未开始-->
+				<div id="notStartMasking" class="indexhtmlDialog">
+					<div id="notStartDialog">
+						<div id="notStartInfo" readonly="readonly">
+							<div id="notStartInfo_1" readonly="readonly">宝宝别急，大奖在</div>
+							<div id="notStartInfo_2" readonly="readonly">3月31日-4月7日开启</div>
+						</div>
+						<button id="notStartButton">
+							<img id="notStartButton_border" src="images/bordergetchance.png" />
+						</button>
+					</div>
+				</div>
+				<!--Toast-激活成功-->
+				<div id="activateSuccessMasking" class="indexhtmlDialog">
+					<div id="activateSuccessDialog">
+						<div id="activateSuccessInfo" readonly="readonly">激活成功</div>
+					</div>
+				</div>
+				<!--Toast-激活失败-->
+				<div id="activateFailureMasking" class="indexhtmlDialog">
+					<div id="activateFailureDialog">
+						<div id="activateFailureInfo" readonly="readonly">oh no~ 激活失败<br/>请在我的奖品里重新激活哦！</div>
+					</div>
+				</div>
+				<!--Toast-活动已经结束-->
+				<div id="alEndMasking" class="indexhtmlDialog">
+					<div id="alEndDialog">
+						<div id="alEndInfo" readonly="readonly">好遗憾，活动已经结束了!</div>
+						<button id="alEndButton">
+							<img id="alEndButton_border" src="images/bordergetchance.png" />
+						</button>
+					</div>
+				</div>
+				<!--Toast-获得影视中心会员-->
+				<div id="VIPMasking" class="indexhtmlDialog">
+					<div id="VIPGetDialog">
+						<div id="VIPImgDiv">
+							<img id="toast-img-2-2" src="" />
+						</div>
+						<div id="VIPGetInfo">
+							<div id="VIPGetInfo_1" readonly="readonly">影视VIP会员</div>
+							<button id="activateNow">
+								<img id="activateNowBorder" src="images/activatenowborder.png" />
+							</button>
+						</div>
+					</div>
+				</div>
+				<!--获取机会-->
+				<div id="moreChanceMasking" class="indexhtmlDialog">
+					<div id="moreChanceDialog">
+						<div id="moreChanceInfo" readonly="readonly">嘤嘤嘤,抽奖机会已用完
+							<br/>购买影视会员获取更多抽奖机会！
+						</div>
+						<button id="moreChanceButton_1">
+							<img id="moreChance_border1" src="images/bordergetchance.png" />
+						</button>
+						<button id="moreChanceButton_2">
+							<img id="moreChance_border2" src="images/bordercancle.png" />
+						</button>
+					</div>
+				</div>
+				<!--未抽中-->
+				<div id="badLuckMasking" class="indexhtmlDialog">
+					<div id="badLuckDialog">
+					<div id="badLuckInfo" readonly="readonly">这次运气不佳哦~换个姿势再来！</div>
+					<button id="badLuckButton_1">
+						<img id="badLuckButton_border1" src="images/borderensure.png" />
 					</button>
-					<button id="button-been-logo">
-						<img id="button-logo-2" src="images/buttonuserpicture.png" />
-						<img id="button-logo-2-border" src="images/bordercancle.png" />
+					<button id="badLuckButton_2">
+						<img id="badLuckButton_border2" src="images/bordercancle.png" />
 					</button>
-					<div id="button-logo-3"></div>
-				</div>
-				<!--开通会员-->
-				<button id="gotovipcenter_speciallyeffect">
-					<img id="bg_Operation-img-4" src="images/buttonopenVIPicon.png" />
-					<img id="bg_Operation-img-4-border" src="images/borderopenVIP.png" />
-				</button>
-				<!--更多详情-->
-				<button id="moreinfo_speciallyeffect" onclick="showChild_009()">
-					<img id="bg_Operation-img-6" src="images/buttonmoreinfoicon.png" />
-					<img id="bg_Operation-img-6-border" src="images/bordermoreinfo.png" />
-				</button>
-				<!--我的奖品-->
-				<button id="myaward_speciallyeffect" onclick="showChild_010()">
-					<img id="bg_Operation-img-7" src="images/buttonmyawardicon.png" />
-					<img id="bg_Operation-img-7-border" src="images/bordermyaward.png" />
-				</button>
-				<img id="bg_Operation-img-8" src="images/winnertitle.png" />
-				<!--活动简介-->
-				<div id="text_info-0" readonly="readonly"></div>
-				<div id="text_info-1" readonly="readonly"></div>
-				<!--中奖名单 上下滚动效果-->
-				<div id="text_info-2" class="mF_sd_tqq">
-					<ul class="msgs" id="scrollinglist"></ul>
-				</div>
-
-				<!--用于测试各种toast效果的button-->
-				<div id="just_for_a_try" style="display:block;">
-					<button class="button1" onclick="showChild_016()">1</button>
-				<!--	<button class="button1" onclick="showChild_006()">2</button>
-					<button class="button1" onclick="getProductPackage()">4</button>
-					<button class="button1" onclick="showChild_004()">6</button>
-					<button class="button1" onclick="showChild_005()">7</button>
-					<button class="btn" onclick="func()">btn</button>-->
-				</div>
-
-			</div>
-			<div id="text_info-2-1">活动马上开始哦！</div>
-			<div id="text_info-2-2">活动已经结束。</div>
-			<div id="text_info-3" readonly="readonly"></div>
-			<div id="text_info-4" readonly="readonly">您还有 次抽奖机会</div>
-			<div id="text_info-40" readonly="readonly">0</div>
-			<div id="text_info-41" readonly="readonly"></div>
-<!--OK-->	<!--Toast-活动已经结束-->
-			<div id="div-toast-img-0" class="toast">
-				<img id="toast-img-0" src="images/toastactivityend.png">
-				<div id="text_info-5">
-					<div id="text_info-5-1" readonly="readonly"></div>
-				</div>
-				<button id="button-ensure-1" onclick="cancelToast(this.id)">
-					<img id="ensure-lose-1" src="images/buttonensure.png" />
-					<img id="ensure-lose-1-border" src="images/bordergetchance.png" />
-				</button>
-			</div>
-<!--OK-->	<!--Toast-活动马上开始-->
-			<div id="div-toast-img-1" class="toast">
-				<img id="toast-img-1" src="images/toastactivitynotstart.png">
-				<div id="text_info-6">
-					<div id="text_info-6-1" readonly="readonly">活动马上开始!</div>
-					<div id="text_info-6-2" readonly="readonly"></div>
-				</div>
-				<button id="button-ensure-2" onclick="cancelToast(this.id)">
-					<img id="ensure-lose-2" src="images/buttonensure.png" />
-					<img id="ensure-lose-2-border" src="images/bordergetchance.png" />
-				</button>
-			</div>
-<!--OK-->	<!--Toast-获得影视中心会员-->
-			<div id="div-toast-img-2" class="toast">
-				<img id="toast-img-2" src="images/toastgetaward.png">
-				<div id="toast-img-2-1">
-					<img id="toast-img-2-2" class="AwardImagesUrl" />
-				</div>
-				<div id="text_info-8">
-					<div id="text_info-8-1" readonly="readonly"></div>
-					<div id="text_info-8-2">请在
-						<button id="startmemcenter">【影视-会员中心】</button>查看
 					</div>
 				</div>
-
-			</div>
-<!--OK-->	<!--获取机会-->
-			<div id="div-toast-img-3" class="toast">
-				<img id="toast-img-3" src="images/toastgetchance.png" />
-				<div id="text_info-9" readonly="readonly">您还没有抽奖机会,
-					<br/>开通/续费影视<span id="text_info-9-div">【】</span>会员获取抽奖机会！</div>
-				<button id="button-img-3-1">
-					<img id="toast-img-3-1" src="images/buttongetchance.png" />
-					<img id="toast-img-3-1-border" src="images/bordergetchance.png" />
-				</button>
-				<button id="button-img-3-2" onclick="cancelToast(this.id)">
-					<img id="toast-img-3-2" src="images/buttoncancle.png" />
-					<img id="toast-img-3-2-border" src="images/bordercancle.png" />
-				</button>
-			</div>
-<!--OK-->	<!--未抽中-->
-			<div id="div-toast-img-4" class="toast">
-				<img id="toast-img-4" src="images/toastnotaward.png">
-				<div id="text_info-10" readonly="readonly">您没有中奖哦，
-					<br/>去影视中心看看吧！</div>
-				<button id="button-img-4-1">
-					<img id="toast-img-4-1" src="images/buttonensure.png" />
-					<img id="toast-img-4-1-border" src="images/borderensure.png" />
-				</button>
-				<button id="button-img-4-2" onclick="cancelToast(this.id)">
-					<img id="toast-img-4-2" src="images/buttoncancle.png" />
-					<img id="toast-img-4-2-border" src="images/bordercancle.png" />
-				</button>
-			</div>
-
-<!--OK-->	<!--未使用手机号登录-->
-			<div id="div-toast-img-5" class="toast">
-				<img id="toast-img-5" src="images/toastgetaward.png">
-				<div id="text_info-11">
-					<div id="text_info-11-0" readonly="readonly "></div>
-					<div id="text_info-11-1" readonly="readonly "></div>
-				</div>
-				<button id="button-img-5-1" onclick="showChild_007()">
-					<img id="toast-img-5-1" src="images/buttonwriteinfo.png">
-					<img id="toast-img-5-1-border" src="images/borderensure.png" />
-				</button>
-			</div>
-
-<!--OK-->	<!--抽中奖品弹toast -->
-			<div id="toost-back-warm" class="toast">
-				<img id="toost-back-3" src="images/toastgetaward.png" />
-
-				<div id="foom-back-2"></div>
-				<div id="foom-back-3">您当前手机号为</div>
-				<div id="foom-back-4">确定以该手机号领取奖品吗？</div>
-
-				<button id="buttoon-back-3-1" onclick="ensuretoaward(this.id)">
-					<img id="toost-back-3-1" src="images/buttonensure.png"/>
-					<img id="toost-back-3-1-border" src="images/borderensure.png"/>
-				</button>
-				<button id="buttoon-back-3-2" onclick="showChild_007()">
-					<img id="toost-back-3-2" src="images/buttonchangecellphonenumber.png" />
-					<img id="toost-back-3-2-border" src="images/bordercancle.png" />
-				</button>
-			</div>
-
-			<div id="userOpenid" style="display: none;">
-				<!--islogin--><span id="islogin"></span>
-				<!--中奖ID--><span id="unseediv"></span>
-				<!--user open_id--><span id="userOpenId"></span>
-				<!--user phone--><span id="temp_userphonenumber"></span>
-				<!--leftnumber--><span id="drawleftnum"></span>
-				<!--macadress--><span id="macaddressnum"></span>
-				<!--activity ID--><span id="activityid"></span>
-				<!--AccessToken--><span id="accesstoken"></span>
-				<!--fivePhone--><span id="fivePhone"></span>
-				<!--code--><span id="codeflag"></span>
-			</div>
-		</div>
-
-		<!--弹出表单页-->
-		<div id="div-toast-text-7" class="toast";>
-			<!--<img id="toast-text-7" src="images/bgform.png">-->
-			<div id="form-info-7-0" readonly="readonly" disabled="disabled" tabindex="-1">领取奖品</div>
-			<div id="form-info-7-1"></div>
-			<div id="div-info-7-2">
-				<div id="form-info-7-2" readonly="readonly" disabled="disabled" tabindex="-1">请填写手机号和验证码</div>
-			</div>
-			<div id="div-info-7-3">
-				<input type="text" value="  请准确填写手机号" id="form-info-7-3" onfocus="OnfocusFun(this,'  请准确填写手机号')" onblur="OnBlurFun(this,'  请准确填写手机号')" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" maxlength="11"
-					size="14" name="form-info-7-3" type="text" />
-			</div>
-			<form id="div-info-7-4">
-				<input id="form-info-7-4" type="text" value="  验证码" class="c_code_msg" onfocus="OnfocusFun(this,'  验证码')" onblur="OnBlurFun(this,'  验证码')" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" maxlength="6"
-					size="14" name="form-info-7-4" type="text"></input>
-				<input id="form-info-7-5" type="button" class="captcha" name="获取验证码" value="获取验证码"></input>
-			</form>
-			<button id="button-text-7" onclick="showChild_008()">
-				<img id="toast-text-7-1" src="images/buttonformensure.png">
-				<img id="toast-text-7-1-border" src="images/borderphoneinfoensure.png">
-			</button>
-
-			<div id="numberBigFive">
-				<!--短信验证码超过5次弹toast-->
-				<div id="div-toast-number-8">
-					<input id="form-info-76" value="短信发送次数已超过限制，请下次再来。" readonly="readonly"></input>
-				</div>
-			</div>
-			<div id="codeIsWrong">
-				<!--验证码不匹配-->
-				<div id="div-toast-code-8">
-					<input id="form-info-761" value="验证码错误，请重新填写。" readonly="readonly"></input>
-				</div>
-			</div>
-
-			<div id="toastsuccess">
-				<!--信息填写成功弹toast-->
-				<div id="div-toast-text-8">
-					<div id="form-icon-0">
-						<img id="toast-text-7-2" src="images/toastformright.png">
+				<!--抽中但没有手机号-->
+				<div id="noTelMasking" class="indexhtmlDialog">
+					<div id="noTelDialog">
+						<div id="noTelInfo">
+							<div id="text_info-11-0" >xxxxxx</div>
+							<div id="text_info-11-1" readonly="readonly">
+								---------------------------------------------------<br/>
+								请填写您的手机号码领取奖品
+							</div>
+						</div>
+						<button id="noTelButton">
+							<img id="noTelButtonborder" src="images/borderensure.png" />						
+						</button>
 					</div>
-					<input id="form-info-7-6" value="填写成功，我们会尽快与您联系。" readonly="readonly"></input>
 				</div>
-			</div>
-
-			<div id="toastfalse">
-				<!--信息填写失败弹toast-->
-				<div id="div-toast-text-8-1">
-					<div id="form-icon-1">
-						<img id="toast-text-7-2-1" src="images/toastformwrong.png">
+				<!--抽中奖品 -->
+				<div id="goodLuckMasking" class="indexhtmlDialog">
+					<div id="goodLuckDialog">						
+						<div id="goodLuckInfo">
+							<div id="goodLuckName">sdsada</div>
+							---------------------------------------------------<br/>
+							
+							
+						</div>
+					<div id="qcode"></div>
+					<div class="txtaward">扫码领奖</div>
 					</div>
-					<input id="form-info-7-6-1" value="填写失败，请重新填写。" readonly="readonly"></input>
 				</div>
 			</div>
-
+			<!--详情页-->
+			<div id="detailInfo" class="webpage" style="display: none;">
+				<input id="detailInfo_0" disabled="disabled" value="活动规则"></input>
+				<span id="detailInfo_1" ></span>
+				<input id="detailInfo_2" disabled="disabled" value="活动奖品"></input>
+				<div id="detailInfo_3" style=" overflow: hidden;"><!--class="row" -->
+					<table border="0" cellspacing="0" cellpadding="0">
+						<tr>
+							<td valign="top" id="marquePic1" class="eachDivStyle">
+								<!-- 要循环滚动的图片 -->
+								<table border="0" align="center" cellpadding="0" cellspacing="0">
+									<tr align="center">
+										<td><img src="images/107.png" width="300px" height="200px" border="1"><span>iPhone 7</span></td>
+										<td><img src="images/108.png" width="300px" height="200px" border="1"><span>ipad-mini</span></td>
+										<td><img src="images/115.png" width="300px" height="200px" border="1"><span>电视</span></td>							
+										<td><img src="images/111.png" width="300px" height="200px" border="1"><span>创维盒子</span></td>
+										<td><img src="images/112.png" width="300px" height="200px" border="1"><span>影视周边套组</span></td>
+										<td><img src="images/114.png" width="300px" height="200px" border="1"><span>北通游戏手柄</span></td>
+										<td><img src="images/113.png" width="300px" height="200px" border="1"><span>年卡</span></td>
+										<td><img src="images/116.png" width="300px" height="200px" border="1"><span>电影票</span></td>
+										<td><img src="images/109.png" width="300px" height="200px" border="1"><span>七天卡</span></td>
+									</tr>
+								</table>
+							</td>
+							<td id="marquePic2" width="1" class="eachDivStyle"></td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			<!--我的奖品-->
+			<div id="myAwardInfo" class="webpage">
+				<div id="myAwardInfo_0">我的奖品</div>
+				<div id="myAwardInfo_1">
+				</div>
+				<!--Toast-激活成功-->
+				<div id="activateSuccessMasking2" class="myAwardInfoDialog" style="display: none;">
+					<div id="activateSuccessDialog2">
+						<div id="activateSuccessInfo2" readonly="readonly">激活成功</div>
+					</div>
+				</div>
+				<!--Toast-激活失败-->
+				<div id="activateFailureMasking2" class="myAwardInfoDialog" style="display: none;">
+					<div id="activateFailureDialog2">
+						<div id="activateFailureInfo2" readonly="readonly">oh no~ 激活失败<br/>请在我的奖品你重新激活哦！</div>
+					</div>
+				</div>
+				<div id="goodLuckMasking2" class="myAwardInfoDialog">
+					<div id="goodLuckDialog2">						
+						<div id="goodLuckInfo2">
+							<div id="goodLuckName2">sdsada</div>
+							---------------------------------------------------<br/>
+						</div>
+					<div id="qcode2"></div>
+					<div class="txtaward">扫码领奖</div>
+					</div>
+				</div>
+			</div>
+			<!--Toast-机器版本不兼容-->
+			<div id="inCompatibleMasking">
+				<div id="inCompatibleDialog">
+					<div id="inCompatibleInfo" readonly="readonly">由于你的电视不兼容转盘游戏，无法参与该活动。</div>
+				</div>
+			</div>
+				
+			<!--按返回键的提示框  -->
+			<div id="backWarn" class="webpage">
+				<div id="backWarnInfo">
+					<div id="form-back-4" readonly="readonly">您确定要放弃这次抽奖机会吗？</div>
+					<button id="button-back-3-1" onclick="gotohomepage()">
+						<img id="toast-back-3-1-border" src="images/borderensure.png"/>
+					</button>
+					<button id="button-back-3-2" onclick="cancelToastback(this.id)">
+						<img id="toast-back-3-2-border" src="images/bordercancle.png" />
+					</button>
+				</div>
+			</div>	
 		</div>
-		<!--详情页-->
-		<div id="div-toast-text-9" class="toast"><!--onscroll="true"-->
-			<input id="form-info-9-0" disabled="disabled" value="活动规则"></input>
-			<input id="form-info-9-1" disabled="disabled"></input>
-			<span id="form-info-9-2" ><!--onscroll="FocusChange(this.id)"--></span>
-			<input id="form-info-9-3" disabled="disabled" value="活动奖品"></input>
-			<span id="form-info-9-4" ></span><!--onscroll="FocusChange(this.id)"-->
-		</div>
-		<!--我的奖品-->
-		<div id="div-toast-text-10" class="toast">
-			<img id="toast-text-10" src="images/bgform.png">
-			<div id="form-info-10-0">我的奖品</div>
-			<div id="form-info-10-1"></div>
-		</div>
-		<!--按返回键的提示框  -->
-		<div id="toast-back-warm" class="toast">
-			<img id="toast-back-3" src="images/toastnotaward.png" />
-			<div id="form-back-4" readonly="readonly">您确定要放弃这次抽奖机会吗？</div>
-			<button id="button-back-3-1" onclick="gotohomepage()">
-				<img id="toast-back-3-1" src="images/buttonensure.png" />
-				<img id="toast-back-3-1-border" src="images/borderensure.png"/>
-			</button>
-			<button id="button-back-3-2" onclick="cancelToastback(this.id)">
-				<img id="toast-back-3-2" src="images/buttoncancle.png" />
-				<img id="toast-back-3-2-border" src="images/bordercancle.png" />
-			</button>
-		</div>
-		<div id="div-toast-img-12" class="toast" style="display: none;"></div>
-
-		<div id="toast-nologin-warm" class="toast">
-			<img id="toast-nologin-3" src="images/toastnotaward.png" />
-			<div id="form-nologin-4" readonly="readonly">您还没有登录，请先登录。</div>
-			<button id="button-nologin-3-1"><!--onclick="gotohomepage()"-->
-				<img id="toast-nologin-3-1" src="images/buttonensure.png" />
-				<img id="toast-nologin-3-1-border" src="images/borderensure.png"/>
-			</button>
-			<button id="button-nologin-3-2" onclick="cancelToastback(this.id)">
-				<img id="toast-nologin-3-2" src="images/buttoncancle.png" />
-				<img id="toast-nologin-3-2-border" src="images/bordercancle.png" />
-			</button>
-		</div>
-
 		<!--cordova通用框架-->
+		<script type="text/javascript" src="js/index.js"></script>
 		<script type="text/javascript" src="cordova.js"></script>
 		<script type="text/javascript" src="js/framework.js"></script>
 		<script type="text/javascript" src="donothashme.js"></script>
-		<!--<audio id="music" src="sounds/bgmusic.mp3" loop="loop"></audio>-->
 	</body>
-
+	<script language="javascript">
+		var speed = 30; //设置间隔时间
+		marquePic2.innerHTML = marquePic1.innerHTML;
+		var demo = document.getElementById("detailInfo_3"); //获取detailInfo_3对象
+		function Marquee(n) { //实现图片循环滚动的方法
+			if(marquePic1.offsetWidth - demo.scrollLeft <= 0) {
+				demo.scrollLeft = 0;
+			} else {
+				demo.scrollLeft = demo.scrollLeft + n;
+			}
+		}
+		var MyMar = setInterval("Marquee(5)", speed);
+	</script>
 </html>
